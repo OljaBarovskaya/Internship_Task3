@@ -7,6 +7,7 @@ import Date from "./Date";
 import Temperature from "./Temperature";
 import { useContext } from "react";
 import { useWeather, WeatherContext } from "../contents/Contents";
+import Star from "../assets/img/star.svg?react";
 
 export default function LocationMainBlock({ city }: { city: string }) {
   const weatherData = useWeather();
@@ -42,6 +43,7 @@ export default function LocationMainBlock({ city }: { city: string }) {
             sizeHighT={4.0}
             sizeLowT={2.4}
           />
+          <Star width={30} height={30}></Star>
           <div className="details-main">
             <p className="text-[2em] font-medium">{description}</p>
             <p className="text-[1.6em] font-normal">feels like {feelsLike}°</p>

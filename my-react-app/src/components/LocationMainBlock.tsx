@@ -5,9 +5,8 @@ import Location from "./Location";
 import Select from "./Select";
 import Date from "./Date";
 import Temperature from "./Temperature";
-import { useContext } from "react";
-import { useWeather, WeatherContext } from "../contents/Contents";
 import Star from "../assets/img/star.svg?react";
+import { useWeather, WeatherContext } from "../contents/Contents";
 
 export default function LocationMainBlock({ city }: { city: string }) {
   const weatherData = useWeather();
@@ -31,23 +30,26 @@ export default function LocationMainBlock({ city }: { city: string }) {
       </BlockRow1>
       <BlockRow2 addStyle="gap-x-[14%]">
         <Date />
-        <img
-          className="object-contain w-[70px] h-auto"
-          src={`http://openweathermap.org/img/w/${iconCode}.png`}
-          alt={mainDescription}
-        />
-        <div className="flex flex-col justify-between gap-y-[45px]">
+        <div>
+          <img
+            className="object-contain w-[70px] h-auto"
+            src={`http://openweathermap.org/img/w/${iconCode}.png`}
+            alt={mainDescription}
+          />
+          <div className="details-main">
+            <p className="text-[2em] font-medium">{description}</p>
+            <p className="text-[1.6em] font-normal">feels like {feelsLike}°</p>
+          </div>
+        </div>
+
+        <div className="flex flex-col justify-between gap-y-[45px] items-end">
           <Temperature
             highT={tMax!}
             lowT={tMin!}
             sizeHighT={4.0}
             sizeLowT={2.4}
           />
-          <Star width={30} height={30}></Star>
-          <div className="details-main">
-            <p className="text-[2em] font-medium">{description}</p>
-            <p className="text-[1.6em] font-normal">feels like {feelsLike}°</p>
-          </div>
+          <Star width={30} height={30} fill="yellow" />
         </div>
       </BlockRow2>
     </DashboardBlock>

@@ -16,8 +16,8 @@ export default function CurrentDate() {
 
   return (
     <div className="self-start">
-      <h2>{weekday}</h2>
-      <p>{day}</p>
+      <h2 className="text-[3.6em] mb-[4px]">{weekday}</h2>
+      <p className="text-[1.6em]">{day}</p>
     </div>
   );
 }

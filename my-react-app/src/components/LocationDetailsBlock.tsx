@@ -2,7 +2,6 @@ import DashboardBlock from "./DashboardBlock";
 import BlockRow1 from "./BlockRow1";
 import BlockRow2 from "./BlockRow2";
 import DetailsBlock from "./DetailsBlock";
-import { currentWeatherData } from "../data";
 import { useWeather } from "../contents/Contents";
 import convertTime from "../utils/helpers";
 

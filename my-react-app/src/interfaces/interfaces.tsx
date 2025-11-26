@@ -7,4 +7,5 @@ export interface WeatherProviderType {
   children: React.ReactNode;
   city: string;
   units: "imperial" | "metric";
+  setIsCorrect?: (value: true | false) => void;
 }

@@ -8,17 +8,15 @@ export default function Search({
   currentCity,
   units,
   onUnitsChange,
+  isCorrect,
 }: SearchProps) {
-  const {
-    register,
-    handleSubmit,
-    // formState: { errors },
-  } = useForm<Inputs>();
+  const { register, handleSubmit } = useForm<Inputs>();
+  console.log("search", isCorrect);
 
   return (
     <div className="searchForm flex justify-end gap-x-[24px] items-center">
       <form
-        className="w-1/2 self-end"
+        className="w-1/2 self-end flex flex-col"
         onSubmit={handleSubmit((data) => {
           onCityChange((currentCity = data.city));
         })}
@@ -29,7 +27,13 @@ export default function Search({
           {...register("city", { required: "You need to enter a city" })}
           placeholder='Please, input a city here and press "Enter"'
         ></input>
-        {/* <span>{errors.city?.message}</span> */}
+        {!isCorrect ? (
+          <span className="text-red">
+            Please check whether the city name is correct
+          </span>
+        ) : (
+          <span className="h-[11.5px]"> </span>
+        )}
       </form>
       <Select units={units} onUnitsChange={onUnitsChange} />
     </div>

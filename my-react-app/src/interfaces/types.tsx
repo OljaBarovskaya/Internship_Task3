@@ -7,4 +7,5 @@ export type SearchProps = {
   currentCity: string;
   units: "metric" | "imperial";
   onUnitsChange: (value: "metric" | "imperial") => void;
+  isCorrect: true | false;
 };

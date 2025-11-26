@@ -77,6 +77,7 @@ export function WeatherProvider({
   children,
   city,
   units,
+  setIsCorrect,
 }: WeatherProviderType) {
   const [weather, setWeather] = useState<WeatherDataType | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -87,6 +88,7 @@ export function WeatherProvider({
       city: string,
       units: "imperial" | "metric"
     ) => {
+      setError(null);
       try {
         const data = await getWeatherData(city, units);
         setWeather(data);
@@ -107,6 +109,20 @@ export function WeatherProvider({
     isLoading,
     error,
   };
+
+  if (setIsCorrect === undefined) {
+    return (
+      <WeatherContext.Provider value={contextValue}>
+        {children}
+      </WeatherContext.Provider>
+    );
+  } else {
+    if (contextValue.error) {
+      setIsCorrect(false);
+    } else {
+      setIsCorrect(true);
+    }
+  }
 
   return (
     <WeatherContext.Provider value={contextValue}>

@@ -2,30 +2,30 @@ import DashboardBlock from "./DashboardBlock";
 import BlockRow1 from "./BlockRow1";
 import BlockRow2 from "./BlockRow2";
 import Location from "./Location";
-import Select from "./Select";
 import Date from "./Date";
 import Temperature from "./Temperature";
 import Star from "../assets/img/star.svg?react";
-import { useWeather, WeatherContext } from "../contents/Contents";
+import { useWeather } from "../contents/Contents";
 import { favLocationsContext } from "./Dashboard";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { setStorage } from "../utils/helpers";
 
 export default function LocationMainBlock() {
   const weatherData = useWeather();
-  // if (!weatherData) {
-  //   return <div>Loading...</div>;
-  // }
-  const cityRequested = weatherData?.weather?.name!;
-  const country = weatherData?.weather?.sys.country;
-  const iconCode = weatherData?.weather?.weather[0].icon;
-  const mainDescription = weatherData?.weather?.weather[0].main;
-  let tMin = weatherData?.weather?.main.temp_min;
-  let tMax = weatherData?.weather?.main.temp_max;
-  const description = weatherData?.weather?.weather[0].description;
-  const feelsLike = weatherData?.weather?.main.feels_like;
+  const { weather, isLoading, error } = weatherData;
 
-  function setTemperature() {}
+  if (isLoading) {
+    return <div>Loading weather data...</div>;
+  }
+
+  const cityRequested = weather?.name!;
+  const country = weather?.sys.country;
+  const iconCode = weather?.weather[0].icon;
+  const mainDescription = weather?.weather[0].main;
+  let tMin = weather?.main.temp_min;
+  let tMax = weather?.main.temp_max;
+  const description = weather?.weather[0].description;
+  const feelsLike = weather?.main.feels_like;
 
   const favContext = useContext(favLocationsContext);
   if (!favContext) {
@@ -57,7 +57,6 @@ export default function LocationMainBlock() {
     <DashboardBlock>
       <BlockRow1>
         <Location city={cityRequested} country={country!} />
-        {/* <Select tempUnit={tempUnit} setTempUnit={setTempUnit} /> */}
       </BlockRow1>
       <BlockRow2 addStyle="gap-x-[14%]">
         <Date />

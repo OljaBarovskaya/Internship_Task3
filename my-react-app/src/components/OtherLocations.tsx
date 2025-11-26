@@ -32,10 +32,10 @@ export default function OtherLocations({
       </BlockRow1>
       <BlockRow2 addStyle="flex-col gap-y-[18px]">
         {favLocations &&
-          favLocations.map((location: string) => {
+          favLocations.map((location: string, index) => {
             return (
               <WeatherProvider city={location} units={units}>
-                <LocationBlock key={location} city={location} />
+                <LocationBlock key={index} city={location} />
               </WeatherProvider>
             );
           })}

@@ -11,8 +11,8 @@ export default function HowToUse() {
         requested location and the 3rd shows the list of favorite locations with
         brief weather data there.
       </p>
-      {HowToUseDesc.map((description) => {
-        return <HowToUseBlock {...description} />;
+      {HowToUseDesc.map((description, index) => {
+        return <HowToUseBlock {...description} key={index} />;
       })}
     </section>
   );

@@ -10,7 +10,11 @@ import { favLocationsContext } from "./Dashboard";
 import { useContext } from "react";
 import { setStorage } from "../utils/helpers";
 
-export default function LocationMainBlock() {
+export default function LocationMainBlock({
+  units,
+}: {
+  units: "metric" | "imperial";
+}) {
   const weatherData = useWeather();
   const { weather, isLoading, error } = weatherData;
 
@@ -26,6 +30,14 @@ export default function LocationMainBlock() {
   let tMax = weather?.main.temp_max;
   const description = weather?.weather[0].description;
   const feelsLike = weather?.main.feels_like;
+
+  if (tMax) {
+    tMax = Math.round(tMax);
+  }
+
+  if (tMin) {
+    tMin = Math.round(tMin);
+  }
 
   const favContext = useContext(favLocationsContext);
   if (!favContext) {
@@ -44,13 +56,11 @@ export default function LocationMainBlock() {
       );
       !isFavorite;
     } else {
-      console.log(favLocations);
       updatedFavLocations = [...favLocations, cityRequested];
       !isFavorite;
     }
     setFavLocations(updatedFavLocations);
     setStorage("favouriteLocations", updatedFavLocations);
-    console.log(favLocations);
   };
 
   return (
@@ -78,6 +88,7 @@ export default function LocationMainBlock() {
             lowT={tMin!}
             sizeHighT={4.0}
             sizeLowT={2.4}
+            units={units}
           />
           <Star
             width={30}

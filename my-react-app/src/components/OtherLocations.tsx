@@ -35,7 +35,7 @@ export default function OtherLocations({
           favLocations.map((location: string, index) => {
             return (
               <WeatherProvider key={index} city={location} units={units}>
-                <LocationBlock city={location} />
+                <LocationBlock city={location} units={units} />
               </WeatherProvider>
             );
           })}

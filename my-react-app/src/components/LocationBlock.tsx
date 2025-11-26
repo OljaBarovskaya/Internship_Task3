@@ -11,15 +11,30 @@ import { setStorage } from "../utils/helpers";
 //   favouriteLocations: string[];
 // }
 
-export default function LocationBlock({ city }: { city: string }) {
+export default function LocationBlock({
+  city,
+  units,
+}: {
+  city: string;
+  units: "metric" | "imperial";
+}) {
   const weatherData = useWeather();
+  const { weather, isLoading, error } = weatherData;
 
-  const country = weatherData?.weather?.sys.country;
-  const iconCode = weatherData?.weather?.weather[0].icon;
-  const mainDescription = weatherData?.weather?.weather[0].main;
-  const tMin = weatherData?.weather?.main.temp_min;
-  const tMax = weatherData?.weather?.main.temp_max;
+  const country = weather?.sys.country;
+  const iconCode = weather?.weather[0].icon;
+  const mainDescription = weather?.weather[0].main;
+  let tMin = weather?.main.temp_min;
+  let tMax = weather?.main.temp_max;
   const favLocations = useContext(favLocationsContext);
+
+  if (tMax) {
+    tMax = Math.round(tMax);
+  }
+
+  if (tMin) {
+    tMin = Math.round(tMin);
+  }
 
   return (
     <div className="w-full min-h-[127px] p-[24px] rounded-[24px] bg-[#00008B] flex justify-between">
@@ -39,6 +54,7 @@ export default function LocationBlock({ city }: { city: string }) {
           lowT={tMin!}
           sizeHighT={2.4}
           sizeLowT={1.8}
+          units={units}
         />
         <Star
           width={30}

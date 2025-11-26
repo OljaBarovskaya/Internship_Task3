@@ -6,4 +6,5 @@ export interface StyledCompWithChildren {
 export interface WeatherProviderType {
   children: React.ReactNode;
   city: string;
+  units: "imperial" | "metric";
 }

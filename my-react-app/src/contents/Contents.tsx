@@ -73,15 +73,22 @@ export function useWeather() {
   return context;
 }
 
-export function WeatherProvider({ children, city }: WeatherProviderType) {
+export function WeatherProvider({
+  children,
+  city,
+  units,
+}: WeatherProviderType) {
   const [weather, setWeather] = useState<WeatherDataType | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    const loadWeatherData = async (city: string) => {
+    const loadWeatherData = async (
+      city: string,
+      units: "imperial" | "metric"
+    ) => {
       try {
-        const data = await getWeatherData(city);
+        const data = await getWeatherData(city, units);
         setWeather(data);
       } catch (err) {
         setError(
@@ -92,8 +99,8 @@ export function WeatherProvider({ children, city }: WeatherProviderType) {
       }
     };
 
-    loadWeatherData(city);
-  }, [city]);
+    loadWeatherData(city, units);
+  }, [city, units]);
 
   const contextValue: WeatherContextType = {
     weather,

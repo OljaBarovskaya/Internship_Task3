@@ -5,4 +5,6 @@ export type Inputs = {
 export type SearchProps = {
   onCityChange: (newCity: string) => void;
   currentCity: string;
+  units: "metric" | "imperial";
+  onUnitsChange: (value: "metric" | "imperial") => void;
 };

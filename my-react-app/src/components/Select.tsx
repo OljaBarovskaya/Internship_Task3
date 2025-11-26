@@ -1,8 +1,16 @@
-export default function Select() {
+type SelectProps = {
+  units: "metric" | "imperial";
+  onUnitsChange: (value: "metric" | "imperial") => void;
+};
+
+export default function Select({ units, onUnitsChange }: SelectProps) {
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    onUnitsChange(event.target.value as "metric" | "imperial");
+  };
   return (
-    <select>
-      <option value="celcius">C</option>
-      <option value="farenheit">F</option>
+    <select value={units} onChange={handleChange}>
+      <option value="metric">C</option>
+      <option value="imperial">F</option>
     </select>
   );
 }

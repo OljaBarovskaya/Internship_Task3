@@ -1,6 +1,9 @@
-const getWeatherData = async function (city: string) {
+const getWeatherData = async function (
+  city: string,
+  units: "imperial" | "metric"
+) {
   const APIkey = "24f553f38495c07ad01042098fa56ba3";
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=en&appid=${APIkey}&units=metric`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=en&appid=${APIkey}&units=${units}`;
   const res = await fetch(url);
   const data = await res.json();
   // WeatherContext = createContext();

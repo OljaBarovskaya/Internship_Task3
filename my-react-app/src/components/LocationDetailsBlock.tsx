@@ -5,7 +5,11 @@ import DetailsBlock from "./DetailsBlock";
 import { useWeather } from "../contents/Contents";
 import convertTime from "../utils/helpers";
 
-export default function LocationDetailsBlock() {
+export default function LocationDetailsBlock({
+  units,
+}: {
+  units: "metric" | "imperial";
+}) {
   const weatherData = useWeather();
   const humidity = weatherData?.weather?.main.humidity;
   const pressure = weatherData?.weather?.main.pressure;
@@ -26,9 +30,12 @@ export default function LocationDetailsBlock() {
       </BlockRow1>
       <BlockRow2 addStyle="flex-wrap gap-y-[18px] gap-x-[18px]">
         <DetailsBlock name="Humidity" value={humidity + "%"} />
-        <DetailsBlock name="Pressure" value={pressure + " " + "hPa"} />
-        <DetailsBlock name="Wind" value={wind + " " + "m/s"} />
-        <DetailsBlock name="Visibility" value={visibility + " " + "m"} />
+        <DetailsBlock name="Pressure" value={pressure + " hPa"} />
+        <DetailsBlock
+          name="Wind"
+          value={units === "metric" ? wind + " m/s" : wind + " m/h"}
+        />
+        <DetailsBlock name="Visibility" value={visibility + " m"} />
         <DetailsBlock name="Sunrise" value={sunrise} />
         <DetailsBlock name="Sunset" value={sunset} />
       </BlockRow2>

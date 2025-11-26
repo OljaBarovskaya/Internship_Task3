@@ -35,7 +35,7 @@ export default function Dashboard({
         <div className="column-2-layout">
           <div className="w-[calc(50%-12px)] flex flex-col gap-y-[24px]">
             <LocationMainBlock units={units} />
-            <LocationDetailsBlock />
+            <LocationDetailsBlock units={units} />
           </div>
           <div className="w-[calc(50%-12px)]">
             <OtherLocations units={units} />

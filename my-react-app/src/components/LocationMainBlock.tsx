@@ -29,7 +29,7 @@ export default function LocationMainBlock({
   let tMin = weather?.main.temp_min;
   let tMax = weather?.main.temp_max;
   const description = weather?.weather[0].description;
-  const feelsLike = weather?.main.feels_like;
+  let feelsLike = weather?.main.feels_like;
 
   if (tMax) {
     tMax = Math.round(tMax);
@@ -37,6 +37,9 @@ export default function LocationMainBlock({
 
   if (tMin) {
     tMin = Math.round(tMin);
+  }
+  if (feelsLike) {
+    feelsLike = Math.round(feelsLike);
   }
 
   const favContext = useContext(favLocationsContext);
@@ -69,18 +72,24 @@ export default function LocationMainBlock({
         <Location city={cityRequested} country={country!} />
       </BlockRow1>
       <BlockRow2 addStyle="gap-x-[14%]">
-        <Date />
-        <div>
-          <img
-            className="object-contain w-[70px] h-auto"
-            src={`http://openweathermap.org/img/w/${iconCode}.png`}
-            alt={mainDescription}
-          />
+        <div className="flex flex-col justify-between">
+          <Date />
           <div className="details-main">
             <p className="text-[2em] font-medium">{description}</p>
-            <p className="text-[1.6em] font-normal">feels like {feelsLike}°</p>
+            <p className="text-[1.6em] font-normal">
+              feels like{" "}
+              {units === "metric"
+                ? feelsLike + "\u00B0C"
+                : feelsLike + "\u00B0F"}
+            </p>
           </div>
         </div>
+
+        <img
+          className="object-contain w-[70px] h-auto"
+          src={`http://openweathermap.org/img/w/${iconCode}.png`}
+          alt={mainDescription}
+        />
 
         <div className="flex flex-col justify-between gap-y-[45px] items-end">
           <Temperature

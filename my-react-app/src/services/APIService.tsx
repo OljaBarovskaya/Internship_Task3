@@ -8,8 +8,11 @@ const getWeatherData = async function (
   const APIkey = "24f553f38495c07ad01042098fa56ba3";
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=en&appid=${APIkey}&units=${units}`;
   const res = await fetch(url);
+  if (!res.ok) {
+    const errorData = await res.json();
+    throw new Error(errorData.message || "Failed to fetch weather data");
+  }
   const data = await res.json();
-  console.log(data.weather[0].id, data.weather[0].description, data.main.temp);
   return data;
 };
 

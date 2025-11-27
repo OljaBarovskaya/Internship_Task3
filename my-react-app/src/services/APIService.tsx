@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import type { WeatherDataType } from "../interfaces/interfaces";
 
-const getWeatherData = async function (
+export const getWeatherData = async function (
   city: string,
   units: "imperial" | "metric"
 ) {
@@ -16,7 +16,7 @@ const getWeatherData = async function (
   return data;
 };
 
-const useWeatherQuery = (city: string, units: "imperial" | "metric") => {
+export const useWeatherQuery = (city: string, units: "imperial" | "metric") => {
   return useQuery<WeatherDataType, Error>({
     queryKey: ["weatherData", city, units],
     queryFn: () => getWeatherData(city, units),
@@ -25,5 +25,3 @@ const useWeatherQuery = (city: string, units: "imperial" | "metric") => {
     retry: false,
   });
 };
-
-export default useWeatherQuery;

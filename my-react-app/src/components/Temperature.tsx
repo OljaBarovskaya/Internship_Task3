@@ -1,16 +1,12 @@
+import type { TemperatureProps } from "../interfaces/interfaces";
+
 export default function Temperature({
   highT,
   lowT,
   sizeHighT,
   sizeLowT,
   units,
-}: {
-  highT: number;
-  lowT: number;
-  sizeHighT: number;
-  sizeLowT: number;
-  units: "metric" | "imperial";
-}) {
+}: TemperatureProps) {
   return (
     <div>
       <p style={{ fontSize: `${sizeHighT}em` }} className="font-medium">

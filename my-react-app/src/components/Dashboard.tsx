@@ -2,20 +2,14 @@ import LocationDetailsBlock from "./LocationDetailsBlock";
 import LocationMainBlock from "./LocationMainBlock";
 import OtherLocations from "./OtherLocations";
 import type { FavLocationsContextType } from "../interfaces/interfaces";
-import { useState, createContext, useContext } from "react";
+import { useState, createContext } from "react";
 import { getStorage } from "../utils/helpers";
 
 export const favLocationsContext = createContext<
   FavLocationsContextType | undefined
 >(undefined);
 
-export default function Dashboard({
-  // city,
-  units,
-}: {
-  // city: string;
-  units: "metric" | "imperial";
-}) {
+export default function Dashboard({ units }: { units: "metric" | "imperial" }) {
   const [favouriteLocations, setFavLocations] = useState<string[]>(
     getStorage("favouriteLocations")
   );

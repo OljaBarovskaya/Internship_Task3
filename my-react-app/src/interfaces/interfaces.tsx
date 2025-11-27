@@ -79,3 +79,11 @@ export interface FavLocationsContextType {
 export interface MyComponentProps {
   isActive: boolean;
 }
+
+export interface TemperatureProps {
+  highT: number;
+  lowT: number;
+  sizeHighT: number;
+  sizeLowT: number;
+  units: "metric" | "imperial";
+}

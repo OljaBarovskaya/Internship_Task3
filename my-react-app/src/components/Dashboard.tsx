@@ -1,14 +1,9 @@
 import LocationDetailsBlock from "./LocationDetailsBlock";
 import LocationMainBlock from "./LocationMainBlock";
 import OtherLocations from "./OtherLocations";
-
+import type { FavLocationsContextType } from "../interfaces/interfaces";
 import { useState, createContext, useContext } from "react";
 import { getStorage } from "../utils/helpers";
-
-interface FavLocationsContextType {
-  favLocations: string[];
-  setFavLocations: React.Dispatch<React.SetStateAction<string[]>>;
-}
 
 export const favLocationsContext = createContext<
   FavLocationsContextType | undefined

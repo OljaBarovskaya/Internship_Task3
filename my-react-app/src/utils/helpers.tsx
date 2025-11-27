@@ -13,7 +13,6 @@ export function getStorage(item: string) {
 }
 
 export function setStorage(item: string, value: string | string[]) {
-  console.log(item, value);
   if (typeof localStorage === "undefined") {
     console.error("localStorage is not available in this environment");
     return;

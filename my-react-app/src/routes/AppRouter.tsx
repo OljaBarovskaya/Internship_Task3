@@ -3,10 +3,7 @@ import { Route, Routes, NavLink } from "react-router-dom";
 import WeatherDashboard from "../components/WeatherDashboard";
 import Common from "../components/commonPage/Common";
 import Contacts from "../components/contactsPage/Contacts";
-
-interface MyComponentProps {
-  isActive: boolean;
-}
+import type { MyComponentProps } from "../interfaces/interfaces";
 
 const navLinkStyle = ({ isActive }: MyComponentProps) => ({
   color: isActive ? "#007bff" : "#333",

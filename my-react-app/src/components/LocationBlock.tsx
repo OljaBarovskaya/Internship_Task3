@@ -5,12 +5,6 @@ import Star from "../assets/img/star.svg?react";
 import { favLocationsContext } from "./Dashboard";
 import { setStorage } from "../utils/helpers";
 
-// interface ChildProps {
-//   city: string;
-//   onFavLocationsChange: (data: string[]) => void;
-//   favouriteLocations: string[];
-// }
-
 export default function LocationBlock({
   city,
   units,
@@ -19,7 +13,13 @@ export default function LocationBlock({
   units: "metric" | "imperial";
 }) {
   const weatherData = useWeather();
-  const { weather, isLoading, error } = weatherData;
+  const { lastSuccessfulWeather, isLoading, error } = weatherData;
+
+  if (!lastSuccessfulWeather && isLoading) {
+    return <h2>Loading...</h2>;
+  }
+
+  let weather = lastSuccessfulWeather;
 
   const country = weather?.sys.country;
   const iconCode = weather?.weather[0].icon;

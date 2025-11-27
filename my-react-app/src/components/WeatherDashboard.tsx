@@ -11,8 +11,6 @@ export default function WeatherDashboard() {
   const [units, changeUnits] = useState<UnitType>("metric");
   const [isCorrect, setIsCorrect] = useState(true);
 
-  console.log(isCorrect);
-
   return (
     <div className="flex flex-col w-full h-full">
       <WeatherProvider city={city} units={units} setIsCorrect={setIsCorrect}>

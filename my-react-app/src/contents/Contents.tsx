@@ -1,67 +1,12 @@
 import { useState, useEffect, createContext, useContext } from "react";
 import getWeatherData from "../services/APIService";
 import type { WeatherProviderType } from "../interfaces/interfaces";
-
-interface Coord {
-  lon: number;
-  lat: number;
-}
-
-interface WeatherItem {
-  id: number;
-  main: string;
-  description: string;
-  icon: string;
-}
-
-interface Main {
-  temp: number;
-  feels_like: number;
-  temp_min: number;
-  temp_max: number;
-  pressure: number;
-  humidity: number;
-  sea_level: number;
-  grnd_level: number;
-}
-
-interface Wind {
-  speed: number;
-  deg: number;
-  gust: number;
-}
-
-interface Clouds {
-  all: number;
-}
-
-interface Sys {
-  country: string;
-  sunrise: number;
-  sunset: number;
-}
-
-interface WeatherDataType {
-  coord: Coord;
-  weather: WeatherItem[];
-  base: string;
-  main: Main;
-  visibility: number;
-  wind: Wind;
-  clouds: Clouds;
-  dt: number;
-  sys: Sys;
-  timezone: number;
-  id: number;
-  name: string;
-  cod: number;
-}
-
-interface WeatherContextType {
-  weather: WeatherDataType | null;
-  isLoading: boolean;
-  error: Error | null;
-}
+import { useQuery } from "@tanstack/react-query";
+import useWeatherQuery from "../services/APIService";
+import type {
+  WeatherContextType,
+  WeatherDataType,
+} from "../interfaces/interfaces";
 
 export const WeatherContext = createContext<WeatherContextType | null>(null);
 
@@ -79,50 +24,70 @@ export function WeatherProvider({
   units,
   setIsCorrect,
 }: WeatherProviderType) {
-  const [weather, setWeather] = useState<WeatherDataType | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
+  // const [weather, setWeather] = useState<WeatherDataType | null>(null);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [error, setError] = useState<Error | null>(null);
+
+  // useEffect(() => {
+  //   const loadWeatherData = async (
+  //     city: string,
+  //     units: "imperial" | "metric"
+  //   ) => {
+  //     setError(null);
+  //     try {
+  //       const data = await getWeatherData(city, units);
+  //       setWeather(data);
+  //     } catch (err) {
+  //       setError(
+  //         err instanceof Error ? err : new Error("An unknown error occurred")
+  //       );
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   };
+
+  //   loadWeatherData(city, units);
+  // }, [city, units]);
+  const [lastSuccessfulWeather, setLastSuccessfulWeather] = useState<
+    WeatherDataType | undefined
+  >(undefined);
+  const {
+    data: currentWeatherData,
+    isLoading,
+    error,
+  } = useWeatherQuery(city, units);
 
   useEffect(() => {
-    const loadWeatherData = async (
-      city: string,
-      units: "imperial" | "metric"
-    ) => {
-      setError(null);
-      try {
-        const data = await getWeatherData(city, units);
-        setWeather(data);
-      } catch (err) {
-        setError(
-          err instanceof Error ? err : new Error("An unknown error occurred")
-        );
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    loadWeatherData(city, units);
-  }, [city, units]);
+    if (currentWeatherData) {
+      setLastSuccessfulWeather(currentWeatherData);
+    }
+  }, [currentWeatherData]);
 
   const contextValue: WeatherContextType = {
-    weather,
+    lastSuccessfulWeather,
     isLoading,
     error,
   };
 
-  if (setIsCorrect === undefined) {
-    return (
-      <WeatherContext.Provider value={contextValue}>
-        {children}
-      </WeatherContext.Provider>
-    );
-  } else {
-    if (contextValue.error) {
-      setIsCorrect(false);
-    } else {
-      setIsCorrect(true);
+  useEffect(() => {
+    if (setIsCorrect) {
+      // If we have an error object, the city is likely incorrect (e.g., 404)
+      // We only care about the *final* result when fetching is done.
+      // If we have successfully loaded data *at any point*, we count it as correct
+      // until a subsequent fetch definitively fails.
+
+      // A simple check: if there's an error and NO data available at all, it's incorrect.
+      // If there's an error but we still have 'weather' data (due to placeholderData),
+      // the previous value remains visible, but we set the flag to false because the NEW one failed.
+
+      if (error) {
+        setIsCorrect(false);
+      } else if (currentWeatherData) {
+        setIsCorrect(true);
+      }
+      // Note: While the query is loading, setIsCorrect retains its previous value.
     }
-  }
+  }, [currentWeatherData, error, setIsCorrect]);
 
   return (
     <WeatherContext.Provider value={contextValue}>

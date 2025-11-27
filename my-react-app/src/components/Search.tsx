@@ -11,7 +11,6 @@ export default function Search({
   isCorrect,
 }: SearchProps) {
   const { register, handleSubmit } = useForm<Inputs>();
-  console.log("search", isCorrect);
 
   return (
     <div className="searchForm flex justify-end gap-x-[24px] items-center">

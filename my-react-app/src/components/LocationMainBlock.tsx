@@ -15,12 +15,14 @@ export default function LocationMainBlock({
 }: {
   units: "metric" | "imperial";
 }) {
-  const weatherData = useWeather();
-  const { weather, isLoading, error } = weatherData;
+  const { lastSuccessfulWeather, isLoading, error } = useWeather();
 
-  if (isLoading) {
-    return <div>Loading weather data...</div>;
+  if (!lastSuccessfulWeather && isLoading) {
+    return <h2>Loading...</h2>;
   }
+
+  let weather = lastSuccessfulWeather;
+  console.log(lastSuccessfulWeather?.name);
 
   const cityRequested = weather?.name!;
   const country = weather?.sys.country;

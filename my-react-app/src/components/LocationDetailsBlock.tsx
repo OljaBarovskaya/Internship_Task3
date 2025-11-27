@@ -10,19 +10,19 @@ export default function LocationDetailsBlock({
 }: {
   units: "metric" | "imperial";
 }) {
-  const weatherData = useWeather();
-  const humidity = weatherData?.weather?.main.humidity;
-  const pressure = weatherData?.weather?.main.pressure;
-  const wind = weatherData?.weather?.wind.speed;
-  const timezone = weatherData?.weather?.timezone;
-  const sunrise = convertTime(
-    weatherData?.weather?.sys.sunrise! * 1000 + timezone!
-  );
-  const sunset = convertTime(
-    weatherData?.weather?.sys.sunset! * 1000 + timezone!
-  );
-  const visibility = weatherData?.weather?.visibility;
+  const { lastSuccessfulWeather, isLoading, error } = useWeather();
+  let weather = lastSuccessfulWeather;
+  const humidity = weather?.main.humidity;
+  const pressure = weather?.main.pressure;
+  const wind = weather?.wind.speed;
+  const timezone = weather?.timezone;
+  const sunrise = convertTime(weather?.sys.sunrise! * 1000 + timezone!);
+  const sunset = convertTime(weather?.sys.sunset! * 1000 + timezone!);
+  const visibility = weather?.visibility;
 
+  if (!lastSuccessfulWeather && isLoading) {
+    return <h2>Loading...</h2>;
+  }
   return (
     <DashboardBlock>
       <BlockRow1>

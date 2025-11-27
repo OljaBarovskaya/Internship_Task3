@@ -22,7 +22,7 @@ export default function Search({
       >
         <input
           type="text"
-          className="search-input"
+          className="search-input h-[56px] w-full rounded-[36px]"
           {...register("city", { required: "You need to enter a city" })}
           placeholder='Please, input a city here and press "Enter"'
         ></input>

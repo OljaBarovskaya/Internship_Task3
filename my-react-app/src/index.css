@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   box-sizing: border-box;
 }
@@ -9,40 +13,34 @@ body {
 }
 
 main {
-  position: relative;
   height: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 header,
-main {
-  margin: 0 auto;
-}
-
-header {
-  width: 100%;
-  padding: 20px;
-  display: flex;
-  justify-content: space-around;
-}
-
-h1 {
-  display: inline-block;
+main,
+p,
+h1,
+h2,
+h3 {
   margin: 0;
-  font-size: 3.5rem;
 }
 
-button {
-  padding: 20px;
-  cursor: pointer;
+nav * {
+  padding: 0 30px;
+  text-decoration: none;
 }
 
-button:hover {
-  background-color: gold;
+h2 {
+  font-size: 2.5em;
 }
 
-.wrapper {
-  margin: 0 auto;
-  width: 95%;
-  height: 100vh;
+h3 {
+  font-size: 2em;
+}
+
+p {
+  font-size: 1.6em;
 }

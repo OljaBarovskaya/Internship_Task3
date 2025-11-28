@@ -10,7 +10,7 @@ export default function DetailsBlock({
 }) {
   const nameL = name.toLowerCase();
   return (
-    <div className="w-[157px] h-[134px] p-[16px] rounded-[16px] bg-[#00008B] flex flex-col gap-y-[16px]">
+    <div className="w-[157px] h-[134px] p-[16px] rounded-[16px] bg-[#00008B] flex flex-col gap-y-[24px]">
       <BlockRow1>
         <img
           className="w-[24px]"
@@ -19,7 +19,7 @@ export default function DetailsBlock({
         ></img>
         <h3 className="inline-block">{name}</h3>
       </BlockRow1>
-      <BlockRow2>{value}</BlockRow2>
+      <BlockRow2 addStyle="text-[2em]">{value}</BlockRow2>
     </div>
   );
 }

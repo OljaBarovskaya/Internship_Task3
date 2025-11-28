@@ -14,7 +14,7 @@ export default defineConfig({
     tailwindcss(),
     svgr(),
   ],
-  base: "./",
+  base: "/Internship_Task3/",
   test: {
     globals: true,
     setupFiles: ["setupTests.ts"],

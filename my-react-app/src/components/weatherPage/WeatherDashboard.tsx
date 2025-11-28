@@ -4,10 +4,23 @@ import { useState } from "react";
 import { LOCATION_DEFAULT } from "../../contents/Locations";
 import { WeatherProvider } from "../../contents/Contents";
 import type { DegreeUnits } from "../../interfaces/interfaces";
+import { getStorage } from "../../utils/helpers";
+
+function getStartCity() {
+  if (getStorage("locationMain")) {
+    return getStorage("locationMain");
+  } else return LOCATION_DEFAULT;
+}
+
+function getStartUnits() {
+  if (getStorage("units")) {
+    return getStorage("units");
+  } else return "metric";
+}
 
 export default function WeatherDashboard() {
-  const [city, changeCity] = useState(LOCATION_DEFAULT);
-  const [units, changeUnits] = useState<DegreeUnits>("metric");
+  const [city, changeCity] = useState(getStartCity());
+  const [units, changeUnits] = useState<DegreeUnits>(getStartUnits());
   const [isCorrect, setIsCorrect] = useState(true);
 
   return (

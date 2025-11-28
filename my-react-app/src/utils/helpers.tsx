@@ -7,9 +7,11 @@ export default function convertTime(milliseconds: number) {
 }
 
 export function getStorage(item: string) {
-  if (localStorage.getItem(item)) {
-    return JSON.parse(localStorage.getItem(item)!);
-  } else return [];
+  if (item === "favouriteLocations") {
+    if (localStorage.getItem(item)) {
+      return JSON.parse(localStorage.getItem(item)!);
+    } else return [];
+  } else return localStorage.getItem(item);
 }
 
 export function setStorage(item: string, value: string | string[]) {

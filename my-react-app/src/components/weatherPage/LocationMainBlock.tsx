@@ -64,6 +64,8 @@ export default function LocationMainBlock({ units }: { units: DegreeUnits }) {
     setStorage("favouriteLocations", updatedFavLocations);
   };
 
+  setStorage("locationMain", cityRequested);
+
   return (
     <DashboardBlock>
       <BlockRow1>

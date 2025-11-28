@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
-import type { Inputs, SearchProps } from "../interfaces/types";
-
+import type { SearchProps } from "../interfaces/interfaces";
 import Select from "./Select";
 
 export default function Search({
@@ -10,7 +9,7 @@ export default function Search({
   onUnitsChange,
   isCorrect,
 }: SearchProps) {
-  const { register, handleSubmit } = useForm<Inputs>();
+  const { register, handleSubmit } = useForm();
 
   return (
     <div className="searchForm flex justify-end gap-x-[24px] items-center">
@@ -22,7 +21,7 @@ export default function Search({
       >
         <input
           type="text"
-          className="search-input h-[56px] w-full rounded-[36px]"
+          className="search-input h-[56px] w-full rounded-[36px] px-[24px]"
           {...register("city", { required: "You need to enter a city" })}
           placeholder='Please, input a city here and press "Enter"'
         ></input>

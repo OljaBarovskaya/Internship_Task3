@@ -87,3 +87,16 @@ export interface TemperatureProps {
   sizeLowT: number;
   units: "metric" | "imperial";
 }
+
+export interface SearchProps {
+  onCityChange: (newCity: string) => void;
+  currentCity: string;
+  units: "metric" | "imperial";
+  onUnitsChange: (value: "metric" | "imperial") => void;
+  isCorrect: true | false;
+}
+
+export interface SelectProps {
+  units: "metric" | "imperial";
+  onUnitsChange: (value: "metric" | "imperial") => void;
+}

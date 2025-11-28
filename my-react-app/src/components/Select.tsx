@@ -1,7 +1,4 @@
-type SelectProps = {
-  units: "metric" | "imperial";
-  onUnitsChange: (value: "metric" | "imperial") => void;
-};
+import type { SelectProps } from "../interfaces/interfaces";
 
 export default function Select({ units, onUnitsChange }: SelectProps) {
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {

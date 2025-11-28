@@ -1,14 +1,15 @@
 import DashboardBlock from "./DashboardBlock";
-import BlockRow1 from "./BlockRow1";
-import BlockRow2 from "./BlockRow2";
+import BlockRow1 from "../../containers/BlockRow1";
+import BlockRow2 from "../../containers/BlockRow2";
 import DetailsBlock from "./DetailsBlock";
-import { useWeather } from "../contents/Contents";
-import convertTime from "../utils/helpers";
+import { useWeather } from "../../contents/Contents";
+import convertTime from "../../utils/helpers";
+import type { DegreeUnits } from "../../interfaces/interfaces";
 
 export default function LocationDetailsBlock({
   units,
 }: {
-  units: "metric" | "imperial";
+  units: DegreeUnits;
 }) {
   const { lastSuccessfulWeather, isLoading } = useWeather();
   let weather = lastSuccessfulWeather;

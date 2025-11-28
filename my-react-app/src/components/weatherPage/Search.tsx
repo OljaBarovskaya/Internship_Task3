@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import type { SearchProps } from "../interfaces/interfaces";
+import type { SearchProps } from "../../interfaces/interfaces";
 import Select from "./Select";
 
 export default function Search({

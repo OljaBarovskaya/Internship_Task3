@@ -1,5 +1,5 @@
-import BlockRow1 from "./BlockRow1";
-import BlockRow2 from "./BlockRow2";
+import BlockRow1 from "../../containers/BlockRow1";
+import BlockRow2 from "../../containers/BlockRow2";
 
 export default function DetailsBlock({
   name,

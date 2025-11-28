@@ -1,28 +1,24 @@
 import DashboardBlock from "./DashboardBlock";
-import BlockRow1 from "./BlockRow1";
-import BlockRow2 from "./BlockRow2";
+import BlockRow1 from "../../containers/BlockRow1";
+import BlockRow2 from "../../containers/BlockRow2";
 import Location from "./Location";
 import Date from "./Date";
 import Temperature from "./Temperature";
-import Star from "../assets/img/star.svg?react";
-import { useWeather } from "../contents/Contents";
+import Star from "../../assets/img/star.svg?react";
+import { useWeather } from "../../contents/Contents";
 import { favLocationsContext } from "./Dashboard";
 import { useContext } from "react";
-import { setStorage } from "../utils/helpers";
+import { setStorage } from "../../utils/helpers";
+import type { DegreeUnits } from "../../interfaces/interfaces";
 
-export default function LocationMainBlock({
-  units,
-}: {
-  units: "metric" | "imperial";
-}) {
-  const { lastSuccessfulWeather, isLoading, error } = useWeather();
+export default function LocationMainBlock({ units }: { units: DegreeUnits }) {
+  const { lastSuccessfulWeather, isLoading } = useWeather();
 
   if (!lastSuccessfulWeather && isLoading) {
     return <h2>Loading...</h2>;
   }
 
   let weather = lastSuccessfulWeather;
-  console.log(lastSuccessfulWeather?.name);
 
   const cityRequested = weather?.name!;
   const country = weather?.sys.country;

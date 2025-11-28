@@ -1,19 +1,20 @@
 import Temperature from "./Temperature";
-import { useWeather, WeatherContext } from "../contents/Contents";
+import { useWeather } from "../../contents/Contents";
 import { useContext } from "react";
-import Star from "../assets/img/star.svg?react";
+import Star from "../../assets/img/star.svg?react";
 import { favLocationsContext } from "./Dashboard";
-import { setStorage } from "../utils/helpers";
+import { setStorage } from "../../utils/helpers";
+import type { DegreeUnits } from "../../interfaces/interfaces";
 
 export default function LocationBlock({
   city,
   units,
 }: {
   city: string;
-  units: "metric" | "imperial";
+  units: DegreeUnits;
 }) {
   const weatherData = useWeather();
-  const { lastSuccessfulWeather, isLoading, error } = weatherData;
+  const { lastSuccessfulWeather, isLoading } = weatherData;
 
   if (!lastSuccessfulWeather && isLoading) {
     return <h2>Loading...</h2>;

@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import type { WeatherDataType } from "../interfaces/interfaces";
+import type { DegreeUnits, WeatherDataType } from "../interfaces/interfaces";
 
 export const getWeatherData = async function (
   city: string,
-  units: "imperial" | "metric"
+  units: DegreeUnits
 ) {
   const APIkey = "24f553f38495c07ad01042098fa56ba3";
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=en&appid=${APIkey}&units=${units}`;
@@ -16,7 +16,7 @@ export const getWeatherData = async function (
   return data;
 };
 
-export const useWeatherQuery = (city: string, units: "imperial" | "metric") => {
+export const useWeatherQuery = (city: string, units: DegreeUnits) => {
   return useQuery<WeatherDataType, Error>({
     queryKey: ["weatherData", city, units],
     queryFn: () => getWeatherData(city, units),

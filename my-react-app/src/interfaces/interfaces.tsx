@@ -1,3 +1,5 @@
+export type DegreeUnits = "metric" | "imperial";
+
 export interface StyledCompWithChildren {
   children?: React.ReactNode;
   addStyle?: string;
@@ -6,7 +8,7 @@ export interface StyledCompWithChildren {
 export interface WeatherProviderType {
   children: React.ReactNode;
   city: string;
-  units: "imperial" | "metric";
+  units: DegreeUnits;
   setIsCorrect?: (value: true | false) => void;
 }
 
@@ -85,18 +87,18 @@ export interface TemperatureProps {
   lowT: number;
   sizeHighT: number;
   sizeLowT: number;
-  units: "metric" | "imperial";
+  units: DegreeUnits;
 }
 
 export interface SearchProps {
   onCityChange: (newCity: string) => void;
   currentCity: string;
-  units: "metric" | "imperial";
-  onUnitsChange: (value: "metric" | "imperial") => void;
+  units: DegreeUnits;
+  onUnitsChange: (value: DegreeUnits) => void;
   isCorrect: true | false;
 }
 
 export interface SelectProps {
-  units: "metric" | "imperial";
-  onUnitsChange: (value: "metric" | "imperial") => void;
+  units: DegreeUnits;
+  onUnitsChange: (value: DegreeUnits) => void;
 }

@@ -1,4 +1,4 @@
-import type { TemperatureProps } from "../interfaces/interfaces";
+import type { TemperatureProps } from "../../interfaces/interfaces";
 
 export default function Temperature({
   highT,

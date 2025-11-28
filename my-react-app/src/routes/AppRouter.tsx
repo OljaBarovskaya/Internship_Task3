@@ -1,6 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import { Route, Routes, NavLink } from "react-router-dom";
-import WeatherDashboard from "../components/WeatherDashboard";
+import WeatherDashboard from "../components/weatherPage/WeatherDashboard";
 import Common from "../components/commonPage/Common";
 import Contacts from "../components/contactsPage/Contacts";
 import type { MyComponentProps } from "../interfaces/interfaces";

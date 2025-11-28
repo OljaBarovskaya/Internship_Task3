@@ -1,4 +1,4 @@
-import { describe, test, expect, vi, beforeEach, afterEach } from "vitest";
+import { describe, test, expect, vi, beforeEach } from "vitest";
 import { getWeatherData } from "./APIService";
 
 const fetchSpy = vi.spyOn(global, "fetch");
@@ -12,7 +12,6 @@ describe("getWeatherData", () => {
   const units = "metric" as const;
   const expectedApiKey = "24f553f38495c07ad01042098fa56ba3";
 
-  // --- Test Case 1: Successful API Call (Happy Path) ---
   test("fetches and returns weather data on success", async () => {
     const mockWeatherData = {
       name: "Minsk",
@@ -20,7 +19,6 @@ describe("getWeatherData", () => {
       weather: [{ description: "Cloudy" }],
     };
 
-    // Mock a successful response object
     const mockResponse = {
       ok: true,
       json: () => Promise.resolve(mockWeatherData),
@@ -37,7 +35,6 @@ describe("getWeatherData", () => {
     expect(fetchSpy).toHaveBeenCalledWith(expectedUrl);
   });
 
-  // --- Test Case 2: API Error Handling (404 Not Found) ---
   test("throws an error if the city is not found", async () => {
     const errorMessage = "city not found";
     const mockErrorResponse = {
@@ -54,7 +51,6 @@ describe("getWeatherData", () => {
     expect(fetchSpy).toHaveBeenCalledTimes(1);
   });
 
-  // --- Test Case 3: Network Failure ---
   test("throws a generic error if fetch fails (e.g., network error)", async () => {
     fetchSpy.mockRejectedValueOnce(new Error("Network request failed"));
 

@@ -1,14 +1,13 @@
 import Search from "./Search";
 import Dashboard from "./Dashboard";
 import { useState } from "react";
-import { LOCATION_DEFAULT } from "../contents/Locations";
-import { WeatherProvider } from "../contents/Contents";
-
-type UnitType = "metric" | "imperial";
+import { LOCATION_DEFAULT } from "../../contents/Locations";
+import { WeatherProvider } from "../../contents/Contents";
+import type { DegreeUnits } from "../../interfaces/interfaces";
 
 export default function WeatherDashboard() {
   const [city, changeCity] = useState(LOCATION_DEFAULT);
-  const [units, changeUnits] = useState<UnitType>("metric");
+  const [units, changeUnits] = useState<DegreeUnits>("metric");
   const [isCorrect, setIsCorrect] = useState(true);
 
   return (

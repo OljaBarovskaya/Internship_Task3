@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function CurrentDate() {
   const [date, setDate] = useState(new Date());
@@ -12,7 +12,15 @@ export default function CurrentDate() {
     month: "short",
   });
 
-  let interval = setInterval(() => setDate(new Date()), 6000);
+  useEffect(() => {
+    const intervalID = setInterval(() => {
+      setDate(new Date());
+    }, 60000);
+
+    return () => {
+      clearInterval(intervalID);
+    };
+  }, []);
 
   return (
     <div className="self-start">

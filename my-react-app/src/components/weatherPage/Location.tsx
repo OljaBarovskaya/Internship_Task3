@@ -9,10 +9,8 @@ export default function Location({
 }) {
   return (
     <div className="flex items-center p-[9px_0] gap-x-[8px] text-[1.8em]">
-      <div
-        className={`bg-[url('${LocationIcon}')] w-[24px] h-[24px] inline-block`}
-      ></div>
-      {city + ", " + country}
+      <img src={LocationIcon} alt="locationIcon" className="w-[24px]"></img>
+      <div>{city + ", " + country}</div>
     </div>
   );
 }

@@ -92,7 +92,6 @@ export interface TemperatureProps {
 
 export interface SearchProps {
   onCityChange: (newCity: string) => void;
-  currentCity: string;
   units: DegreeUnits;
   onUnitsChange: (value: DegreeUnits) => void;
   isCorrect: true | false;
@@ -101,4 +100,9 @@ export interface SearchProps {
 export interface SelectProps {
   units: DegreeUnits;
   onUnitsChange: (value: DegreeUnits) => void;
+}
+
+export interface Error {
+  cod: string;
+  message: string;
 }

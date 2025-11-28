@@ -4,7 +4,6 @@ import Select from "./Select";
 
 export default function Search({
   onCityChange,
-  currentCity,
   units,
   onUnitsChange,
   isCorrect,
@@ -16,7 +15,7 @@ export default function Search({
       <form
         className="w-1/2 self-end flex flex-col"
         onSubmit={handleSubmit((data) => {
-          onCityChange((currentCity = data.city));
+          onCityChange(data.city);
         })}
       >
         <input

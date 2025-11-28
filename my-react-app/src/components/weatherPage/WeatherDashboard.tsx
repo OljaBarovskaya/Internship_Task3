@@ -28,7 +28,6 @@ export default function WeatherDashboard() {
       <WeatherProvider city={city} units={units} setIsCorrect={setIsCorrect}>
         <Search
           onCityChange={changeCity}
-          currentCity={city}
           units={units}
           onUnitsChange={changeUnits}
           isCorrect={isCorrect}

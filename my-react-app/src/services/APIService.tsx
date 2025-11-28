@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import type { DegreeUnits, WeatherDataType } from "../interfaces/interfaces";
+import type { Error } from "../interfaces/interfaces";
 
 export const getWeatherData = async function (
   city: string,
@@ -9,7 +10,7 @@ export const getWeatherData = async function (
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=en&appid=${APIkey}&units=${units}`;
   const res = await fetch(url);
   if (!res.ok) {
-    const errorData = await res.json();
+    const errorData = (await res.json()) as Error;
     throw new Error(errorData.message || "Failed to fetch weather data");
   }
   const data = await res.json();

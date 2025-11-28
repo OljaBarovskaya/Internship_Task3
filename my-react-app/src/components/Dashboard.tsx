@@ -21,7 +21,7 @@ export default function Dashboard({ units }: { units: "metric" | "imperial" }) {
       }}
     >
       <div className="Dashboard w-full h-full text-[#FFFFFF] pt-[24px] pb-[24px]">
-        <div className="column-2-layout flex gap-x-[24px]">
+        <div className="column-2-layout flex gap-x-[24px] flex-wrap">
           <div className="w-[calc(50%-12px)] flex flex-col gap-y-[24px]">
             <LocationMainBlock units={units} />
             <LocationDetailsBlock units={units} />

@@ -4,5 +4,5 @@ export default function BlockRow2({
   children,
   addStyle,
 }: StyledCompWithChildren) {
-  return <div className={`flex justify-between ${addStyle}`}>{children}</div>;
+  return <div className={`flex ${addStyle}`}>{children}</div>;
 }

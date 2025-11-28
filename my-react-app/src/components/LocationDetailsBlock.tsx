@@ -10,7 +10,7 @@ export default function LocationDetailsBlock({
 }: {
   units: "metric" | "imperial";
 }) {
-  const { lastSuccessfulWeather, isLoading, error } = useWeather();
+  const { lastSuccessfulWeather, isLoading } = useWeather();
   let weather = lastSuccessfulWeather;
   const humidity = weather?.main.humidity;
   const pressure = weather?.main.pressure;
@@ -28,7 +28,7 @@ export default function LocationDetailsBlock({
       <BlockRow1>
         <h2>Detailed Weather</h2>
       </BlockRow1>
-      <BlockRow2 addStyle="flex-wrap gap-y-[18px] gap-x-[18px]">
+      <BlockRow2 addStyle="flex-wrap gap-y-[18px] gap-x-[18px] justify-evenly">
         <DetailsBlock name="Humidity" value={humidity + "%"} />
         <DetailsBlock name="Pressure" value={pressure + " hPa"} />
         <DetailsBlock

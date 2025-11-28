@@ -73,7 +73,7 @@ export default function LocationMainBlock({
       <BlockRow1>
         <Location city={cityRequested} country={country!} />
       </BlockRow1>
-      <BlockRow2 addStyle="gap-x-[14%]">
+      <BlockRow2 addStyle="gap-x-[14%] justify-between">
         <div className="flex flex-col justify-between">
           <Date />
           <div className="details-main">

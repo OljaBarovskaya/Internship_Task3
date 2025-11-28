@@ -38,7 +38,7 @@ export default function LocationBlock({
   }
 
   return (
-    <div className="w-full min-h-[127px] p-[24px] rounded-[24px] bg-[#00008B] flex justify-between">
+    <div className="w-full min-h-[127px] p-[24px] rounded-[24px] bg-[#1f46ac] flex justify-between">
       <div className="flex flex-col gap-y-[8px]">
         <p>{country}</p>
         <h2>{city}</h2>

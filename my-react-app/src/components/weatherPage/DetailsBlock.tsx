@@ -42,7 +42,7 @@ export default function DetailsBlock({
   chooseIcon();
 
   return (
-    <div className="w-[157px] h-[134px] p-[16px] rounded-[16px] bg-[#00008B] flex flex-col gap-y-[24px]">
+    <div className="w-[157px] h-[134px] p-[16px] rounded-[16px] bg-[#1f46ac] flex flex-col gap-y-[24px]">
       <BlockRow1>
         <img className="w-[24px]" src={iconImg} alt={name}></img>
         <h3 className="inline-block">{name}</h3>

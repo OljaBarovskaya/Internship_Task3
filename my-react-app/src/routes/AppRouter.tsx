@@ -12,7 +12,7 @@ const navLinkStyle = ({ isActive }: MyComponentProps) => ({
 
 export default function AppRouter() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Internship_Task3">
       <header className="flex justify-end w-full py-[20px]">
         <nav className="text-[1.5rem]">
           <NavLink to="/" style={navLinkStyle as React.CSSProperties}>

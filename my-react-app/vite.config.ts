@@ -3,8 +3,6 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import svgr from "vite-plugin-svgr";
 
-const repoName = "/my-react-app/";
-
 export default defineConfig({
   plugins: [
     react({
@@ -16,7 +14,7 @@ export default defineConfig({
     tailwindcss(),
     svgr(),
   ],
-  base: repoName,
+  base: "./",
   test: {
     globals: true,
     setupFiles: ["setupTests.ts"],

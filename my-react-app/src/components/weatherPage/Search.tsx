@@ -13,14 +13,14 @@ export default function Search({
   return (
     <div className="searchForm flex justify-end gap-x-[24px] items-center">
       <form
-        className="w-1/2 self-end flex flex-col"
+        className="w-1/2 self-end flex flex-col min-w-[250px]"
         onSubmit={handleSubmit((data) => {
           onCityChange(data.city);
         })}
       >
         <input
           type="text"
-          className="search-input h-[56px] w-full rounded-[36px] px-[24px]"
+          className="search-input h-[56px] w-full rounded-[36px] px-[5%]"
           {...register("city", { required: "You need to enter a city" })}
           placeholder='Please, input a city here and press "Enter"'
         ></input>

@@ -52,8 +52,14 @@ input::placeholder {
   opacity: 1;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   body {
     font-size: 8px;
+  }
+}
+
+@media (max-width: 780px) {
+  body {
+    font-size: 6px;
   }
 }

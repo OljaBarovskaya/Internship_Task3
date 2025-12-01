@@ -14,7 +14,7 @@ export default function AppRouter() {
   return (
     <BrowserRouter basename="/Internship_Task3">
       <header className="flex justify-end w-full py-[20px]">
-        <nav className="text-[1.5rem]">
+        <nav className="text-[2.4em]">
           <NavLink to="/" style={navLinkStyle as React.CSSProperties}>
             Weather
           </NavLink>

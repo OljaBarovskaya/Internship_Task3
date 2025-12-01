@@ -1,69 +1,117 @@
-import { vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { describe, test, expect, vi, beforeEach } from "vitest";
+import type { Mock } from "vitest";
+import { cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom/vitest";
 import WeatherDashboard from "./WeatherDashboard";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { getStorage } from "../../utils/helpers";
+import { LOCATION_DEFAULT } from "../../contents/Locations";
+
+vi.mock("../../utils/helpers", () => ({
+  getStorage: vi.fn(),
+}));
 
 vi.mock("./Search", () => ({
-  default: vi.fn(({ currentCity, onCityChange }) => (
+  default: vi.fn(({ onCityChange, units, onUnitsChange, isCorrect }) => (
     <div data-testid="mock-search">
-      <span data-testid="search-city-prop">{currentCity}</span>
-      <button
-        data-testid="change-city-btn"
-        onClick={() => onCityChange("London")}
-      >
-        Change City
-      </button>
+      <span>Units: {units}</span>
+      <button onClick={() => onCityChange("New City")}>Change City</button>
+      <button onClick={() => onUnitsChange("imperial")}>Change Units</button>
+      <span>Status: {isCorrect ? "Correct" : "Incorrect"}</span>
     </div>
   )),
 }));
 
 vi.mock("./Dashboard", () => ({
-  default: vi.fn(() => (
-    <div data-testid="mock-dashboard">Dashboard Content</div>
+  default: vi.fn(({ units }) => (
+    <div data-testid="mock-dashboard">Dashboard Units: {units}</div>
   )),
 }));
 
-const LOCATION_DEFAULT = "Minsk";
+vi.mock("../../contents/Contents", () => ({
+  WeatherProvider: vi.fn(({ children, city, units, setIsCorrect }) => (
+    <div data-testid="mock-weather-provider">
+      <span>Provider City: {city}</span>
+      <span>Provider Units: {units}</span>
+      {children}
+    </div>
+  )),
+}));
 
 describe("WeatherDashboard", () => {
-  let queryClient: QueryClient;
-
   beforeEach(() => {
-    queryClient = new QueryClient();
+    vi.clearAllMocks();
+    cleanup();
   });
 
-  const renderWithQueryClient = (component: React.ReactElement) => {
-    return render(
-      <QueryClientProvider client={queryClient}>
-        {component}
-      </QueryClientProvider>
-    );
-  };
+  const mockGetStorage = getStorage as Mock;
+
+  test("renders with default location and metric units when local storage is empty", () => {
+    mockGetStorage.mockReturnValue(null);
+
+    render(<WeatherDashboard />);
+
+    expect(
+      screen.getByText(`Provider City: ${LOCATION_DEFAULT}`)
+    ).toBeInTheDocument();
+    expect(screen.getByText("Provider Units: metric")).toBeInTheDocument();
+    expect(screen.getByText("Units: metric")).toBeInTheDocument();
+    expect(screen.getByText("Dashboard Units: metric")).toBeInTheDocument();
+  });
 
   test("renders Search and Dashboard components with default state", () => {
-    renderWithQueryClient(<WeatherDashboard />);
+    const savedCity = "London";
+    const savedUnits = "imperial";
 
-    expect(screen.getByTestId("mock-search")).toBeInTheDocument();
-    expect(screen.getByTestId("mock-dashboard")).toBeInTheDocument();
+    mockGetStorage.mockImplementation((key: string) => {
+      if (key === "locationMain") return savedCity;
+      if (key === "units") return savedUnits;
+      return null;
+    });
 
-    expect(screen.getByTestId("search-city-prop")).toHaveTextContent(
-      LOCATION_DEFAULT
-    );
+    render(<WeatherDashboard />);
+
+    expect(screen.getByText(`Provider City: ${savedCity}`)).toBeInTheDocument();
+    expect(
+      screen.getByText(`Provider Units: ${savedUnits}`)
+    ).toBeInTheDocument();
+    expect(screen.getByText(`Units: ${savedUnits}`)).toBeInTheDocument();
+    expect(
+      screen.getByText(`Dashboard Units: ${savedUnits}`)
+    ).toBeInTheDocument();
   });
 
-  test("updates the city state when the Search component triggers onCityChange", async () => {
-    renderWithQueryClient(<WeatherDashboard />);
+  test("updates city state when onCityChange is called by Search component", async () => {
+    mockGetStorage.mockReturnValue(null);
+    render(<WeatherDashboard />);
     const user = userEvent.setup();
 
-    const changeCityButton = screen.getByTestId("change-city-btn");
+    expect(
+      screen.getByText(`Provider City: ${LOCATION_DEFAULT}`)
+    ).toBeInTheDocument();
 
-    const cityPropDisplay = screen.getByTestId("search-city-prop");
-    expect(cityPropDisplay).toHaveTextContent(LOCATION_DEFAULT);
-
+    const changeCityButton = screen.getByRole("button", {
+      name: /Change City/i,
+    });
     await user.click(changeCityButton);
 
-    expect(cityPropDisplay).toHaveTextContent("London");
+    expect(screen.getByText("Provider City: New City")).toBeInTheDocument();
+  });
+
+  test("updates units state when onUnitsChange is called by Search component", async () => {
+    mockGetStorage.mockReturnValue(null);
+    render(<WeatherDashboard />);
+    const user = userEvent.setup();
+
+    expect(screen.getByText("Units: metric")).toBeInTheDocument();
+    expect(screen.getByText("Dashboard Units: metric")).toBeInTheDocument();
+
+    const changeUnitsButton = screen.getByRole("button", {
+      name: /Change Units/i,
+    });
+    await user.click(changeUnitsButton);
+
+    expect(screen.getByText("Units: imperial")).toBeInTheDocument();
+    expect(screen.getByText("Dashboard Units: imperial")).toBeInTheDocument();
   });
 });

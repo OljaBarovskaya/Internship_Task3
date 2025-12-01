@@ -18,7 +18,7 @@ export default function LocationMainBlock({ units }: { units: DegreeUnits }) {
     return <h2>Loading...</h2>;
   }
 
-  let weather = lastSuccessfulWeather;
+  const weather = lastSuccessfulWeather;
 
   const cityRequested = weather?.name!;
   const country = weather?.sys.country;

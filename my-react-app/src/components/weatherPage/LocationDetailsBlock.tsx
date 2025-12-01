@@ -12,7 +12,7 @@ export default function LocationDetailsBlock({
   units: DegreeUnits;
 }) {
   const { lastSuccessfulWeather, isLoading } = useWeather();
-  let weather = lastSuccessfulWeather;
+  const weather = lastSuccessfulWeather;
   const humidity = weather?.main.humidity;
   const pressure = weather?.main.pressure;
   const wind = weather?.wind.speed;

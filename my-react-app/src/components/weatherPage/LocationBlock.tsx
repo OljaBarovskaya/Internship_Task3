@@ -20,7 +20,7 @@ export default function LocationBlock({
     return <h2>Loading...</h2>;
   }
 
-  let weather = lastSuccessfulWeather;
+  const weather = lastSuccessfulWeather;
 
   const country = weather?.sys.country;
   const iconCode = weather?.weather[0].icon;

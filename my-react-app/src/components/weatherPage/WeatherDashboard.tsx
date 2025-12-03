@@ -2,7 +2,7 @@ import Search from "./Search";
 import Dashboard from "./Dashboard";
 import { useState } from "react";
 import { LOCATION_DEFAULT } from "../../contents/Locations";
-import { WeatherProvider } from "../../contents/Contents";
+import { WeatherProvider } from "../../services/WeatherProvider";
 import type { DegreeUnits } from "../../interfaces/interfaces";
 import { getStorage } from "../../utils/helpers";
 

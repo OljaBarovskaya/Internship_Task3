@@ -1,20 +1,11 @@
-import { useEffect, createContext, useContext, useRef } from "react";
-import type { WeatherProviderType } from "../interfaces/interfaces";
-import { useWeatherQuery } from "../services/APIService";
+import { useRef, useEffect } from "react";
+import { WeatherContext } from "../contents/Context";
 import type {
-  WeatherContextType,
+  WeatherProviderType,
   WeatherDataType,
+  WeatherContextType,
 } from "../interfaces/interfaces";
-
-export const WeatherContext = createContext<WeatherContextType | null>(null);
-
-export function useWeather() {
-  const context = useContext(WeatherContext);
-  if (context === null) {
-    throw new Error("useWeather must be used within a WeatherProvider");
-  }
-  return context;
-}
+import { useWeatherQuery } from "./APIService";
 
 export function WeatherProvider({
   children,

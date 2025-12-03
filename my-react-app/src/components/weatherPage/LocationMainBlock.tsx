@@ -5,14 +5,13 @@ import Location from "./Location";
 import Date from "./Date";
 import Temperature from "./Temperature";
 import Star from "../../assets/img/star.svg?react";
-import { useWeather } from "../../contents/Contents";
-import { favLocationsContext } from "./Dashboard";
-import { useContext } from "react";
+import { useFavLocationContext, useWeather } from "../../contents/Context";
 import { setStorage } from "../../utils/helpers";
 import type { DegreeUnits } from "../../interfaces/interfaces";
 
 export default function LocationMainBlock({ units }: { units: DegreeUnits }) {
   const { lastSuccessfulWeather, isLoading } = useWeather();
+  const { favLocations, setFavLocations } = useFavLocationContext();
 
   if (!lastSuccessfulWeather && isLoading) {
     return <h2>Loading...</h2>;
@@ -40,12 +39,9 @@ export default function LocationMainBlock({ units }: { units: DegreeUnits }) {
     feelsLike = Math.round(feelsLike);
   }
 
-  const favContext = useContext(favLocationsContext);
-  if (!favContext) {
+  if (!favLocations) {
     return <div>Loading context...</div>;
   }
-
-  const { favLocations, setFavLocations } = favContext;
 
   const isFavorite = favLocations.includes(cityRequested!);
 

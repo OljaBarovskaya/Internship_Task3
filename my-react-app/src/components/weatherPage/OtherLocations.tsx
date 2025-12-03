@@ -2,14 +2,12 @@ import DashboardBlock from "./DashboardBlock";
 import BlockRow1 from "../../containers/BlockRow1";
 import BlockRow2 from "../../containers/BlockRow2";
 import LocationBlock from "./LocationBlock";
-import { WeatherProvider } from "../../contents/Contents";
-import { useContext } from "react";
-import { favLocationsContext } from "./Dashboard";
+import { WeatherProvider } from "../../services/WeatherProvider";
 import type { DegreeUnits } from "../../interfaces/interfaces";
+import { useFavLocationContext } from "../../contents/Context";
 
 export default function OtherLocations({ units }: { units: DegreeUnits }) {
-  const favContext = useContext(favLocationsContext);
-  const favLocations = favContext?.favLocations || [];
+  const favLocations = useFavLocationContext().favLocations;
 
   return (
     <DashboardBlock addStyle="h-full">

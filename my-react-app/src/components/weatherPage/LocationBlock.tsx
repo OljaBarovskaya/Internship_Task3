@@ -1,8 +1,6 @@
 import Temperature from "./Temperature";
-import { useWeather } from "../../contents/Contents";
-import { useContext } from "react";
+import { useFavLocationContext, useWeather } from "../../contents/Context";
 import Star from "../../assets/img/star.svg?react";
-import { favLocationsContext } from "./Dashboard";
 import { setStorage } from "../../utils/helpers";
 import type { DegreeUnits } from "../../interfaces/interfaces";
 
@@ -13,6 +11,7 @@ export default function LocationBlock({
   city: string;
   units: DegreeUnits;
 }) {
+  const { favLocations, setFavLocations } = useFavLocationContext();
   const weatherData = useWeather();
   const { lastSuccessfulWeather, isLoading } = weatherData;
 
@@ -27,7 +26,6 @@ export default function LocationBlock({
   const mainDescription = weather?.weather[0].main;
   let tMin = weather?.main.temp_min;
   let tMax = weather?.main.temp_max;
-  const favLocations = useContext(favLocationsContext);
 
   if (tMax) {
     tMax = Math.round(tMax);
@@ -62,10 +60,10 @@ export default function LocationBlock({
           height={30}
           fill="yellow"
           onClick={() => {
-            const updatedFavLocations = favLocations?.favLocations.filter(
+            const updatedFavLocations = favLocations.filter(
               (item) => item !== city
             );
-            favLocations?.setFavLocations(updatedFavLocations!);
+            setFavLocations(updatedFavLocations!);
             setStorage("favouriteLocations", updatedFavLocations!);
           }}
         />

@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, useContext } from "react";
+import { useEffect, createContext, useContext, useRef } from "react";
 import type { WeatherProviderType } from "../interfaces/interfaces";
 import { useWeatherQuery } from "../services/APIService";
 import type {
@@ -22,23 +22,25 @@ export function WeatherProvider({
   units,
   setIsCorrect,
 }: WeatherProviderType) {
-  const [lastSuccessfulWeather, setLastSuccessfulWeather] = useState<
-    WeatherDataType | undefined
-  >(undefined);
   const {
     data: currentWeatherData,
     isLoading,
     error,
   } = useWeatherQuery(city, units);
 
+  const lastSuccessfulDataRef = useRef<WeatherDataType | undefined>(undefined);
+
   useEffect(() => {
     if (currentWeatherData) {
-      setLastSuccessfulWeather(currentWeatherData);
+      lastSuccessfulDataRef.current = currentWeatherData;
     }
   }, [currentWeatherData]);
 
+  const dataToShowInContext =
+    currentWeatherData || lastSuccessfulDataRef.current;
+
   const contextValue: WeatherContextType = {
-    lastSuccessfulWeather,
+    lastSuccessfulWeather: dataToShowInContext,
     isLoading,
     error,
   };

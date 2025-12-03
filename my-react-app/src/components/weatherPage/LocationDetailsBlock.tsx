@@ -17,9 +17,20 @@ export default function LocationDetailsBlock({
   const pressure = weather?.main.pressure;
   const wind = weather?.wind.speed;
   const timezone = weather?.timezone;
-  const sunrise = convertTime(weather?.sys.sunrise! * 1000 + timezone!);
-  const sunset = convertTime(weather?.sys.sunset! * 1000 + timezone!);
+  const sunrise = weather?.sys.sunrise;
+  const sunset = weather?.sys.sunset;
   const visibility = weather?.visibility;
+
+  let sunRiseTime;
+  let sunSetTime;
+
+  if (sunrise && timezone) {
+    sunRiseTime = convertTime(sunrise * 1000 + timezone);
+  } else return "unknown";
+
+  if (sunset && timezone) {
+    sunSetTime = convertTime(sunset * 1000 + timezone);
+  } else return "unknown";
 
   if (!lastSuccessfulWeather && isLoading) {
     return <h2>Loading...</h2>;
@@ -37,8 +48,8 @@ export default function LocationDetailsBlock({
           value={units === "metric" ? wind + " m/s" : wind + " m/h"}
         />
         <DetailsBlock name="Visibility" value={visibility + " m"} />
-        <DetailsBlock name="Sunrise" value={sunrise} />
-        <DetailsBlock name="Sunset" value={sunset} />
+        <DetailsBlock name="Sunrise" value={sunRiseTime} />
+        <DetailsBlock name="Sunset" value={sunSetTime} />
       </BlockRow2>
     </DashboardBlock>
   );

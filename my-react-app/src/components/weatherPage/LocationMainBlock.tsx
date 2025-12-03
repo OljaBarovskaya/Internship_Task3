@@ -8,6 +8,7 @@ import Star from "../../assets/img/star.svg?react";
 import { useFavLocationContext, useWeather } from "../../contents/Context";
 import { setStorage } from "../../utils/helpers";
 import type { DegreeUnits } from "../../interfaces/interfaces";
+import { useState } from "react";
 
 export default function LocationMainBlock({ units }: { units: DegreeUnits }) {
   const { lastSuccessfulWeather, isLoading } = useWeather();
@@ -17,16 +18,14 @@ export default function LocationMainBlock({ units }: { units: DegreeUnits }) {
     return <h2>Loading...</h2>;
   }
 
-  const weather = lastSuccessfulWeather;
-
-  const cityRequested = weather?.name!;
-  const country = weather?.sys.country;
-  const iconCode = weather?.weather[0].icon;
-  const mainDescription = weather?.weather[0].main;
-  let tMin = weather?.main.temp_min;
-  let tMax = weather?.main.temp_max;
-  const description = weather?.weather[0].description;
-  let feelsLike = weather?.main.feels_like;
+  const cityRequested = lastSuccessfulWeather!.name;
+  const country = lastSuccessfulWeather!.sys.country;
+  const iconCode = lastSuccessfulWeather!.weather[0].icon;
+  const mainDescription = lastSuccessfulWeather!.weather[0].main;
+  let tMin = lastSuccessfulWeather!.main.temp_min;
+  let tMax = lastSuccessfulWeather!.main.temp_max;
+  const description = lastSuccessfulWeather!.weather[0].description;
+  let feelsLike = lastSuccessfulWeather!.main.feels_like;
 
   if (tMax) {
     tMax = Math.round(tMax);
@@ -43,7 +42,9 @@ export default function LocationMainBlock({ units }: { units: DegreeUnits }) {
     return <div>Loading context...</div>;
   }
 
-  const isFavorite = favLocations.includes(cityRequested!);
+  const [isFavorite, setIsFavorite] = useState(
+    favLocations.includes(cityRequested)
+  );
 
   const toggleFavorite = () => {
     let updatedFavLocations;
@@ -51,10 +52,10 @@ export default function LocationMainBlock({ units }: { units: DegreeUnits }) {
       updatedFavLocations = favLocations.filter(
         (location) => location !== cityRequested
       );
-      !isFavorite;
+      setIsFavorite(false);
     } else {
       updatedFavLocations = [...favLocations, cityRequested];
-      !isFavorite;
+      setIsFavorite(true);
     }
     setFavLocations(updatedFavLocations);
     setStorage("favouriteLocations", updatedFavLocations);

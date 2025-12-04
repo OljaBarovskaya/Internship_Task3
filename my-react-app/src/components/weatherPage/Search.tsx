@@ -13,7 +13,7 @@ export default function Search({
   return (
     <div className="searchForm flex justify-end gap-x-[24px] items-center">
       <form
-        className="w-1/2 self-end flex flex-col min-w-[250px]"
+        className="w-1/2 self-end flex flex-col min-w-[250px] gap-y-[8px]"
         onSubmit={handleSubmit((data) => {
           onCityChange(data.city);
         })}
@@ -25,7 +25,7 @@ export default function Search({
           placeholder='Please, input a city here and press "Enter"'
         ></input>
         {!isCorrect ? (
-          <span className="text-red">
+          <span className="text-[#FF0000]">
             Please check whether the city name is correct
           </span>
         ) : (

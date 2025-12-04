@@ -26,14 +26,18 @@ export default function LocationDetailsBlock({
 
   if (sunrise && timezone) {
     sunRiseTime = convertTime(sunrise * 1000 + timezone);
-  } else return "unknown";
+  } else sunRiseTime = "unknown";
 
   if (sunset && timezone) {
     sunSetTime = convertTime(sunset * 1000 + timezone);
-  } else return "unknown";
+  } else sunSetTime = "unknown";
 
   if (!lastSuccessfulWeather && isLoading) {
-    return <h2>Loading...</h2>;
+    return (
+      <DashboardBlock>
+        <h2>Loading...</h2>
+      </DashboardBlock>
+    );
   }
   return (
     <DashboardBlock>

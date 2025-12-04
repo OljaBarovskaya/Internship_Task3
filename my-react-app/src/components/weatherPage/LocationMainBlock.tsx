@@ -15,7 +15,11 @@ export default function LocationMainBlock({ units }: { units: DegreeUnits }) {
   const { favLocations, setFavLocations } = useFavLocationContext();
 
   if (!lastSuccessfulWeather && isLoading) {
-    return <h2>Loading...</h2>;
+    return (
+      <DashboardBlock>
+        <h2>Loading...</h2>
+      </DashboardBlock>
+    );
   }
 
   const cityRequested = lastSuccessfulWeather!.name;

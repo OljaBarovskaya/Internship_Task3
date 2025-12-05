@@ -8,7 +8,7 @@ import Star from "../../assets/img/star.svg?react";
 import { useFavLocationContext, useWeather } from "../../contents/Context";
 import { setStorage } from "../../utils/helpers";
 import type { DegreeUnits } from "../../interfaces/interfaces";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function LocationMainBlock({ units }: { units: DegreeUnits }) {
   const { lastSuccessfulWeather, isLoading } = useWeather();
@@ -22,7 +22,7 @@ export default function LocationMainBlock({ units }: { units: DegreeUnits }) {
     );
   }
 
-  const cityRequested = lastSuccessfulWeather!.name;
+  const cityRequested = lastSuccessfulWeather?.name!;
   const country = lastSuccessfulWeather!.sys.country;
   const iconCode = lastSuccessfulWeather!.weather[0].icon;
   const mainDescription = lastSuccessfulWeather!.weather[0].main;
@@ -45,10 +45,13 @@ export default function LocationMainBlock({ units }: { units: DegreeUnits }) {
   if (!favLocations) {
     return <div>Loading context...</div>;
   }
+  const [isFavorite, setIsFavorite] = useState(false);
 
-  const [isFavorite, setIsFavorite] = useState(
-    favLocations.includes(cityRequested)
-  );
+  useEffect(() => {
+    if (cityRequested && favLocations) {
+      setIsFavorite(favLocations.includes(cityRequested));
+    }
+  }, [cityRequested, favLocations]);
 
   const toggleFavorite = () => {
     let updatedFavLocations;

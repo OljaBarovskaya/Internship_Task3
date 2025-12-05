@@ -5,7 +5,7 @@ import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom/vitest";
 import WeatherDashboard from "./WeatherDashboard";
 import { getStorage } from "../../utils/helpers";
-import { LOCATION_DEFAULT } from "../../contents/Locations";
+import { LOCATION_DEFAULT } from "../../constants/constants";
 
 vi.mock("../../utils/helpers", () => ({
   getStorage: vi.fn(),

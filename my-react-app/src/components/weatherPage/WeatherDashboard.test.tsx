@@ -28,7 +28,7 @@ vi.mock("./Dashboard", () => ({
   )),
 }));
 
-vi.mock("../../contents/Contents", () => ({
+vi.mock("../../services/WeatherProvider", () => ({
   WeatherProvider: vi.fn(({ children, city, units }) => (
     <div data-testid="mock-weather-provider">
       <span>Provider City: {city}</span>

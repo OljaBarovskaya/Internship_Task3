@@ -12,6 +12,15 @@ export default function LocationDetailsBlock({
   units: DegreeUnits;
 }) {
   const { lastSuccessfulWeather, isLoading } = useWeather();
+
+  if (!lastSuccessfulWeather && isLoading) {
+    return (
+      <DashboardBlock>
+        <h2>Loading...</h2>
+      </DashboardBlock>
+    );
+  }
+
   const weather = lastSuccessfulWeather;
   const humidity = weather?.main.humidity;
   const pressure = weather?.main.pressure;
@@ -32,13 +41,6 @@ export default function LocationDetailsBlock({
     sunSetTime = convertTime(sunset * 1000 + timezone);
   } else sunSetTime = "unknown";
 
-  if (!lastSuccessfulWeather && isLoading) {
-    return (
-      <DashboardBlock>
-        <h2>Loading...</h2>
-      </DashboardBlock>
-    );
-  }
   return (
     <DashboardBlock>
       <BlockRow1>

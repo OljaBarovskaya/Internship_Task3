@@ -1,7 +1,7 @@
 import Search from "./Search";
 import Dashboard from "./Dashboard";
 import { useState } from "react";
-import { LOCATION_DEFAULT } from "../../constants/constants";
+import { LOCATION_DEFAULT, UNITS_DEFAULT } from "../../constants/constants";
 import { WeatherProvider } from "../../services/WeatherProvider";
 import type { DegreeUnits } from "../../interfaces/interfaces";
 import { getStorage } from "../../utils/helpers";
@@ -15,7 +15,7 @@ function getStartCity() {
 function getStartUnits() {
   if (getStorage("units")) {
     return getStorage("units");
-  } else return "metric";
+  } else return UNITS_DEFAULT;
 }
 
 export default function WeatherDashboard() {

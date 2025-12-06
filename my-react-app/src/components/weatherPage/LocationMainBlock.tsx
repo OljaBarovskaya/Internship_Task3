@@ -13,6 +13,14 @@ import { useState, useEffect } from "react";
 export default function LocationMainBlock({ units }: { units: DegreeUnits }) {
   const { lastSuccessfulWeather, isLoading } = useWeather();
   const { favLocations, setFavLocations } = useFavLocationContext();
+  const [isFavorite, setIsFavorite] = useState(false);
+  const cityRequested = lastSuccessfulWeather?.name || " ";
+
+  useEffect(() => {
+    if (cityRequested && favLocations) {
+      setIsFavorite(favLocations.includes(cityRequested));
+    }
+  }, [cityRequested, favLocations]);
 
   if (!lastSuccessfulWeather && isLoading) {
     return (
@@ -22,7 +30,6 @@ export default function LocationMainBlock({ units }: { units: DegreeUnits }) {
     );
   }
 
-  const cityRequested = lastSuccessfulWeather?.name!;
   const country = lastSuccessfulWeather!.sys.country;
   const iconCode = lastSuccessfulWeather!.weather[0].icon;
   const mainDescription = lastSuccessfulWeather!.weather[0].main;
@@ -45,13 +52,6 @@ export default function LocationMainBlock({ units }: { units: DegreeUnits }) {
   if (!favLocations) {
     return <div>Loading context...</div>;
   }
-  const [isFavorite, setIsFavorite] = useState(false);
-
-  useEffect(() => {
-    if (cityRequested && favLocations) {
-      setIsFavorite(favLocations.includes(cityRequested));
-    }
-  }, [cityRequested, favLocations]);
 
   const toggleFavorite = () => {
     let updatedFavLocations;

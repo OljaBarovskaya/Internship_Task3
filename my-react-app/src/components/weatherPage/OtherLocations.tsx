@@ -2,7 +2,7 @@ import DashboardBlock from "./DashboardBlock";
 import BlockRow1 from "../../containers/BlockRow1";
 import BlockRow2 from "../../containers/BlockRow2";
 import LocationBlock from "./LocationBlock";
-import { WeatherProvider } from "../../services/WeatherProvider";
+import { WeatherProvider } from "../../app/providers/WeatherProvider";
 import type { DegreeUnits } from "../../interfaces/interfaces";
 import { useFavLocationContext } from "../../context/FavLocationContext";
 

@@ -1,11 +1,11 @@
 import { useRef, useEffect } from "react";
-import { WeatherContext } from "../context/FavLocationContext";
+import { WeatherContext } from "../../context/WeatherContext";
 import type {
   WeatherProviderType,
   WeatherDataType,
   WeatherContextType,
-} from "../interfaces/interfaces";
-import { useWeatherQuery } from "./APIService";
+} from "../../interfaces/interfaces";
+import { useWeatherQuery } from "../../services/APIService";
 
 export function WeatherProvider({
   children,

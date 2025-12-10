@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { WeatherContext } from "../contents/Context";
+import { WeatherContext } from "../context/FavLocationContext";
 import type {
   WeatherProviderType,
   WeatherDataType,

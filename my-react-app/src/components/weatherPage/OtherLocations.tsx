@@ -4,7 +4,7 @@ import BlockRow2 from "../../containers/BlockRow2";
 import LocationBlock from "./LocationBlock";
 import { WeatherProvider } from "../../services/WeatherProvider";
 import type { DegreeUnits } from "../../interfaces/interfaces";
-import { useFavLocationContext } from "../../contents/Context";
+import { useFavLocationContext } from "../../context/FavLocationContext";
 
 export default function OtherLocations({ units }: { units: DegreeUnits }) {
   const favLocations = useFavLocationContext().favLocations;

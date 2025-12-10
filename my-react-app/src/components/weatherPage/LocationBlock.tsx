@@ -1,5 +1,8 @@
 import Temperature from "./Temperature";
-import { useFavLocationContext, useWeather } from "../../contents/Context";
+import {
+  useFavLocationContext,
+  useWeather,
+} from "../../context/FavLocationContext";
 import Star from "../../assets/img/star.svg?react";
 import { setStorage } from "../../utils/helpers";
 import type { DegreeUnits } from "../../interfaces/interfaces";

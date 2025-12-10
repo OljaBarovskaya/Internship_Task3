@@ -2,7 +2,7 @@ import DashboardBlock from "./DashboardBlock";
 import BlockRow1 from "../../containers/BlockRow1";
 import BlockRow2 from "../../containers/BlockRow2";
 import DetailsBlock from "./DetailsBlock";
-import { useWeather } from "../../contents/Context";
+import { useWeather } from "../../context/FavLocationContext";
 import convertTime from "../../utils/helpers";
 import type { DegreeUnits } from "../../interfaces/interfaces";
 

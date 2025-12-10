@@ -4,7 +4,7 @@ import OtherLocations from "./OtherLocations";
 import type { DegreeUnits } from "../../interfaces/interfaces";
 import { useState } from "react";
 import { getStorage } from "../../utils/helpers";
-import { favLocationsContext } from "../../contents/Context";
+import { favLocationsContext } from "../../context/FavLocationContext";
 
 // export const favLocationsContext = createContext<
 //   FavLocationsContextType | undefined

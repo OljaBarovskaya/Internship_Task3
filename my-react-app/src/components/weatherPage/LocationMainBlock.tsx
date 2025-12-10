@@ -5,13 +5,11 @@ import Location from "./Location";
 import Date from "./Date";
 import Temperature from "./Temperature";
 import Star from "../../assets/img/star.svg?react";
-import {
-  useFavLocationContext,
-  useWeather,
-} from "../../context/FavLocationContext";
+import { useFavLocationContext } from "../../context/FavLocationContext";
 import { setStorage } from "../../utils/helpers";
 import type { DegreeUnits } from "../../interfaces/interfaces";
 import { useState, useEffect } from "react";
+import { useWeather } from "../../context/WeatherContext";
 
 export default function LocationMainBlock({ units }: { units: DegreeUnits }) {
   const { lastSuccessfulWeather, isLoading } = useWeather();

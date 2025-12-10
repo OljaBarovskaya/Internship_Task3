@@ -1,6 +1,6 @@
 import DashboardBlock from "./DashboardBlock";
-import BlockRow1 from "../../containers/BlockRow1";
-import BlockRow2 from "../../containers/BlockRow2";
+import BlockTopRow from "../../containers/BlockTopRow";
+import BlockBottomRow from "../../containers/BlockBottomRow";
 import LocationBlock from "./LocationBlock";
 import { WeatherProvider } from "../../app/providers/WeatherProvider";
 import type { DegreeUnits } from "../../interfaces/interfaces";
@@ -11,10 +11,10 @@ export default function OtherLocations({ units }: { units: DegreeUnits }) {
 
   return (
     <DashboardBlock addStyle="h-full">
-      <BlockRow1>
+      <BlockTopRow>
         <h3>Others Countries</h3>
-      </BlockRow1>
-      <BlockRow2 addStyle="flex-col gap-y-[18px]">
+      </BlockTopRow>
+      <BlockBottomRow addStyle="flex-col gap-y-[18px]">
         {favLocations &&
           favLocations.map((location: string, index) => {
             return (
@@ -23,7 +23,7 @@ export default function OtherLocations({ units }: { units: DegreeUnits }) {
               </WeatherProvider>
             );
           })}
-      </BlockRow2>
+      </BlockBottomRow>
     </DashboardBlock>
   );
 }

@@ -1,6 +1,6 @@
 import DashboardBlock from "./DashboardBlock";
-import BlockRow1 from "../../containers/BlockRow1";
-import BlockRow2 from "../../containers/BlockRow2";
+import BlockTopRow from "../../containers/BlockTopRow";
+import BlockBottomRow from "../../containers/BlockBottomRow";
 import DetailsBlock from "./DetailsBlock";
 import convertTime from "../../utils/helpers";
 import type { DegreeUnits } from "../../interfaces/interfaces";
@@ -43,10 +43,10 @@ export default function LocationDetailsBlock({
 
   return (
     <DashboardBlock>
-      <BlockRow1>
+      <BlockTopRow>
         <h2>Detailed Weather</h2>
-      </BlockRow1>
-      <BlockRow2 addStyle="flex-wrap gap-y-[18px] gap-x-[18px] justify-evenly">
+      </BlockTopRow>
+      <BlockBottomRow addStyle="flex-wrap gap-y-[18px] gap-x-[18px] justify-evenly">
         <DetailsBlock name="Humidity" value={humidity + "%"} />
         <DetailsBlock name="Pressure" value={pressure + " hPa"} />
         <DetailsBlock
@@ -56,7 +56,7 @@ export default function LocationDetailsBlock({
         <DetailsBlock name="Visibility" value={visibility + " m"} />
         <DetailsBlock name="Sunrise" value={sunRiseTime} />
         <DetailsBlock name="Sunset" value={sunSetTime} />
-      </BlockRow2>
+      </BlockBottomRow>
     </DashboardBlock>
   );
 }

@@ -1,5 +1,5 @@
-import BlockRow1 from "../../containers/BlockRow1";
-import BlockRow2 from "../../containers/BlockRow2";
+import BlockTopRow from "../../containers/BlockTopRow";
+import BlockBottomRow from "../../containers/BlockBottomRow";
 import Humidity from "../../assets/img/humidity.png";
 import Pressure from "../../assets/img/pressure.png";
 import Sunrise from "../../assets/img/sunrise.png";
@@ -43,11 +43,11 @@ export default function DetailsBlock({
 
   return (
     <div className="w-[157px] h-[134px] p-[16px] rounded-[16px] bg-[#1f46ac] flex flex-col gap-y-[24px]">
-      <BlockRow1>
+      <BlockTopRow>
         <img className="w-[24px]" src={iconImg} alt={name}></img>
         <h3 className="inline-block">{name}</h3>
-      </BlockRow1>
-      <BlockRow2 addStyle="text-[2em]">{value}</BlockRow2>
+      </BlockTopRow>
+      <BlockBottomRow addStyle="text-[2em]">{value}</BlockBottomRow>
     </div>
   );
 }

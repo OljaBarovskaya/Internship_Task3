@@ -1,6 +1,6 @@
 import DashboardBlock from "./DashboardBlock";
-import BlockRow1 from "../../containers/BlockRow1";
-import BlockRow2 from "../../containers/BlockRow2";
+import BlockTopRow from "../../containers/BlockTopRow";
+import BlockBottomRow from "../../containers/BlockBottomRow";
 import Location from "./Location";
 import Date from "./Date";
 import Temperature from "./Temperature";
@@ -73,10 +73,10 @@ export default function LocationMainBlock({ units }: { units: DegreeUnits }) {
 
   return (
     <DashboardBlock>
-      <BlockRow1>
+      <BlockTopRow>
         <Location city={cityRequested} country={country!} />
-      </BlockRow1>
-      <BlockRow2 addStyle="gap-x-[14%] justify-between">
+      </BlockTopRow>
+      <BlockBottomRow addStyle="gap-x-[14%] justify-between">
         <div className="flex flex-col justify-between">
           <Date />
           <div className="details-main">
@@ -111,7 +111,7 @@ export default function LocationMainBlock({ units }: { units: DegreeUnits }) {
             onClick={toggleFavorite}
           />
         </div>
-      </BlockRow2>
+      </BlockBottomRow>
     </DashboardBlock>
   );
 }

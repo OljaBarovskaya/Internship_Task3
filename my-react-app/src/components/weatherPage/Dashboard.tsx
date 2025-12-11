@@ -6,10 +6,6 @@ import { useState } from "react";
 import { getStorage } from "../../utils/helpers";
 import { FavLocationsContext } from "../../context/FavLocationContext";
 
-// export const favLocationsContext = createContext<
-//   FavLocationsContextType | undefined
-// >(undefined);
-
 export default function Dashboard({ units }: { units: DegreeUnits }) {
   const [favouriteLocations, setFavLocations] = useState<string[]>(
     getStorage("favouriteLocations")

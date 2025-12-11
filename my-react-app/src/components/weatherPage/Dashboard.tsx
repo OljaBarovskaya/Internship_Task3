@@ -4,7 +4,7 @@ import OtherLocations from "./OtherLocations";
 import type { DegreeUnits } from "../../interfaces/interfaces";
 import { useState } from "react";
 import { getStorage } from "../../utils/helpers";
-import { favLocationsContext } from "../../context/FavLocationContext";
+import { FavLocationsContext } from "../../context/FavLocationContext";
 
 // export const favLocationsContext = createContext<
 //   FavLocationsContextType | undefined
@@ -15,7 +15,7 @@ export default function Dashboard({ units }: { units: DegreeUnits }) {
     getStorage("favouriteLocations")
   );
   return (
-    <favLocationsContext.Provider
+    <FavLocationsContext.Provider
       value={{
         favLocations: favouriteLocations,
         setFavLocations: setFavLocations,
@@ -32,6 +32,6 @@ export default function Dashboard({ units }: { units: DegreeUnits }) {
           </div>
         </div>
       </div>
-    </favLocationsContext.Provider>
+    </FavLocationsContext.Provider>
   );
 }

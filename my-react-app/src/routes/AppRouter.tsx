@@ -1,8 +1,8 @@
 import { BrowserRouter } from "react-router-dom";
 import { Route, Routes, NavLink } from "react-router-dom";
-import WeatherDashboard from "../components/weatherPage/WeatherDashboard";
-import Common from "../components/commonPage/Common";
-import Contacts from "../components/contactsPage/Contacts";
+import Weather from "../pages/Weather";
+import Common from "../pages/Common";
+import Contacts from "../pages/Contacts";
 import type { MyComponentProps } from "../interfaces/interfaces";
 
 const navLinkStyle = ({ isActive }: MyComponentProps) => ({
@@ -28,7 +28,7 @@ export default function AppRouter() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<WeatherDashboard />} />
+          <Route path="/" element={<Weather />} />
           <Route path="/common" element={<Common />} />
           <Route path="/contacts" element={<Contacts />} />
         </Routes>

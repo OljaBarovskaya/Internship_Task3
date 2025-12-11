@@ -1,19 +1,18 @@
 import DashboardBlock from "./DashboardBlock";
-import BlockTopRow from "../../containers/BlockTopRow";
-import BlockBottomRow from "../../containers/BlockBottomRow";
+import BlockTopRow from "../../../containers/BlockTopRow";
+import BlockBottomRow from "../../../containers/BlockBottomRow";
 import Location from "./Location";
 import Date from "./Date";
 import Temperature from "./Temperature";
-import Star from "../../assets/img/star.svg?react";
-import { useFavLocationContext } from "../../context/FavLocationContext";
-import { setStorage } from "../../utils/helpers";
-import type { DegreeUnits } from "../../interfaces/interfaces";
+import Star from "../../../assets/img/star.svg?react";
+import * as context from "../../../context";
+import { setStorage } from "../../../utils/helpers";
+import type { DegreeUnits } from "../../../interfaces/interfaces";
 import { useState, useEffect } from "react";
-import { useWeather } from "../../context/WeatherContext";
 
 export default function LocationMainBlock({ units }: { units: DegreeUnits }) {
-  const { lastSuccessfulWeather, isLoading } = useWeather();
-  const { favLocations, setFavLocations } = useFavLocationContext();
+  const { lastSuccessfulWeather, isLoading } = context.useWeather();
+  const { favLocations, setFavLocations } = context.useFavLocationContext();
   const [isFavorite, setIsFavorite] = useState(false);
   const cityRequested = lastSuccessfulWeather?.name || " ";
 

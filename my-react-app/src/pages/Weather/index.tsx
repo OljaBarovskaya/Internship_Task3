@@ -1,5 +1,5 @@
-import Search from "./Search";
-import Dashboard from "./Dashboard";
+import Search from "./components/Search";
+import Dashboard from "./components/Dashboard";
 import { useState } from "react";
 import { LOCATION_DEFAULT, UNITS_DEFAULT } from "../../constants/constants";
 import { WeatherProvider } from "../../app/providers/WeatherProvider";

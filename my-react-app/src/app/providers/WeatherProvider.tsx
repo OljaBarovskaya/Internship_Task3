@@ -6,7 +6,7 @@ import type {
   WeatherContextType,
 } from "../../interfaces/interfaces";
 import { useWeatherQuery } from "../../services/APIService";
-import { WeatherContext } from "../../context/WeatherContext";
+import * as context from "../../context";
 
 export function WeatherProvider({
   children,
@@ -48,8 +48,8 @@ export function WeatherProvider({
   }, [currentWeatherData, error, setIsCorrect]);
 
   return (
-    <WeatherContext.Provider value={contextValue}>
+    <context.WeatherContext.Provider value={contextValue}>
       {children}
-    </WeatherContext.Provider>
+    </context.WeatherContext.Provider>
   );
 }

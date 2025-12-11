@@ -1,4 +1,12 @@
-import type { TemperatureProps } from "../../interfaces/interfaces";
+import type { DegreeUnits } from "../../../interfaces/interfaces";
+
+interface TemperatureProps {
+  highT: number;
+  lowT: number;
+  sizeHighT: number;
+  sizeLowT: number;
+  units: DegreeUnits;
+}
 
 export default function Temperature({
   highT,

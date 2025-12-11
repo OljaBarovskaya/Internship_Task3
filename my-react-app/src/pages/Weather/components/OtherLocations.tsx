@@ -1,13 +1,13 @@
 import DashboardBlock from "./DashboardBlock";
-import BlockTopRow from "../../containers/BlockTopRow";
-import BlockBottomRow from "../../containers/BlockBottomRow";
+import BlockTopRow from "../../../containers/BlockTopRow";
+import BlockBottomRow from "../../../containers/BlockBottomRow";
 import LocationBlock from "./LocationBlock";
-import { WeatherProvider } from "../../app/providers/WeatherProvider";
-import type { DegreeUnits } from "../../interfaces/interfaces";
-import { useFavLocationContext } from "../../context/FavLocationContext";
+import { WeatherProvider } from "../../../app/providers/WeatherProvider";
+import type { DegreeUnits } from "../../../interfaces/interfaces";
+import * as context from "../../../context";
 
 export default function OtherLocations({ units }: { units: DegreeUnits }) {
-  const favLocations = useFavLocationContext().favLocations;
+  const favLocations = context.useFavLocationContext().favLocations;
 
   return (
     <DashboardBlock addStyle="h-full">

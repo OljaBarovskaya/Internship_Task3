@@ -1,5 +1,5 @@
-import HowToUse from "./HowToUse";
-import OpenWeatherMap from "./OpenWeatherMap";
+import HowToUse from "./components/HowToUse";
+import OpenWeatherMap from "./components/OpenWeatherMap";
 
 export default function Common() {
   return (

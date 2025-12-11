@@ -1,5 +1,10 @@
-import type { DegreeUnits, SelectProps } from "../../interfaces/interfaces";
-import { setStorage } from "../../utils/helpers";
+import type { DegreeUnits } from "../../../interfaces/interfaces";
+import { setStorage } from "../../../utils/helpers";
+
+interface SelectProps {
+  units: DegreeUnits;
+  onUnitsChange: (value: DegreeUnits) => void;
+}
 
 export default function Select({ units, onUnitsChange }: SelectProps) {
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {

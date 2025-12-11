@@ -1,9 +1,8 @@
 import Temperature from "./Temperature";
-import { useFavLocationContext } from "../../context/FavLocationContext";
-import Star from "../../assets/img/star.svg?react";
-import { setStorage } from "../../utils/helpers";
-import type { DegreeUnits } from "../../interfaces/interfaces";
-import { useWeather } from "../../context/WeatherContext";
+import * as context from "../../../context";
+import Star from "../../../assets/img/star.svg?react";
+import { setStorage } from "../../../utils/helpers";
+import type { DegreeUnits } from "../../../interfaces/interfaces";
 
 export default function LocationBlock({
   city,
@@ -12,8 +11,8 @@ export default function LocationBlock({
   city: string;
   units: DegreeUnits;
 }) {
-  const { favLocations, setFavLocations } = useFavLocationContext();
-  const weatherData = useWeather();
+  const { favLocations, setFavLocations } = context.useFavLocationContext();
+  const weatherData = context.useWeather();
   const { lastSuccessfulWeather, isLoading } = weatherData;
 
   if (!lastSuccessfulWeather && isLoading) {

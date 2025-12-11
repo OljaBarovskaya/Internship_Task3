@@ -82,26 +82,6 @@ export interface MyComponentProps {
   isActive: boolean;
 }
 
-export interface TemperatureProps {
-  highT: number;
-  lowT: number;
-  sizeHighT: number;
-  sizeLowT: number;
-  units: DegreeUnits;
-}
-
-export interface SearchProps {
-  onCityChange: (newCity: string) => void;
-  units: DegreeUnits;
-  onUnitsChange: (value: DegreeUnits) => void;
-  isCorrect: true | false;
-}
-
-export interface SelectProps {
-  units: DegreeUnits;
-  onUnitsChange: (value: DegreeUnits) => void;
-}
-
 export interface Error {
   cod: string;
   message: string;

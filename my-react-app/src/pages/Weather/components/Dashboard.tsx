@@ -1,10 +1,10 @@
 import LocationDetailsBlock from "./LocationDetailsBlock";
 import LocationMainBlock from "./LocationMainBlock";
 import OtherLocations from "./OtherLocations";
-import type { DegreeUnits } from "../../interfaces/interfaces";
+import type { DegreeUnits } from "../../../interfaces/interfaces";
 import { useState } from "react";
-import { getStorage } from "../../utils/helpers";
-import { FavLocationsContext } from "../../context/FavLocationContext";
+import { getStorage } from "../../../utils/helpers";
+import { FavLocationsContext } from "../../../context";
 
 export default function Dashboard({ units }: { units: DegreeUnits }) {
   const [favouriteLocations, setFavLocations] = useState<string[]>(

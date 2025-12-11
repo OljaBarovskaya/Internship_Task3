@@ -1,5 +1,5 @@
-import { HowToUseDesc } from "./HowToUseDesc";
 import HowToUseBlock from "./HowToUseBlock";
+import { HowToUseDesc } from "./HowToUseDesc";
 
 export default function HowToUse() {
   return (

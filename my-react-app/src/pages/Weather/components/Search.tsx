@@ -1,6 +1,13 @@
 import { useForm } from "react-hook-form";
-import type { SearchProps } from "../../interfaces/interfaces";
+import type { DegreeUnits } from "../../../interfaces/interfaces";
 import Select from "./Select";
+
+interface SearchProps {
+  onCityChange: (newCity: string) => void;
+  units: DegreeUnits;
+  onUnitsChange: (value: DegreeUnits) => void;
+  isCorrect: true | false;
+}
 
 export default function Search({
   onCityChange,

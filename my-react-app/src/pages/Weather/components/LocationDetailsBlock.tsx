@@ -1,17 +1,17 @@
 import DashboardBlock from "./DashboardBlock";
-import BlockTopRow from "../../containers/BlockTopRow";
-import BlockBottomRow from "../../containers/BlockBottomRow";
+import BlockTopRow from "../../../containers/BlockTopRow";
+import BlockBottomRow from "../../../containers/BlockBottomRow";
 import DetailsBlock from "./DetailsBlock";
-import convertTime from "../../utils/helpers";
-import type { DegreeUnits } from "../../interfaces/interfaces";
-import { useWeather } from "../../context/WeatherContext";
+import convertTime from "../../../utils/helpers";
+import type { DegreeUnits } from "../../../interfaces/interfaces";
+import * as context from "../../../context";
 
 export default function LocationDetailsBlock({
   units,
 }: {
   units: DegreeUnits;
 }) {
-  const { lastSuccessfulWeather, isLoading } = useWeather();
+  const { lastSuccessfulWeather, isLoading } = context.useWeather();
 
   if (!lastSuccessfulWeather && isLoading) {
     return (

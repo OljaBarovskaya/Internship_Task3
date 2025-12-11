@@ -1,11 +1,11 @@
-import BlockTopRow from "../../containers/BlockTopRow";
-import BlockBottomRow from "../../containers/BlockBottomRow";
-import Humidity from "../../assets/img/humidity.png";
-import Pressure from "../../assets/img/pressure.png";
-import Sunrise from "../../assets/img/sunrise.png";
-import Sunset from "../../assets/img/sunset.png";
-import Visibility from "../../assets/img/visibility.png";
-import Wind from "../../assets/img/wind.png";
+import BlockTopRow from "../../../containers/BlockTopRow";
+import BlockBottomRow from "../../../containers/BlockBottomRow";
+import Humidity from "../../../assets/img/humidity.png";
+import Pressure from "../../../assets/img/pressure.png";
+import Sunrise from "../../../assets/img/sunrise.png";
+import Sunset from "../../../assets/img/sunset.png";
+import Visibility from "../../../assets/img/visibility.png";
+import Wind from "../../../assets/img/wind.png";
 
 export default function DetailsBlock({
   name,

@@ -3,7 +3,7 @@ import type { Mock } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom/vitest";
-import WeatherDashboard from "./WeatherDashboard";
+import WeatherDashboard from ".";
 import { getStorage } from "../../utils/helpers";
 import { LOCATION_DEFAULT } from "../../constants/constants";
 

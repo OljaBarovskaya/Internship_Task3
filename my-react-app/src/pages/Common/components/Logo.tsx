@@ -1,4 +1,4 @@
-import Logo from "../../assets/img/OpenWeatherLogo.png";
+import Logo from "../../../assets/img/OpenWeatherLogo.png";
 
 export default function LogoOpenWeather() {
   return (

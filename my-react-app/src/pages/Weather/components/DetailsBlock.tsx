@@ -5,6 +5,15 @@ import Sunset from "../../../assets/img/sunset.png";
 import Visibility from "../../../assets/img/visibility.png";
 import Wind from "../../../assets/img/wind.png";
 
+const weatherIconsObject = new Map([
+  ["Humidity", Humidity],
+  ["Pressure", Pressure],
+  ["Sunset", Sunset],
+  ["Sunrise", Sunrise],
+  ["Visibility", Visibility],
+  ["Wind", Wind],
+]);
+
 export default function DetailsBlock({
   name,
   value,
@@ -12,32 +21,7 @@ export default function DetailsBlock({
   name: string;
   value: string;
 }) {
-  let iconImg;
-
-  function chooseIcon() {
-    switch (name) {
-      case "Humidity":
-        iconImg = Humidity;
-        break;
-      case "Pressure":
-        iconImg = Pressure;
-        break;
-      case "Sunset":
-        iconImg = Sunset;
-        break;
-      case "Sunrise":
-        iconImg = Sunrise;
-        break;
-      case "Visibility":
-        iconImg = Visibility;
-        break;
-      case "Wind":
-        iconImg = Wind;
-        break;
-    }
-  }
-
-  chooseIcon();
+  const iconImg = weatherIconsObject.get(name);
 
   return (
     <div className="w-[157px] h-[134px] p-[16px] rounded-[16px] bg-[#1f46ac] flex flex-col gap-y-[24px]">

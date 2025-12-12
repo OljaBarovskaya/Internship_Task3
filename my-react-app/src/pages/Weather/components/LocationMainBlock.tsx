@@ -7,6 +7,7 @@ import * as context from "../../../context";
 import { setStorage } from "../../../utils/helpers";
 import * as type from "../../../types";
 import { useState, useEffect } from "react";
+import { roundT } from "../utils";
 
 export default function LocationMainBlock({
   units,
@@ -35,21 +36,10 @@ export default function LocationMainBlock({
   const country = lastSuccessfulWeather!.sys.country;
   const iconCode = lastSuccessfulWeather!.weather[0].icon;
   const mainDescription = lastSuccessfulWeather!.weather[0].main;
-  let tMin = lastSuccessfulWeather!.main.temp_min;
-  let tMax = lastSuccessfulWeather!.main.temp_max;
+  const tMin = Math.round(lastSuccessfulWeather!.main.temp_min);
+  const tMax = Math.round(lastSuccessfulWeather!.main.temp_max);
   const description = lastSuccessfulWeather!.weather[0].description;
-  let feelsLike = lastSuccessfulWeather!.main.feels_like;
-
-  if (tMax) {
-    tMax = Math.round(tMax);
-  }
-
-  if (tMin) {
-    tMin = Math.round(tMin);
-  }
-  if (feelsLike) {
-    feelsLike = Math.round(feelsLike);
-  }
+  let feelsLike = Math.round(lastSuccessfulWeather!.main.feels_like);
 
   if (!favLocations) {
     return <div>Loading context...</div>;

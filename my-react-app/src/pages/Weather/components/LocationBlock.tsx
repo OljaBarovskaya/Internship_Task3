@@ -24,16 +24,8 @@ export default function LocationBlock({
   const country = weather?.sys.country;
   const iconCode = weather?.weather[0].icon;
   const mainDescription = weather?.weather[0].main;
-  let tMin = weather?.main.temp_min;
-  let tMax = weather?.main.temp_max;
-
-  if (tMax) {
-    tMax = Math.round(tMax);
-  }
-
-  if (tMin) {
-    tMin = Math.round(tMin);
-  }
+  const tMin = Math.round(weather!.main.temp_min);
+  const tMax = Math.round(weather!.main.temp_max);
 
   return (
     <div className="w-full min-h-[127px] p-[24px] rounded-[24px] bg-[#1f46ac] flex justify-between">

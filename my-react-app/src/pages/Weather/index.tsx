@@ -1,14 +1,18 @@
 import Search from "./components/Search";
 import Dashboard from "./components/Dashboard";
 import { useState } from "react";
-import { LOCATION_DEFAULT, UNITS_DEFAULT } from "../../constants/constants";
+import {
+  LOCATION_DEFAULT,
+  LOCATION_MAIN,
+  UNITS_DEFAULT,
+} from "../../constants/constants";
 import { WeatherProvider } from "../../app/providers/WeatherProvider";
 import * as type from "../../types";
 import { getStorage } from "../../utils/helpers";
 
 function getStartCity() {
-  if (getStorage("locationMain")) {
-    return getStorage("locationMain");
+  if (getStorage(LOCATION_MAIN)) {
+    return getStorage(LOCATION_MAIN);
   } else return LOCATION_DEFAULT;
 }
 

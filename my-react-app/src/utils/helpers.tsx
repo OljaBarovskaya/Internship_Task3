@@ -1,3 +1,5 @@
+import { FAV_LOCATIONS } from "../constants/constants";
+
 export default function convertTime(milliseconds: number) {
   const date = new Date(milliseconds);
 
@@ -7,7 +9,7 @@ export default function convertTime(milliseconds: number) {
 }
 
 export function getStorage(item: string) {
-  if (item === "favouriteLocations") {
+  if (item === FAV_LOCATIONS) {
     if (localStorage.getItem(item)) {
       return JSON.parse(localStorage.getItem(item)!);
     } else return [];

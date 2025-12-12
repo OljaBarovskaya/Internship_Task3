@@ -7,7 +7,7 @@ import * as context from "../../../context";
 import { setStorage } from "../../../utils/helpers";
 import * as type from "../../../types";
 import { useState, useEffect } from "react";
-import { roundT } from "../utils";
+import { FAV_LOCATIONS, LOCATION_MAIN } from "../../../constants/constants";
 
 export default function LocationMainBlock({
   units,
@@ -57,10 +57,10 @@ export default function LocationMainBlock({
       setIsFavorite(true);
     }
     setFavLocations(updatedFavLocations);
-    setStorage("favouriteLocations", updatedFavLocations);
+    setStorage(FAV_LOCATIONS, updatedFavLocations);
   };
 
-  setStorage("locationMain", cityRequested);
+  setStorage(LOCATION_MAIN, cityRequested);
 
   return (
     <DashboardBlock>

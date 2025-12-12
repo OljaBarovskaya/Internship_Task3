@@ -5,7 +5,7 @@ import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom/vitest";
 import WeatherDashboard from ".";
 import { getStorage } from "../../utils/helpers";
-import { LOCATION_DEFAULT } from "../../constants/constants";
+import { LOCATION_DEFAULT, LOCATION_MAIN } from "../../constants/constants";
 
 vi.mock("../../utils/helpers", () => ({
   getStorage: vi.fn(),
@@ -64,7 +64,7 @@ describe("WeatherDashboard", () => {
     const savedUnits = "imperial";
 
     mockGetStorage.mockImplementation((key: string) => {
-      if (key === "locationMain") return savedCity;
+      if (key === LOCATION_MAIN) return savedCity;
       if (key === "units") return savedUnits;
       return null;
     });

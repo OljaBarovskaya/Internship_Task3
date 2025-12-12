@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { MINUTE } from "../../../constants/constants";
 
 export default function CurrentDate() {
   const [date, setDate] = useState(new Date());
@@ -15,7 +16,7 @@ export default function CurrentDate() {
   useEffect(() => {
     const intervalID = setInterval(() => {
       setDate(new Date());
-    }, 60000);
+    }, MINUTE);
 
     return () => {
       clearInterval(intervalID);

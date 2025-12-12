@@ -3,7 +3,7 @@ import * as type from "../../types";
 import { useWeatherQuery } from "../../services/APIService";
 import * as context from "../../context";
 
-export interface WeatherProviderType {
+interface WeatherProviderType {
   children: React.ReactNode;
   city: string;
   units: type.DegreeUnits;

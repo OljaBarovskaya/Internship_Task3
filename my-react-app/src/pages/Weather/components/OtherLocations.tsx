@@ -1,6 +1,4 @@
 import DashboardBlock from "./DashboardBlock";
-import BlockTopRow from "../../../containers/BlockTopRow";
-import BlockBottomRow from "../../../containers/BlockBottomRow";
 import LocationBlock from "./LocationBlock";
 import { WeatherProvider } from "../../../app/providers/WeatherProvider";
 import * as type from "../../../types";
@@ -11,10 +9,8 @@ export default function OtherLocations({ units }: { units: type.DegreeUnits }) {
 
   return (
     <DashboardBlock addStyle="h-full">
-      <BlockTopRow>
-        <h3>Others Countries</h3>
-      </BlockTopRow>
-      <BlockBottomRow addStyle="flex-col gap-y-[18px]">
+      <h3>Others Countries</h3>
+      <div className="flex flex-col gap-y-[18px]">
         {favLocations &&
           favLocations.map((location: string, index) => {
             return (
@@ -23,7 +19,7 @@ export default function OtherLocations({ units }: { units: type.DegreeUnits }) {
               </WeatherProvider>
             );
           })}
-      </BlockBottomRow>
+      </div>
     </DashboardBlock>
   );
 }

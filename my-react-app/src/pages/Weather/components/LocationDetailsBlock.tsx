@@ -1,6 +1,4 @@
 import DashboardBlock from "./DashboardBlock";
-import BlockTopRow from "../../../containers/BlockTopRow";
-import BlockBottomRow from "../../../containers/BlockBottomRow";
 import DetailsBlock from "./DetailsBlock";
 import convertTime from "../../../utils/helpers";
 import * as type from "../../../types";
@@ -43,10 +41,8 @@ export default function LocationDetailsBlock({
 
   return (
     <DashboardBlock>
-      <BlockTopRow>
-        <h2>Detailed Weather</h2>
-      </BlockTopRow>
-      <BlockBottomRow addStyle="flex-wrap gap-y-[18px] gap-x-[18px] justify-evenly">
+      <h2>Detailed Weather</h2>
+      <div className="flex flex-wrap gap-y-[18px] gap-x-[18px] justify-evenly">
         <DetailsBlock name="Humidity" value={humidity + "%"} />
         <DetailsBlock name="Pressure" value={pressure + " hPa"} />
         <DetailsBlock
@@ -56,7 +52,7 @@ export default function LocationDetailsBlock({
         <DetailsBlock name="Visibility" value={visibility + " m"} />
         <DetailsBlock name="Sunrise" value={sunRiseTime} />
         <DetailsBlock name="Sunset" value={sunSetTime} />
-      </BlockBottomRow>
+      </div>
     </DashboardBlock>
   );
 }

@@ -1,6 +1,4 @@
 import DashboardBlock from "./DashboardBlock";
-import BlockTopRow from "../../../containers/BlockTopRow";
-import BlockBottomRow from "../../../containers/BlockBottomRow";
 import Location from "./Location";
 import Date from "./Date";
 import Temperature from "./Temperature";
@@ -76,10 +74,8 @@ export default function LocationMainBlock({
 
   return (
     <DashboardBlock>
-      <BlockTopRow>
-        <Location city={cityRequested} country={country!} />
-      </BlockTopRow>
-      <BlockBottomRow addStyle="gap-x-[14%] justify-between">
+      <Location city={cityRequested} country={country!} />
+      <div className="flex gap-x-[14%] justify-between">
         <div className="flex flex-col justify-between">
           <Date />
           <div className="details-main">
@@ -92,13 +88,11 @@ export default function LocationMainBlock({
             </p>
           </div>
         </div>
-
         <img
           className="object-contain w-[70px] h-auto"
           src={`http://openweathermap.org/img/w/${iconCode}.png`}
           alt={mainDescription}
         />
-
         <div className="flex flex-col justify-between gap-y-[45px] items-end">
           <Temperature
             highT={tMax!}
@@ -114,7 +108,7 @@ export default function LocationMainBlock({
             onClick={toggleFavorite}
           />
         </div>
-      </BlockBottomRow>
+      </div>
     </DashboardBlock>
   );
 }

@@ -2,14 +2,14 @@ import Temperature from "./Temperature";
 import * as context from "../../../context";
 import Star from "../../../assets/img/star.svg?react";
 import { setStorage } from "../../../utils/helpers";
-import type { DegreeUnits } from "../../../interfaces/interfaces";
+import * as type from "../../../types";
 
 export default function LocationBlock({
   city,
   units,
 }: {
   city: string;
-  units: DegreeUnits;
+  units: type.DegreeUnits;
 }) {
   const { favLocations, setFavLocations } = context.useFavLocationContext();
   const weatherData = context.useWeather();

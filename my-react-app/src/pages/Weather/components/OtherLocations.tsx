@@ -3,10 +3,10 @@ import BlockTopRow from "../../../containers/BlockTopRow";
 import BlockBottomRow from "../../../containers/BlockBottomRow";
 import LocationBlock from "./LocationBlock";
 import { WeatherProvider } from "../../../app/providers/WeatherProvider";
-import type { DegreeUnits } from "../../../interfaces/interfaces";
+import * as type from "../../../types";
 import * as context from "../../../context";
 
-export default function OtherLocations({ units }: { units: DegreeUnits }) {
+export default function OtherLocations({ units }: { units: type.DegreeUnits }) {
   const favLocations = context.useFavLocationContext().favLocations;
 
   return (

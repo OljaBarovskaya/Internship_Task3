@@ -1,4 +1,4 @@
-import { type StyledCompWithChildren } from "../interfaces/interfaces";
+import { type StyledCompWithChildren } from "../types/GeneralTypes";
 
 export default function BlockBottomRow({
   children,

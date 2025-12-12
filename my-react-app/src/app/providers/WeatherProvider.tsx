@@ -1,12 +1,14 @@
 import { useRef, useEffect } from "react";
-
-import type {
-  WeatherProviderType,
-  WeatherDataType,
-  WeatherContextType,
-} from "../../interfaces/interfaces";
+import * as type from "../../types";
 import { useWeatherQuery } from "../../services/APIService";
 import * as context from "../../context";
+
+export interface WeatherProviderType {
+  children: React.ReactNode;
+  city: string;
+  units: type.DegreeUnits;
+  setIsCorrect?: (value: true | false) => void;
+}
 
 export function WeatherProvider({
   children,
@@ -20,7 +22,9 @@ export function WeatherProvider({
     error,
   } = useWeatherQuery(city, units);
 
-  const lastSuccessfulDataRef = useRef<WeatherDataType | undefined>(undefined);
+  const lastSuccessfulDataRef = useRef<type.WeatherDataType | undefined>(
+    undefined
+  );
 
   useEffect(() => {
     if (currentWeatherData) {
@@ -31,7 +35,7 @@ export function WeatherProvider({
   const dataToShowInContext =
     currentWeatherData || lastSuccessfulDataRef.current;
 
-  const contextValue: WeatherContextType = {
+  const contextValue: type.WeatherContextType = {
     lastSuccessfulWeather: dataToShowInContext,
     isLoading,
     error,

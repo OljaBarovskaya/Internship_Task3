@@ -1,17 +1,3 @@
-export type DegreeUnits = "metric" | "imperial";
-
-export interface StyledCompWithChildren {
-  children?: React.ReactNode;
-  addStyle?: string;
-}
-
-export interface WeatherProviderType {
-  children: React.ReactNode;
-  city: string;
-  units: DegreeUnits;
-  setIsCorrect?: (value: true | false) => void;
-}
-
 interface Coord {
   lon: number;
   lat: number;
@@ -24,7 +10,7 @@ interface WeatherItem {
   icon: string;
 }
 
-interface Main {
+interface MainInformation {
   temp: number;
   feels_like: number;
   temp_min: number;
@@ -55,7 +41,7 @@ export interface WeatherDataType {
   coord: Coord;
   weather: WeatherItem[];
   base: string;
-  main: Main;
+  main: MainInformation;
   visibility: number;
   wind: Wind;
   clouds: Clouds;
@@ -73,16 +59,4 @@ export interface WeatherContextType {
   error: Error | null;
 }
 
-export interface FavLocationsContextType {
-  favLocations: string[];
-  setFavLocations: React.Dispatch<React.SetStateAction<string[]>>;
-}
-
-export interface MyComponentProps {
-  isActive: boolean;
-}
-
-export interface Error {
-  cod: string;
-  message: string;
-}
+export type DegreeUnits = "metric" | "imperial";

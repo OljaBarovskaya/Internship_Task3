@@ -7,10 +7,14 @@ import Temperature from "./Temperature";
 import Star from "../../../assets/img/star.svg?react";
 import * as context from "../../../context";
 import { setStorage } from "../../../utils/helpers";
-import type { DegreeUnits } from "../../../interfaces/interfaces";
+import * as type from "../../../types";
 import { useState, useEffect } from "react";
 
-export default function LocationMainBlock({ units }: { units: DegreeUnits }) {
+export default function LocationMainBlock({
+  units,
+}: {
+  units: type.DegreeUnits;
+}) {
   const { lastSuccessfulWeather, isLoading } = context.useWeather();
   const { favLocations, setFavLocations } = context.useFavLocationContext();
   const [isFavorite, setIsFavorite] = useState(false);

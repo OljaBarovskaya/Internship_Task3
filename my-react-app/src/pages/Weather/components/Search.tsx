@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
-import type { DegreeUnits } from "../../../interfaces/interfaces";
+import * as type from "../../../types";
 import Select from "./Select";
 
 interface SearchProps {
   onCityChange: (newCity: string) => void;
-  units: DegreeUnits;
-  onUnitsChange: (value: DegreeUnits) => void;
+  units: type.DegreeUnits;
+  onUnitsChange: (value: type.DegreeUnits) => void;
   isCorrect: true | false;
 }
 

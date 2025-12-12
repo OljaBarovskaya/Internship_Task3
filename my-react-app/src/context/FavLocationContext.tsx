@@ -1,5 +1,9 @@
 import { createContext, useContext } from "react";
-import type { FavLocationsContextType } from "../interfaces/interfaces";
+
+interface FavLocationsContextType {
+  favLocations: string[];
+  setFavLocations: React.Dispatch<React.SetStateAction<string[]>>;
+}
 
 export const FavLocationsContext = createContext<
   FavLocationsContextType | undefined

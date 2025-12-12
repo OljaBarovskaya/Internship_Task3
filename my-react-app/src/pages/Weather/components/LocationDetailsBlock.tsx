@@ -3,13 +3,13 @@ import BlockTopRow from "../../../containers/BlockTopRow";
 import BlockBottomRow from "../../../containers/BlockBottomRow";
 import DetailsBlock from "./DetailsBlock";
 import convertTime from "../../../utils/helpers";
-import type { DegreeUnits } from "../../../interfaces/interfaces";
+import * as type from "../../../types";
 import * as context from "../../../context";
 
 export default function LocationDetailsBlock({
   units,
 }: {
-  units: DegreeUnits;
+  units: type.DegreeUnits;
 }) {
   const { lastSuccessfulWeather, isLoading } = context.useWeather();
 

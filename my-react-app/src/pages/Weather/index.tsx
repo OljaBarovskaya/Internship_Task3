@@ -3,7 +3,7 @@ import Dashboard from "./components/Dashboard";
 import { useState } from "react";
 import { LOCATION_DEFAULT, UNITS_DEFAULT } from "../../constants/constants";
 import { WeatherProvider } from "../../app/providers/WeatherProvider";
-import type { DegreeUnits } from "../../interfaces/interfaces";
+import * as type from "../../types";
 import { getStorage } from "../../utils/helpers";
 
 function getStartCity() {
@@ -20,7 +20,7 @@ function getStartUnits() {
 
 export default function WeatherDashboard() {
   const [city, changeCity] = useState(getStartCity());
-  const [units, changeUnits] = useState<DegreeUnits>(getStartUnits());
+  const [units, changeUnits] = useState<type.DegreeUnits>(getStartUnits());
   const [isCorrect, setIsCorrect] = useState(true);
 
   return (

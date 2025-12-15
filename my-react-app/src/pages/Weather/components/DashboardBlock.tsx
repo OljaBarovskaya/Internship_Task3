@@ -1,4 +1,4 @@
-import { type StyledCompWithChildren } from "../../../types/GeneralTypes";
+import { type StyledCompWithChildren } from "@/types/GeneralTypes";
 
 export default function DashboardBlock({
   children,

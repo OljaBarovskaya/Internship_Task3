@@ -1,4 +1,4 @@
-import { FAV_LOCATIONS } from "../constants/constants";
+import { FAV_LOCATIONS } from "@/constants/constants";
 
 export function getStorage(item: string) {
   if (item === FAV_LOCATIONS) {

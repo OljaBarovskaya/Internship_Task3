@@ -1,4 +1,4 @@
-import * as type from "../../../types";
+import * as type from "@/types";
 
 interface TemperatureProps {
   highT: number;

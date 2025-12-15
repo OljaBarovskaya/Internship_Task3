@@ -4,10 +4,10 @@ import { cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom/vitest";
 import WeatherDashboard from ".";
-import { getStorage } from "../../utils/storageHandlers";
-import { LOCATION_DEFAULT, LOCATION_MAIN } from "../../constants/constants";
+import * as utils from "@/utils/index";
+import { LOCATION_DEFAULT, LOCATION_MAIN } from "@/constants/constants";
 
-vi.mock("../../utils/helpers", () => ({
+vi.mock("@/utils/helpers", () => ({
   getStorage: vi.fn(),
 }));
 
@@ -28,7 +28,7 @@ vi.mock("./Dashboard", () => ({
   )),
 }));
 
-vi.mock("../../services/WeatherProvider", () => ({
+vi.mock("@/services/WeatherProvider", () => ({
   WeatherProvider: vi.fn(({ children, city, units }) => (
     <div data-testid="mock-weather-provider">
       <span>Provider City: {city}</span>
@@ -44,7 +44,7 @@ describe("WeatherDashboard", () => {
     cleanup();
   });
 
-  const mockGetStorage = getStorage as Mock;
+  const mockGetStorage = utils.getStorage as Mock;
 
   test("renders with default location and metric units when local storage is empty", () => {
     mockGetStorage.mockReturnValue(null);

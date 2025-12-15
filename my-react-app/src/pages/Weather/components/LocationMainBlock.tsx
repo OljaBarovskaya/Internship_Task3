@@ -2,12 +2,12 @@ import DashboardBlock from "./DashboardBlock";
 import Location from "./Location";
 import Date from "./Date";
 import Temperature from "./Temperature";
-import Star from "../../../assets/img/star.svg?react";
-import * as context from "../../../context";
-import { setStorage } from "../../../utils/storageHandlers";
-import * as type from "../../../types";
+import Star from "@/assets/img/star.svg?react";
+import * as context from "@/context";
+import * as utils from "@/utils/index";
+import * as type from "@/types";
 import { useState, useEffect } from "react";
-import { FAV_LOCATIONS, LOCATION_MAIN } from "../../../constants/constants";
+import { FAV_LOCATIONS, LOCATION_MAIN } from "@/constants/constants";
 
 export default function LocationMainBlock({
   units,
@@ -57,10 +57,10 @@ export default function LocationMainBlock({
       setIsFavorite(true);
     }
     setFavLocations(updatedFavLocations);
-    setStorage(FAV_LOCATIONS, updatedFavLocations);
+    utils.setStorage(FAV_LOCATIONS, updatedFavLocations);
   };
 
-  setStorage(LOCATION_MAIN, cityRequested);
+  utils.setStorage(LOCATION_MAIN, cityRequested);
 
   return (
     <DashboardBlock>

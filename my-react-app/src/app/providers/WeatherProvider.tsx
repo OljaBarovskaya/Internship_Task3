@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
-import * as type from "../../types";
-import { useWeatherQuery } from "../../services/APIService";
-import * as context from "../../context";
+import * as type from "@/types";
+import { useWeatherQuery } from "@/services/APIService";
+import * as context from "@/context";
 
 interface WeatherProviderType {
   children: React.ReactNode;

@@ -1,8 +1,8 @@
 import { BrowserRouter } from "react-router-dom";
 import { Route, Routes, NavLink } from "react-router-dom";
-import Weather from "../pages/Weather";
-import Common from "../pages/Common";
-import Contacts from "../pages/Contacts";
+import Weather from "@/pages/Weather";
+import Common from "@/pages/Common";
+import Contacts from "@/pages/Contacts";
 
 interface MyComponentProps {
   isActive: boolean;

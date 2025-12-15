@@ -1,8 +1,8 @@
 import DashboardBlock from "./DashboardBlock";
 import DetailsBlock from "./DetailsBlock";
-import * as type from "../../../types";
-import * as context from "../../../context";
-import { convertToTime } from "../../../utils/formatters";
+import * as type from "@/types";
+import * as context from "@/context";
+import * as utils from "@/utils/index";
 
 export default function LocationDetailsBlock({
   units,
@@ -24,8 +24,8 @@ export default function LocationDetailsBlock({
   const pressure = weather?.main.pressure;
   const wind = weather?.wind.speed;
   const timezone = weather!.timezone;
-  const sunrise = convertToTime(weather!.sys.sunrise * 1000 + timezone);
-  const sunset = convertToTime(weather!.sys.sunset * 1000 + timezone);
+  const sunrise = utils.convertToTime(weather!.sys.sunrise * 1000 + timezone);
+  const sunset = utils.convertToTime(weather!.sys.sunset * 1000 + timezone);
   const visibility = weather?.visibility;
 
   return (

@@ -3,7 +3,7 @@ import Location from "./Location";
 import "@testing-library/jest-dom/vitest";
 import { vi } from "vitest";
 
-vi.mock("../../assets/img/location.png", () => ({
+vi.mock("@/assets/img/location.png", () => ({
   default: "mock-location-icon.png",
 }));
 

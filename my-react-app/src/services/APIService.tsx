@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import * as type from "../types";
-import { API_KEY } from "../constants/constants";
+import * as type from "@/types";
+import { API_KEY } from "@/constants/constants";
 
 export const getWeatherData = async function (
   city: string,

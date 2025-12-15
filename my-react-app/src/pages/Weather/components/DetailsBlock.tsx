@@ -1,9 +1,9 @@
-import Humidity from "../../../assets/img/humidity.png";
-import Pressure from "../../../assets/img/pressure.png";
-import Sunrise from "../../../assets/img/sunrise.png";
-import Sunset from "../../../assets/img/sunset.png";
-import Visibility from "../../../assets/img/visibility.png";
-import Wind from "../../../assets/img/wind.png";
+import Humidity from "@/assets/img/humidity.png";
+import Pressure from "@/assets/img/pressure.png";
+import Sunrise from "@/assets/img/sunrise.png";
+import Sunset from "@/assets/img/sunset.png";
+import Visibility from "@/assets/img/visibility.png";
+import Wind from "@/assets/img/wind.png";
 
 const weatherIconsObject = new Map([
   ["Humidity", Humidity],

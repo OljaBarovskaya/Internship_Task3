@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { MINUTE } from "../../../constants/constants";
+import { MINUTE } from "@/constants/constants";
 import {
   convertToFamiliarDateFormat,
   convertToWeekday,
-} from "../../../utils/formatters";
+} from "@/utils/formatters";
 
 export default function CurrentDate() {
   const [date, setDate] = useState(new Date());

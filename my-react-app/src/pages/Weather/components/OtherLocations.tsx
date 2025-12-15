@@ -1,8 +1,8 @@
 import DashboardBlock from "./DashboardBlock";
 import LocationBlock from "./LocationBlock";
-import { WeatherProvider } from "../../../app/providers/WeatherProvider";
-import * as type from "../../../types";
-import * as context from "../../../context";
+import { WeatherProvider } from "@/app/providers/WeatherProvider";
+import * as type from "@/types";
+import * as context from "@/context";
 
 export default function OtherLocations({ units }: { units: type.DegreeUnits }) {
   const favLocations = context.useFavLocationContext().favLocations;

@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import * as types from "../types";
+import * as types from "@/types";
 
 export const WeatherContext = createContext<types.WeatherContextType | null>(
   null

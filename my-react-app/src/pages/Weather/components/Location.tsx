@@ -1,4 +1,4 @@
-import LocationIcon from "../../../assets/img/location.png";
+import LocationIcon from "@/assets/img/location.png";
 
 export default function Location({
   city,

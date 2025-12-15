@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import * as type from "../../../types";
+import * as type from "@/types";
 import Select from "./Select";
 
 interface SearchProps {

@@ -1,9 +1,9 @@
 import Temperature from "./Temperature";
-import * as context from "../../../context";
-import Star from "../../../assets/img/star.svg?react";
-import { setStorage } from "../../../utils/storageHandlers";
-import * as type from "../../../types";
-import { FAV_LOCATIONS } from "../../../constants/constants";
+import * as context from "@/context";
+import Star from "@/assets/img/star.svg?react";
+import * as utils from "@/utils/index";
+import * as type from "@/types";
+import { FAV_LOCATIONS } from "@/constants/constants";
 
 export default function LocationBlock({
   city,
@@ -57,7 +57,7 @@ export default function LocationBlock({
               (item) => item !== city
             );
             setFavLocations(updatedFavLocations!);
-            setStorage(FAV_LOCATIONS, updatedFavLocations!);
+            utils.setStorage(FAV_LOCATIONS, updatedFavLocations!);
           }}
         />
       </div>

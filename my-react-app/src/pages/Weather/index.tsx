@@ -5,20 +5,20 @@ import {
   LOCATION_DEFAULT,
   LOCATION_MAIN,
   UNITS_DEFAULT,
-} from "../../constants/constants";
-import { WeatherProvider } from "../../app/providers/WeatherProvider";
-import * as type from "../../types";
-import { getStorage } from "../../utils/storageHandlers";
+} from "@/constants/constants";
+import { WeatherProvider } from "@/app/providers/WeatherProvider";
+import * as type from "@/types";
+import * as utils from "@/utils/index";
 
 function getStartCity() {
-  if (getStorage(LOCATION_MAIN)) {
-    return getStorage(LOCATION_MAIN);
+  if (utils.getStorage(LOCATION_MAIN)) {
+    return utils.getStorage(LOCATION_MAIN);
   } else return LOCATION_DEFAULT;
 }
 
 function getStartUnits() {
-  if (getStorage("units")) {
-    return getStorage("units");
+  if (utils.getStorage("units")) {
+    return utils.getStorage("units");
   } else return UNITS_DEFAULT;
 }
 

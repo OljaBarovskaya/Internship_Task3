@@ -1,8 +1,8 @@
 import LocationDetailsBlock from "./LocationDetailsBlock";
 import LocationMainBlock from "./LocationMainBlock";
 import OtherLocations from "./OtherLocations";
-import * as type from "../../../types";
-import { FavLocationsContextProvider } from "../../../app/providers/FavLocationsProvider";
+import * as type from "@/types";
+import { FavLocationsContextProvider } from "@/app/providers/FavLocationsProvider";
 
 export default function Dashboard({ units }: { units: type.DegreeUnits }) {
   return (

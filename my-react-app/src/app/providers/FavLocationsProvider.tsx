@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { FavLocationsContext } from "../../context";
-import { getStorage } from "../../utils/storageHandlers";
-import { FAV_LOCATIONS } from "../../constants/constants";
+import * as utils from "@/utils/index";
+import { FavLocationsContext } from "@/context";
+import { FAV_LOCATIONS } from "@/constants/constants";
 
 export function FavLocationsContextProvider({
   children,
@@ -9,7 +9,7 @@ export function FavLocationsContextProvider({
   children: React.ReactNode;
 }) {
   const [favouriteLocations, setFavLocations] = useState<string[]>(
-    getStorage(FAV_LOCATIONS)
+    utils.getStorage(FAV_LOCATIONS)
   );
   return (
     <FavLocationsContext.Provider

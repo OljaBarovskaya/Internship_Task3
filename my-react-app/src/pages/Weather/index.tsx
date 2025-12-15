@@ -8,7 +8,7 @@ import {
 } from "../../constants/constants";
 import { WeatherProvider } from "../../app/providers/WeatherProvider";
 import * as type from "../../types";
-import { getStorage } from "../../utils/helpers";
+import { getStorage } from "../../utils/storageHandlers";
 
 function getStartCity() {
   if (getStorage(LOCATION_MAIN)) {

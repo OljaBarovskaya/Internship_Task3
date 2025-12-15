@@ -1,13 +1,5 @@
 import { FAV_LOCATIONS } from "../constants/constants";
 
-export default function convertTime(milliseconds: number) {
-  const date = new Date(milliseconds);
-
-  const time = date.toLocaleTimeString().slice(0, 5);
-
-  return time;
-}
-
 export function getStorage(item: string) {
   if (item === FAV_LOCATIONS) {
     if (localStorage.getItem(item)) {

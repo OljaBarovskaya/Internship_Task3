@@ -8,9 +8,9 @@ export default function HowToUseBlock({
   return (
     <div>
       <h3>{title}</h3>
-      {description.map((text, index) => {
-        return <p key={index}>{text}</p>;
-      })}
+      {description.map((text, index) => (
+        <p key={index}>{text}</p>
+      ))}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import HowToUseBlock from "./HowToUseBlock";
-import { HowToUseDesc } from "./HowToUseDesc";
+import { howToUseDesc } from "./HowToUseDesc";
 
 export default function HowToUse() {
   return (
@@ -11,9 +11,9 @@ export default function HowToUse() {
         requested location and the 3rd shows the list of favorite locations with
         brief weather data there.
       </p>
-      {HowToUseDesc.map((description, index) => {
-        return <HowToUseBlock {...description} key={index} />;
-      })}
+      {howToUseDesc.map((description, index) => (
+        <HowToUseBlock {...description} key={index} />
+      ))}
     </section>
   );
 }

@@ -4,7 +4,7 @@ import Date from "./Date";
 import Temperature from "./Temperature";
 import Star from "../../../assets/img/star.svg?react";
 import * as context from "../../../context";
-import { setStorage } from "../../../utils/helpers";
+import { setStorage } from "../../../utils/storageHandlers";
 import * as type from "../../../types";
 import { useState, useEffect } from "react";
 import { FAV_LOCATIONS, LOCATION_MAIN } from "../../../constants/constants";

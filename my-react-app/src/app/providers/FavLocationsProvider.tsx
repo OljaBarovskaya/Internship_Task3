@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FavLocationsContext } from "../../context";
-import { getStorage } from "../../utils/helpers";
+import { getStorage } from "../../utils/storageHandlers";
 import { FAV_LOCATIONS } from "../../constants/constants";
 
 export function FavLocationsContextProvider({

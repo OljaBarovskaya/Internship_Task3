@@ -4,7 +4,7 @@ import { cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom/vitest";
 import WeatherDashboard from ".";
-import { getStorage } from "../../utils/helpers";
+import { getStorage } from "../../utils/storageHandlers";
 import { LOCATION_DEFAULT, LOCATION_MAIN } from "../../constants/constants";
 
 vi.mock("../../utils/helpers", () => ({

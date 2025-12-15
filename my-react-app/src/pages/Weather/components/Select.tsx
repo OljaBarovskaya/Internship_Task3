@@ -1,5 +1,5 @@
 import * as type from "../../../types";
-import { setStorage } from "../../../utils/helpers";
+import { setStorage } from "../../../utils/storageHandlers";
 
 interface SelectProps {
   units: type.DegreeUnits;

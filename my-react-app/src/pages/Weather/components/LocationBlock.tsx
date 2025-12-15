@@ -1,7 +1,7 @@
 import Temperature from "./Temperature";
 import * as context from "../../../context";
 import Star from "../../../assets/img/star.svg?react";
-import { setStorage } from "../../../utils/helpers";
+import { setStorage } from "../../../utils/storageHandlers";
 import * as type from "../../../types";
 import { FAV_LOCATIONS } from "../../../constants/constants";
 

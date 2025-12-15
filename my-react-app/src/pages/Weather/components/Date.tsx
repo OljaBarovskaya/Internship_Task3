@@ -1,23 +1,20 @@
 import { useEffect, useState } from "react";
 import { MINUTE } from "../../../constants/constants";
+import {
+  convertToFamiliarDateFormat,
+  convertToWeekday,
+} from "../../../utils/formatters";
 
 export default function CurrentDate() {
   const [date, setDate] = useState(new Date());
 
-  const weekday = date.toLocaleDateString("en-US", {
-    weekday: "long",
-  });
-  const day = date.toLocaleDateString("en-US", {
-    year: "numeric",
-    day: "numeric",
-    month: "short",
-  });
+  const weekday = convertToWeekday(date);
+  const day = convertToFamiliarDateFormat(date);
 
   useEffect(() => {
     const intervalID = setInterval(() => {
       setDate(new Date());
     }, MINUTE);
-
     return () => {
       clearInterval(intervalID);
     };

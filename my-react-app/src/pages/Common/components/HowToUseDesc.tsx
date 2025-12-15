@@ -1,4 +1,4 @@
-export const HowToUseDesc = [
+export const howToUseDesc = [
   {
     title: "Searching for Weather",
     description: [

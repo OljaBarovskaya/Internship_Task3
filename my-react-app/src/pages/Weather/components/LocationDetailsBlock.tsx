@@ -1,8 +1,8 @@
 import DashboardBlock from "./DashboardBlock";
 import DetailsBlock from "./DetailsBlock";
-import convertTime from "../../../utils/helpers";
 import * as type from "../../../types";
 import * as context from "../../../context";
+import { convertToTime } from "../../../utils/formatters";
 
 export default function LocationDetailsBlock({
   units,
@@ -23,21 +23,10 @@ export default function LocationDetailsBlock({
   const humidity = weather?.main.humidity;
   const pressure = weather?.main.pressure;
   const wind = weather?.wind.speed;
-  const timezone = weather?.timezone;
-  const sunrise = weather?.sys.sunrise;
-  const sunset = weather?.sys.sunset;
+  const timezone = weather!.timezone;
+  const sunrise = convertToTime(weather!.sys.sunrise * 1000 + timezone);
+  const sunset = convertToTime(weather!.sys.sunset * 1000 + timezone);
   const visibility = weather?.visibility;
-
-  let sunRiseTime;
-  let sunSetTime;
-
-  if (sunrise && timezone) {
-    sunRiseTime = convertTime(sunrise * 1000 + timezone);
-  } else sunRiseTime = "unknown";
-
-  if (sunset && timezone) {
-    sunSetTime = convertTime(sunset * 1000 + timezone);
-  } else sunSetTime = "unknown";
 
   return (
     <DashboardBlock>
@@ -50,8 +39,8 @@ export default function LocationDetailsBlock({
           value={units === "metric" ? wind + " m/s" : wind + " m/h"}
         />
         <DetailsBlock name="Visibility" value={visibility + " m"} />
-        <DetailsBlock name="Sunrise" value={sunRiseTime} />
-        <DetailsBlock name="Sunset" value={sunSetTime} />
+        <DetailsBlock name="Sunrise" value={sunrise} />
+        <DetailsBlock name="Sunset" value={sunset} />
       </div>
     </DashboardBlock>
   );

@@ -21,7 +21,7 @@ describe("My test suite", () => {
     const lowTempElement = screen.getByText("/10°C");
     expect(lowTempElement).toBeInTheDocument();
     expect(lowTempElement).toHaveStyle("font-size: 1.0em");
-    expect(lowTempElement).toHaveClass("text-[#B9B9B9]", "font-medium");
+    expect(lowTempElement).toHaveClass("text-light-gray", "font-medium");
   });
 
   test("renders imperial units correctly", () => {

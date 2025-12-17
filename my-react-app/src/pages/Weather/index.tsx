@@ -1,34 +1,20 @@
 import Search from "./components/Search";
 import Dashboard from "./components/Dashboard";
 import { useState } from "react";
-import {
-  LOCATION_DEFAULT,
-  LOCATION_MAIN,
-  UNITS_DEFAULT,
-} from "@/constants/constants";
 import { WeatherProvider } from "@/app/providers/WeatherProvider";
 import * as type from "@/types";
 import * as utils from "@/utils/index";
-
-function getStartCity() {
-  if (utils.getStorage(LOCATION_MAIN)) {
-    return utils.getStorage(LOCATION_MAIN);
-  } else return LOCATION_DEFAULT;
-}
-
-function getStartUnits() {
-  if (utils.getStorage("units")) {
-    return utils.getStorage("units");
-  } else return UNITS_DEFAULT;
-}
+import * as Layout from "@/layouts";
 
 export default function WeatherDashboard() {
-  const [city, changeCity] = useState(getStartCity());
-  const [units, changeUnits] = useState<type.DegreeUnits>(getStartUnits());
+  const [city, changeCity] = useState(utils.getStartCity());
+  const [units, changeUnits] = useState<type.DegreeUnits>(
+    utils.getStartUnits()
+  );
   const [isCorrect, setIsCorrect] = useState(true);
 
   return (
-    <div className="flex flex-col w-full h-full">
+    <Layout.Page className="text-light">
       <WeatherProvider city={city} units={units} setIsCorrect={setIsCorrect}>
         <Search
           onCityChange={changeCity}
@@ -38,6 +24,6 @@ export default function WeatherDashboard() {
         />
         <Dashboard units={units} />
       </WeatherProvider>
-    </div>
+    </Layout.Page>
   );
 }

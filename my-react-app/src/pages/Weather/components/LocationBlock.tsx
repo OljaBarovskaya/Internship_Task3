@@ -4,6 +4,7 @@ import Star from "@/assets/img/star.svg?react";
 import * as utils from "@/utils/index";
 import * as type from "@/types";
 import { FAV_LOCATIONS } from "@/constants/constants";
+import * as Layout from "@/layouts";
 
 export default function LocationBlock({
   city,
@@ -29,18 +30,18 @@ export default function LocationBlock({
   const tMax = Math.round(weather!.main.temp_max);
 
   return (
-    <div className="w-full min-h-[127px] p-[24px] rounded-[24px] bg-[#1f46ac] flex justify-between">
-      <div className="flex flex-col gap-y-[8px]">
+    <Layout.BlockHorizontal className="w-full">
+      <div className="flexVertical gap-y-space-small">
         <p>{country}</p>
         <h2>{city}</h2>
         <p>{mainDescription}</p>
       </div>
       <img
-        className="w-[72px] h-[72px] cover"
+        className="w-29 h-29 cover"
         src={`http://openweathermap.org/img/w/${iconCode}.png`}
         alt={mainDescription}
       ></img>
-      <div className="flex flex-col items-end gap-y-[12px]">
+      <div className="flex flex-col items-end gap-y-5">
         <Temperature
           highT={tMax!}
           lowT={tMin!}
@@ -61,6 +62,6 @@ export default function LocationBlock({
           }}
         />
       </div>
-    </div>
+    </Layout.BlockHorizontal>
   );
 }

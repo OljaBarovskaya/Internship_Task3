@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    font-size: 10px;
+    font-family: "Inter", sans-serif;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: var(--text-size-large);
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: var(--text-size-medium);
+    font-weight: 500;
+  }
+
+  p {
+    font-size: var(--text-size-small);
+  }
+
+  header,
+  main,
+  p,
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+  }
+
+  nav * {
+    padding: 0 30px;
+    text-decoration: none;
+  }
+}
+
+@theme {
+  --color-primary: #0088ff;
+  --color-secondary: #1f46ac;
+  --color-light-gray: #b9b9b9;
+  --color-light: #fff;
+
+  --spacing-space-large: 24px;
+  --spacing-space-medium: 16px;
+  --spacing-space-small: 8px;
+
+  --radius-r-large: 24px;
+  --radius-r-medium: 16px;
+
+  --text-size-large: 2.4rem;
+  --text-size-medium: 1.6rem;
+  --text-size-small: 1.4rem;
+}
+
+@layer components {
+  .flexHorizontal {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .flexVertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  max-width: 1920px;
+}
+
+input::placeholder {
+  color: #999;
+  font-style: italic;
+  font-size: 0.9em;
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  body {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 780px) {
+  body {
+    font-size: 6px;
+  }
+}

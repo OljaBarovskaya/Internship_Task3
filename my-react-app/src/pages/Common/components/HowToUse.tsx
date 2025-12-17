@@ -3,7 +3,7 @@ import { howToUseDesc } from "./HowToUseDesc";
 
 export default function HowToUse() {
   return (
-    <section className="flex flex-col gap-y-[8px]">
+    <section className="flex flex-col gap-y-space-small">
       <h2>How to use the application</h2>
       <p>
         This app consists of two main blocks - Search and Dashboard itself that

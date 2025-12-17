@@ -42,7 +42,7 @@ describe("Location Component", () => {
     expect(containerDiv).toBeInTheDocument();
 
     expect(containerDiv).toHaveClass(
-      "flex items-center p-[9px_0] gap-x-[8px] text-[1.8em]"
+      "flex items-center p-[9px_0] gap-x-space-small text-[1.8rem]"
     );
   });
 

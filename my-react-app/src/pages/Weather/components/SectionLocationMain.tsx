@@ -1,4 +1,4 @@
-import DashboardBlock from "./DashboardBlock";
+import * as Layout from "@/layouts";
 import Location from "./Location";
 import Date from "./Date";
 import Temperature from "./Temperature";
@@ -7,9 +7,10 @@ import * as context from "@/context";
 import * as utils from "@/utils/index";
 import * as type from "@/types";
 import { useState, useEffect } from "react";
-import { FAV_LOCATIONS, LOCATION_MAIN } from "@/constants/constants";
+import { LOCATION_MAIN } from "@/constants/constants";
+import { WeatherDescription } from "./WeatherDescription";
 
-export default function LocationMainBlock({
+export default function SectionLocationMain({
   units,
 }: {
   units: type.DegreeUnits;
@@ -17,19 +18,19 @@ export default function LocationMainBlock({
   const { lastSuccessfulWeather, isLoading } = context.useWeather();
   const { favLocations, setFavLocations } = context.useFavLocationContext();
   const [isFavorite, setIsFavorite] = useState(false);
-  const cityRequested = lastSuccessfulWeather?.name || " ";
+  const city = lastSuccessfulWeather?.name || " ";
 
   useEffect(() => {
-    if (cityRequested && favLocations) {
-      setIsFavorite(favLocations.includes(cityRequested));
+    if (city && favLocations) {
+      setIsFavorite(favLocations.includes(city));
     }
-  }, [cityRequested, favLocations]);
+  }, [city, favLocations]);
 
   if (!lastSuccessfulWeather && isLoading) {
     return (
-      <DashboardBlock>
+      <Layout.BoardSection>
         <h2>Loading...</h2>
-      </DashboardBlock>
+      </Layout.BoardSection>
     );
   }
 
@@ -45,45 +46,26 @@ export default function LocationMainBlock({
     return <div>Loading context...</div>;
   }
 
-  const toggleFavorite = () => {
-    let updatedFavLocations;
-    if (isFavorite) {
-      updatedFavLocations = favLocations.filter(
-        (location) => location !== cityRequested
-      );
-      setIsFavorite(false);
-    } else {
-      updatedFavLocations = [...favLocations, cityRequested];
-      setIsFavorite(true);
-    }
-    setFavLocations(updatedFavLocations);
-    utils.setStorage(FAV_LOCATIONS, updatedFavLocations);
-  };
-
-  utils.setStorage(LOCATION_MAIN, cityRequested);
+  utils.setStorage(LOCATION_MAIN, city);
 
   return (
-    <DashboardBlock>
-      <Location city={cityRequested} country={country!} />
-      <div className="flex gap-x-[14%] justify-between">
-        <div className="flex flex-col justify-between">
+    <Layout.BoardSection>
+      <Location city={city} country={country!} />
+      <div className="flexHorizontal h-full">
+        <div className="flexVertical">
           <Date />
-          <div className="details-main">
-            <p className="text-[2em] font-medium">{description}</p>
-            <p className="text-[1.6em] font-normal">
-              feels like{" "}
-              {units === "metric"
-                ? feelsLike + "\u00B0C"
-                : feelsLike + "\u00B0F"}
-            </p>
-          </div>
+          <WeatherDescription
+            description={description}
+            units={units}
+            feelsLike={feelsLike}
+          />
         </div>
         <img
-          className="object-contain w-[70px] h-auto"
+          className="object-contain w-28"
           src={`http://openweathermap.org/img/w/${iconCode}.png`}
           alt={mainDescription}
         />
-        <div className="flex flex-col justify-between gap-y-[45px] items-end">
+        <div className="flexVertical items-end">
           <Temperature
             highT={tMax!}
             lowT={tMin!}
@@ -95,10 +77,18 @@ export default function LocationMainBlock({
             width={30}
             height={30}
             fill={isFavorite ? "yellow" : "white"}
-            onClick={toggleFavorite}
+            onClick={() =>
+              utils.toggleFavorite(
+                isFavorite,
+                setIsFavorite,
+                favLocations,
+                setFavLocations,
+                city
+              )
+            }
           />
         </div>
       </div>
-    </DashboardBlock>
+    </Layout.BoardSection>
   );
 }

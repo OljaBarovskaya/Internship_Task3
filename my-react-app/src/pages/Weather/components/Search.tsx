@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import * as type from "@/types";
 import Select from "./Select";
+import { ErrorMessage } from "./ErrorMessage";
 
 interface SearchProps {
   onCityChange: (newCity: string) => void;
@@ -18,26 +19,20 @@ export default function Search({
   const { register, handleSubmit } = useForm();
 
   return (
-    <div className="searchForm flex justify-end gap-x-[24px] items-center">
+    <div className="flex justify-end gap-x-space-large items-center">
       <form
-        className="w-1/2 self-end flex flex-col min-w-[250px] gap-y-[8px]"
+        className="w-1/2 self-end flex flex-col min-w-[250px] gap-y-space-small"
         onSubmit={handleSubmit((data) => {
           onCityChange(data.city);
         })}
       >
         <input
           type="text"
-          className="search-input h-[56px] w-full rounded-[36px] px-[5%]"
+          className="h-22 w-full rounded-[36px] px-[5%] border border-black text-black"
           {...register("city", { required: "You need to enter a city" })}
           placeholder='Please, input a city here and press "Enter"'
         ></input>
-        {!isCorrect ? (
-          <span className="text-[#FF0000]">
-            Please check whether the city name is correct
-          </span>
-        ) : (
-          <span className="h-[11.5px]"> </span>
-        )}
+        <ErrorMessage isCorrect={isCorrect} />
       </form>
       <Select units={units} onUnitsChange={onUnitsChange} />
     </div>

@@ -4,3 +4,4 @@ export const UNITS_DEFAULT = "metric";
 export const LOCATION_MAIN = "locationMain";
 export const FAV_LOCATIONS = "favouriteLocations";
 export const MINUTE = 60000;
+export const UNITS = "units";

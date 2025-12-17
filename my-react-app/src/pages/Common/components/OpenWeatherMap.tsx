@@ -2,7 +2,7 @@ import LogoOpenWeather from "./Logo";
 
 export default function OpenWeatherMap() {
   return (
-    <section className="flex flex-col gap-y-[8px]">
+    <section className="flex flex-col gap-y-space-small">
       <h2>About OpenWeatherMap</h2>
       <p>
         OpenWeatherMap is an online service that provides global weather data

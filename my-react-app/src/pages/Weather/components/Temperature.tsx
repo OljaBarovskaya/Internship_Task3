@@ -17,13 +17,10 @@ export default function Temperature({
 }: TemperatureProps) {
   return (
     <div>
-      <p style={{ fontSize: `${sizeHighT}em` }} className="font-medium">
+      <p style={{ fontSize: `${sizeHighT}rem` }}>
         {units === "metric" ? highT + "\u00B0C" : highT + "\u00B0F"}
       </p>
-      <p
-        className="text-[#B9B9B9] font-medium"
-        style={{ fontSize: `${sizeLowT}em` }}
-      >
+      <p className="text-light-gray" style={{ fontSize: `${sizeLowT}rem` }}>
         {units === "metric" ? "/" + lowT + "\u00B0C" : "/" + lowT + "\u00B0F"}
       </p>
     </div>

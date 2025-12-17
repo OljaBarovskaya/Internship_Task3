@@ -1,7 +1,9 @@
+import * as Layout from "@/layouts";
+
 export default function Contacts() {
   return (
-    <div className="contact-info flex flex-col gap-y-[24px]">
-      <h1 className="inline-block, text-[3.5em]">Contact Page</h1>
+    <Layout.Page>
+      <h1 className="inline-block, text-[3.5rem]">Contact Page</h1>
       <p>
         The web-app is created by <strong>Olga Barovskaya</strong>
       </p>
@@ -21,6 +23,6 @@ export default function Contacts() {
           Olga Barovskya
         </a>
       </p>
-    </div>
+    </Layout.Page>
   );
 }

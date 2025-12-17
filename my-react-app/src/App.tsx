@@ -1,10 +1,10 @@
 import AppRouter from "./routes/AppRouter";
-import Wrapper from "./containers/Wrapper";
+import * as Layout from "@/layouts";
 
 export function App() {
   return (
-    <Wrapper>
+    <Layout.Wrapper>
       <AppRouter />
-    </Wrapper>
+    </Layout.Wrapper>
   );
 }

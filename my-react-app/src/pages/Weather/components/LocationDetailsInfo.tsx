@@ -24,7 +24,7 @@ export function LocationDetailsInfo({ units }: { units: type.DegreeUnits }) {
   const sunset = utils.convertToTime(weather!.sys.sunset * 1000 + timezone);
   const visibility = weather?.visibility;
   return (
-    <div className="flex flex-wrap gap-y-space-medium gap-x-space-medium justify-evenly">
+    <div className="flex flex-wrap gap-y-space-medium gap-x-space-medium justify-evenly overflow-y-auto">
       <DetailsBlock name="Humidity" value={humidity + "%"} />
       <DetailsBlock name="Pressure" value={pressure + " hPa"} />
       <DetailsBlock

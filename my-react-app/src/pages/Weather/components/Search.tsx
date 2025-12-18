@@ -21,7 +21,7 @@ export default function Search({
   return (
     <div className="flex justify-end gap-x-space-large items-center">
       <form
-        className="w-1/2 self-end flex flex-col min-w-[250px] gap-y-space-small"
+        className="w-full xs:w-1/2 self-end flex flex-col min-w-[250px] gap-y-space-small"
         onSubmit={handleSubmit((data) => {
           onCityChange(data.city);
         })}

@@ -51,8 +51,8 @@ export default function SectionLocationMain({
   return (
     <Layout.BoardSection>
       <Location city={city} country={country!} />
-      <div className="flexHorizontal h-full">
-        <div className="flexVertical">
+      <div className="flexHorizontal">
+        <div className="flexVertical gap-y-[7rem]">
           <Date />
           <WeatherDescription
             description={description}

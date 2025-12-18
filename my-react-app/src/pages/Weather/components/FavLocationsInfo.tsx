@@ -6,7 +6,7 @@ import * as type from "@/types";
 export function FavLocationsInfo({ units }: { units: type.DegreeUnits }) {
   const favLocations = context.useFavLocationContext().favLocations;
   return (
-    <div className="flex flex-col gap-y-space-medium">
+    <div className="flex flex-col gap-y-space-medium overflow-y-auto">
       {favLocations &&
         favLocations.map((location: string, index) => (
           <WeatherProvider key={index} city={location} units={units}>

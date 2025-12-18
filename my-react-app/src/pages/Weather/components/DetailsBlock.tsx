@@ -25,9 +25,9 @@ export default function DetailsBlock({
   const iconImg = weatherIconsObject.get(name);
 
   return (
-    <Layout.BlockVertical className="w-63 h-54">
+    <Layout.BlockVertical className="w-60 h-48 lg:h-55">
       <div className="w-full flexHorizontal items-center ">
-        <img className="w-[24px] object-contain" src={iconImg} alt={name}></img>
+        <img className="w-10 object-contain" src={iconImg} alt={name}></img>
         <h3>{name}</h3>
       </div>
       <p className="text-size-large">{value}</p>

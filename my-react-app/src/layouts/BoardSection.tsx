@@ -7,5 +7,4 @@ rounded-r-large
 flex 
 flex-col
 gap-y-space-small
-min-h-[280px] 
 `;

@@ -7,7 +7,9 @@ import * as Layout from "@/layouts";
 
 export default function AppRouter() {
   const getNavLinkClassName = ({ isActive }: { isActive: Boolean }) =>
-    isActive ? "text-primary font-bold" : "text-black font-medium";
+    `${
+      isActive ? "text-primary font-bold" : "text-black font-medium"
+    } px-6  sm:px-9 no-underline`;
 
   return (
     <BrowserRouter basename="/Internship_Task3">

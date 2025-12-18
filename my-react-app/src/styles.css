@@ -2,7 +2,7 @@
 
 @layer base {
   html {
-    font-size: 10px;
+    font-size: 7px;
     font-family: "Inter", sans-serif;
     line-height: 1.2;
   }
@@ -29,11 +29,6 @@
   h3 {
     margin: 0;
   }
-
-  nav * {
-    padding: 0 30px;
-    text-decoration: none;
-  }
 }
 
 @theme {
@@ -42,9 +37,9 @@
   --color-light-gray: #b9b9b9;
   --color-light: #fff;
 
-  --spacing-space-large: 24px;
-  --spacing-space-medium: 16px;
-  --spacing-space-small: 8px;
+  --spacing-space-large: 2.4rem;
+  --spacing-space-medium: 1.6rem;
+  --spacing-space-small: 0.8rem;
 
   --radius-r-large: 24px;
   --radius-r-medium: 16px;
@@ -52,6 +47,9 @@
   --text-size-large: 2.4rem;
   --text-size-medium: 1.6rem;
   --text-size-small: 1.4rem;
+
+  --breakpoint-xs: 30rem;
+  --breakpoint-m: 61.5rem;
 }
 
 @layer components {
@@ -67,13 +65,8 @@
   }
 }
 
-* {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
-  max-width: 1920px;
 }
 
 input::placeholder {
@@ -83,14 +76,26 @@ input::placeholder {
   opacity: 1;
 }
 
-@media (max-width: 900px) {
-  body {
+@media (min-width: 500px) {
+  html {
     font-size: 8px;
   }
 }
 
-@media (max-width: 780px) {
-  body {
-    font-size: 6px;
+/* @media (min-width: 640px) {
+  html {
+    font-size: 9px;
+  }
+} */
+
+/* @media (min-width: 1280px) {
+  html {
+    font-size: 10px;
+  }
+} */
+
+@media (min-width: 1536px) {
+  html {
+    font-size: 10px;
   }
 }

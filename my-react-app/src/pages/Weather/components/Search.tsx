@@ -19,16 +19,16 @@ export default function Search({
   const { register, handleSubmit } = useForm();
 
   return (
-    <div className="flex justify-end gap-x-space-large items-center">
+    <div className="flex justify-end gap-x-space-large text-black items-start">
       <form
-        className="w-full xs:w-1/2 self-end flex flex-col min-w-[250px] gap-y-space-small"
+        className="w-full xs:w-1/2 self-end flex flex-col min-w-[250px] gap-y-space-small "
         onSubmit={handleSubmit((data) => {
           onCityChange(data.city);
         })}
       >
         <input
           type="text"
-          className="h-22 w-full rounded-[36px] px-[5%] border border-black text-black"
+          className="h-22 w-full rounded-[36px] px-[5%] border border-black text-size-medium placeholder:italic"
           {...register("city", { required: "You need to enter a city" })}
           placeholder='Please, input a city here and press "Enter"'
         ></input>

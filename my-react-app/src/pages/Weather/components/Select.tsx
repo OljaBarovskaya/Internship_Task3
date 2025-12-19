@@ -12,7 +12,11 @@ export default function Select({ units, onUnitsChange }: SelectProps) {
     utils.setStorage("units", event.target.value as type.DegreeUnits);
   };
   return (
-    <select value={units} onChange={handleChange}>
+    <select
+      value={units}
+      onChange={handleChange}
+      className="h-22 text-size-large font-medium"
+    >
       <option value="metric">C</option>
       <option value="imperial">F</option>
     </select>

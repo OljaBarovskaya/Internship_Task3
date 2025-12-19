@@ -21,6 +21,7 @@
     font-size: var(--text-size-small);
   }
 
+  body,
   header,
   main,
   p,
@@ -65,34 +66,11 @@
   }
 }
 
-body {
-  margin: 0;
-}
-
-input::placeholder {
-  color: #999;
-  font-style: italic;
-  font-size: 0.9em;
-  opacity: 1;
-}
-
 @media (min-width: 500px) {
   html {
     font-size: 8px;
   }
 }
-
-/* @media (min-width: 640px) {
-  html {
-    font-size: 9px;
-  }
-} */
-
-/* @media (min-width: 1280px) {
-  html {
-    font-size: 10px;
-  }
-} */
 
 @media (min-width: 1536px) {
   html {

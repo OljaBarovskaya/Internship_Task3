@@ -5,6 +5,7 @@ import * as utils from "@/utils/index";
 import * as type from "@/types";
 import { FAV_LOCATIONS } from "@/constants/constants";
 import * as Layout from "@/layouts";
+import { Loader } from "@/components/Loader";
 
 export default function LocationBlock({
   city,
@@ -18,7 +19,7 @@ export default function LocationBlock({
   const { lastSuccessfulWeather, isLoading } = weatherData;
 
   if (!lastSuccessfulWeather && isLoading) {
-    return <h2>Loading...</h2>;
+    return <Loader />;
   }
 
   const weather = lastSuccessfulWeather;

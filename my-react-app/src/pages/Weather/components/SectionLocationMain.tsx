@@ -9,6 +9,7 @@ import * as type from "@/types";
 import { useState, useEffect } from "react";
 import { LOCATION_MAIN } from "@/constants/constants";
 import { WeatherDescription } from "./WeatherDescription";
+import { Loader } from "@/components/Loader";
 
 export default function SectionLocationMain({
   units,
@@ -29,7 +30,7 @@ export default function SectionLocationMain({
   if (!lastSuccessfulWeather && isLoading) {
     return (
       <Layout.BoardSection>
-        <h2>Loading...</h2>
+        <Loader />
       </Layout.BoardSection>
     );
   }

@@ -3,6 +3,7 @@ import * as Layout from "@/layouts";
 import * as type from "@/types";
 import * as utils from "@/utils/index";
 import DetailsBlock from "./DetailsBlock";
+import { Loader } from "@/components/Loader";
 
 export function LocationDetailsInfo({ units }: { units: type.DegreeUnits }) {
   const { lastSuccessfulWeather, isLoading } = context.useWeather();
@@ -10,7 +11,7 @@ export function LocationDetailsInfo({ units }: { units: type.DegreeUnits }) {
   if (!lastSuccessfulWeather && isLoading) {
     return (
       <Layout.BoardSection>
-        <h2>Loading...</h2>
+        <Loader />
       </Layout.BoardSection>
     );
   }

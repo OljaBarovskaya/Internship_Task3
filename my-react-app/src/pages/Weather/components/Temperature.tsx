@@ -1,10 +1,10 @@
 import * as type from "@/types";
 
 interface TemperatureProps {
-  highT: number;
-  lowT: number;
-  sizeHighT: number;
-  sizeLowT: number;
+  highT: number | "unknown";
+  lowT: number | "unknown";
+  sizeHighT: number | "unknown";
+  sizeLowT: number | "unknown";
   units: type.DegreeUnits;
 }
 

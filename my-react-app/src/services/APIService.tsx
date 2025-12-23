@@ -13,6 +13,7 @@ export const getWeatherData = async function (
     throw new Error(errorData.message || "Failed to fetch weather data");
   }
   const data = await res.json();
+
   return data;
 };
 

@@ -22,30 +22,22 @@ export default function LocationBlock({
     return <Loader />;
   }
 
-  const weather = lastSuccessfulWeather;
-
-  const country = weather?.sys.country;
-  const iconCode = weather?.weather[0].icon;
-  const mainDescription = weather?.weather[0].main;
-  const tMin = Math.round(weather!.main.temp_min);
-  const tMax = Math.round(weather!.main.temp_max);
-
   return (
     <Layout.BlockHorizontal className="w-full">
       <div className="flexVertical gap-y-space-small">
-        <p>{country}</p>
+        <p>{lastSuccessfulWeather?.country}</p>
         <h2>{city}</h2>
-        <p>{mainDescription}</p>
+        <p>{lastSuccessfulWeather?.mainDescription}</p>
       </div>
       <img
         className="w-29 h-29 cover"
-        src={`http://openweathermap.org/img/w/${iconCode}.png`}
-        alt={mainDescription}
+        src={`http://openweathermap.org/img/w/${lastSuccessfulWeather?.iconCode}.png`}
+        alt={lastSuccessfulWeather?.mainDescription}
       ></img>
       <div className="flex flex-col items-end gap-y-5">
         <Temperature
-          highT={tMax!}
-          lowT={tMin!}
+          highT={lastSuccessfulWeather?.tMax!}
+          lowT={lastSuccessfulWeather?.tMin!}
           sizeHighT={2.4}
           sizeLowT={1.8}
           units={units}

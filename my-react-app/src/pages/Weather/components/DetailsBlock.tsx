@@ -20,7 +20,7 @@ export default function DetailsBlock({
   value,
 }: {
   name: string;
-  value: string;
+  value: string | undefined;
 }) {
   const iconImg = weatherIconsObject.get(name);
 

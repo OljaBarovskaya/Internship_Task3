@@ -54,9 +54,27 @@ export interface WeatherDataType {
 }
 
 export interface WeatherContextType {
-  lastSuccessfulWeather: WeatherDataType | undefined;
+  lastSuccessfulWeather: OptimizedWeatherData | undefined;
   isLoading: boolean;
   error: Error | null;
 }
 
 export type DegreeUnits = "metric" | "imperial";
+
+export interface OptimizedWeatherData {
+  country: string;
+  iconCode: string;
+  mainDescription: string;
+  tMin: number | "unknown";
+  tMax: number | "unknown";
+  description: string;
+  feelsLike: number | "unknown";
+  visibility: number | "unknown";
+  wind: number | "unknown";
+  pressure: number | "unknown";
+  humidity: number | "unknown";
+  sunrise: string;
+  sunset: string;
+  timezone: number | "unknown";
+  city: string;
+}

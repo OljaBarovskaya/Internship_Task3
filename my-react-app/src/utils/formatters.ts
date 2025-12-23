@@ -12,9 +12,15 @@ export function convertToFamiliarDateFormat(date: Date) {
   });
 }
 
-export function convertToTime(milliseconds: number) {
-  const date = new Date(milliseconds);
-
+export function convertToTime(
+  timeMs: number | "unknown",
+  timezoneMs: number | "unknown"
+) {
+  if (timeMs === "unknown" || timezoneMs === "unknown") {
+    return "unknown";
+  }
+  const localTimeMs = timeMs * 1000 + timezoneMs;
+  const date = new Date(localTimeMs);
   const time = date.toLocaleTimeString().slice(0, 5);
 
   return time;

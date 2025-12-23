@@ -19,7 +19,9 @@ export default function SectionLocationMain({
   const { lastSuccessfulWeather, isLoading } = context.useWeather();
   const { favLocations, setFavLocations } = context.useFavLocationContext();
   const [isFavorite, setIsFavorite] = useState(false);
-  const city = lastSuccessfulWeather?.name || " ";
+  const city = lastSuccessfulWeather?.city || " ";
+
+  // console.log("lastSuccessfulWeather", lastSuccessfulWeather);
 
   useEffect(() => {
     if (city && favLocations) {
@@ -35,14 +37,6 @@ export default function SectionLocationMain({
     );
   }
 
-  const country = lastSuccessfulWeather!.sys.country;
-  const iconCode = lastSuccessfulWeather!.weather[0].icon;
-  const mainDescription = lastSuccessfulWeather!.weather[0].main;
-  const tMin = Math.round(lastSuccessfulWeather!.main.temp_min);
-  const tMax = Math.round(lastSuccessfulWeather!.main.temp_max);
-  const description = lastSuccessfulWeather!.weather[0].description;
-  let feelsLike = Math.round(lastSuccessfulWeather!.main.feels_like);
-
   if (!favLocations) {
     return <div>Loading context...</div>;
   }
@@ -51,25 +45,25 @@ export default function SectionLocationMain({
 
   return (
     <Layout.BoardSection>
-      <Location city={city} country={country!} />
+      <Location city={city} country={lastSuccessfulWeather?.country!} />
       <div className="flexHorizontal">
         <div className="flexVertical gap-y-[7rem]">
           <Date />
           <WeatherDescription
-            description={description}
+            description={lastSuccessfulWeather?.description!}
             units={units}
-            feelsLike={feelsLike}
+            feelsLike={lastSuccessfulWeather?.feelsLike!}
           />
         </div>
         <img
           className="object-contain w-28"
-          src={`http://openweathermap.org/img/w/${iconCode}.png`}
-          alt={mainDescription}
+          src={`http://openweathermap.org/img/w/${lastSuccessfulWeather?.iconCode}.png`}
+          alt={lastSuccessfulWeather?.mainDescription}
         />
         <div className="flexVertical items-end">
           <Temperature
-            highT={tMax!}
-            lowT={tMin!}
+            highT={lastSuccessfulWeather?.tMax!}
+            lowT={lastSuccessfulWeather?.tMin!}
             sizeHighT={4.0}
             sizeLowT={2.4}
             units={units}

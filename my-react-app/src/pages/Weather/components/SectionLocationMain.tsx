@@ -21,8 +21,6 @@ export default function SectionLocationMain({
   const [isFavorite, setIsFavorite] = useState(false);
   const city = lastSuccessfulWeather?.city || " ";
 
-  // console.log("lastSuccessfulWeather", lastSuccessfulWeather);
-
   useEffect(() => {
     if (city && favLocations) {
       setIsFavorite(favLocations.includes(city));

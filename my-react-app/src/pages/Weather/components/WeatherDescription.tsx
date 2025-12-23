@@ -3,7 +3,7 @@ import * as type from "@/types";
 interface WeatherDescriptionProps {
   description: string;
   units: type.DegreeUnits;
-  feelsLike: number;
+  feelsLike: number | "unknown";
 }
 
 export function WeatherDescription({

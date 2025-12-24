@@ -11,16 +11,24 @@ export default function WeatherDashboard() {
   const [units, changeUnits] = useState<type.DegreeUnits>(
     utils.getStartUnits()
   );
-  const [isCorrect, setIsCorrect] = useState(true);
+  const [noError, setNoError] = useState(true);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   return (
     <Layout.Page className="text-light">
-      <WeatherProvider city={city} units={units} setIsCorrect={setIsCorrect}>
+      <WeatherProvider
+        city={city}
+        units={units}
+        setNoError={setNoError}
+        setIsSuccess={setIsSuccess}
+      >
         <Search
           onCityChange={changeCity}
           units={units}
           onUnitsChange={changeUnits}
-          isCorrect={isCorrect}
+          noError={noError}
+          isSuccess={isSuccess}
+          setIsSuccess={setIsSuccess}
         />
         <Dashboard units={units} />
       </WeatherProvider>

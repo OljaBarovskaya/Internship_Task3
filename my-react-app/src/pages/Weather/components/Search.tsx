@@ -2,21 +2,35 @@ import { useForm } from "react-hook-form";
 import * as type from "@/types";
 import Select from "./Select";
 import { ErrorMessage } from "./ErrorMessage";
+import { useEffect } from "react";
 
 interface SearchProps {
   onCityChange: (newCity: string) => void;
   units: type.DegreeUnits;
   onUnitsChange: (value: type.DegreeUnits) => void;
-  isCorrect: true | false;
+  noError: boolean;
+  isSuccess: boolean;
+  setIsSuccess: (value: true | false) => void;
 }
 
 export default function Search({
   onCityChange,
   units,
   onUnitsChange,
-  isCorrect,
+  noError,
+  isSuccess,
+  setIsSuccess,
 }: SearchProps) {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, setValue } = useForm({
+    defaultValues: { city: "" },
+  });
+
+  useEffect(() => {
+    if (isSuccess && noError) {
+      setValue("city", "");
+      setIsSuccess(false);
+    }
+  }, [isSuccess, noError]);
 
   return (
     <div className="flex justify-end gap-x-space-large text-black items-start">
@@ -32,7 +46,7 @@ export default function Search({
           {...register("city", { required: "You need to enter a city" })}
           placeholder='Please, input a city here and press "Enter"'
         ></input>
-        <ErrorMessage isCorrect={isCorrect} />
+        <ErrorMessage noError={noError} />
       </form>
       <Select units={units} onUnitsChange={onUnitsChange} />
     </div>

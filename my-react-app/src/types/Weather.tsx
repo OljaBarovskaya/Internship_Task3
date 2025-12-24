@@ -57,6 +57,7 @@ export interface WeatherContextType {
   lastSuccessfulWeather: OptimizedWeatherData | undefined;
   isLoading: boolean;
   error: Error | null;
+  isSuccess: boolean;
 }
 
 export type DegreeUnits = "metric" | "imperial";

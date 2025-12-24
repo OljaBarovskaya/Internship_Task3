@@ -12,12 +12,12 @@ vi.mock("@/utils/helpers", () => ({
 }));
 
 vi.mock("./Search", () => ({
-  default: vi.fn(({ onCityChange, units, onUnitsChange, isCorrect }) => (
+  default: vi.fn(({ onCityChange, units, onUnitsChange, noError }) => (
     <div data-testid="mock-search">
       <span>Units: {units}</span>
       <button onClick={() => onCityChange("New City")}>Change City</button>
       <button onClick={() => onUnitsChange("imperial")}>Change Units</button>
-      <span>Status: {isCorrect ? "Correct" : "Incorrect"}</span>
+      <span>Status: {noError ? "Correct" : "Incorrect"}</span>
     </div>
   )),
 }));

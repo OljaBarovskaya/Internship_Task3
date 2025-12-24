@@ -8,14 +8,16 @@ interface WeatherProviderType {
   children: React.ReactNode;
   city: string;
   units: type.DegreeUnits;
-  setIsCorrect?: (value: true | false) => void;
+  setNoError?: (value: true | false) => void;
+  setIsSuccess?: (value: true | false) => void;
 }
 
 export function WeatherProvider({
   children,
   city,
   units,
-  setIsCorrect,
+  setNoError,
+  setIsSuccess,
 }: WeatherProviderType) {
   const lastSuccessfulDataRef = useRef<type.OptimizedWeatherData | undefined>(
     undefined
@@ -25,7 +27,10 @@ export function WeatherProvider({
     data: currentWeatherData,
     isLoading,
     error,
+    isSuccess,
   } = useWeatherQuery(city, units);
+
+  console.log("isSuccess", isSuccess);
 
   const weatherData = useMemo(() => {
     return currentWeatherData
@@ -45,17 +50,17 @@ export function WeatherProvider({
     lastSuccessfulWeather: dataToShowInContext,
     isLoading,
     error,
+    isSuccess,
   };
 
   useEffect(() => {
-    if (setIsCorrect) {
-      if (error) {
-        setIsCorrect(false);
-      } else if (currentWeatherData) {
-        setIsCorrect(true);
-      }
+    if (error) {
+      setNoError?.(false);
+    } else if (isSuccess) {
+      setNoError?.(true);
+      setIsSuccess?.(true);
     }
-  }, [currentWeatherData, error, setIsCorrect]);
+  }, [currentWeatherData, error, isSuccess]);
 
   return (
     <context.WeatherContext.Provider value={contextValue}>

@@ -1,14 +1,14 @@
 export default function HowToUseBlock({
   title,
-  description,
+  instructions,
 }: {
   title: string;
-  description: string[];
+  instructions: string[];
 }) {
   return (
     <div>
       <h3>{title}</h3>
-      {description.map((text, index) => (
+      {instructions.map((text, index) => (
         <p key={index}>{text}</p>
       ))}
     </div>

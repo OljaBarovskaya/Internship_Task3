@@ -30,8 +30,6 @@ export function WeatherProvider({
     isSuccess,
   } = useWeatherQuery(city, units);
 
-  console.log("isSuccess", isSuccess);
-
   const weatherData = useMemo(() => {
     return currentWeatherData
       ? convertToNecessaryObj(currentWeatherData)

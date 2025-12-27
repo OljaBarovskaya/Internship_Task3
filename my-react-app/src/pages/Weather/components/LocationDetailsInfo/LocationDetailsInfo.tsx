@@ -1,8 +1,9 @@
 import * as context from "@/context";
 import * as Layout from "@/layouts";
 import * as type from "@/types";
-import DetailsBlock from "./DetailsBlock";
+import { DetailsBlock } from "@/pages/Weather/components";
 import { Loader } from "@/components/Loader";
+import * as S from "./LocationDetailsInfo.styled";
 
 export function LocationDetailsInfo({ units }: { units: type.DegreeUnits }) {
   const { lastSuccessfulWeather, isLoading } = context.useWeather();
@@ -16,7 +17,7 @@ export function LocationDetailsInfo({ units }: { units: type.DegreeUnits }) {
   }
 
   return (
-    <div className="flex flex-wrap gap-y-space-medium gap-x-space-medium justify-evenly overflow-y-auto">
+    <S.DetailsInfo>
       <DetailsBlock
         name="Humidity"
         value={lastSuccessfulWeather?.humidity + "%"}
@@ -39,6 +40,6 @@ export function LocationDetailsInfo({ units }: { units: type.DegreeUnits }) {
       />
       <DetailsBlock name="Sunrise" value={lastSuccessfulWeather?.sunrise} />
       <DetailsBlock name="Sunset" value={lastSuccessfulWeather?.sunset} />
-    </div>
+    </S.DetailsInfo>
   );
 }

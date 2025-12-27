@@ -1,0 +1,1 @@
+export { FavLocationsInfo } from "./FavLocationsInfo";

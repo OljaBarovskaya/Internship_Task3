@@ -1,0 +1,1 @@
+export { SectionFavLocations } from "./SectionFavLocations";

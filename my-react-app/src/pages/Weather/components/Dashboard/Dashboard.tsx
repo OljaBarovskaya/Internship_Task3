@@ -1,11 +1,13 @@
 import * as type from "@/types";
 import * as Layout from "@/layouts";
 import { FavLocationsContextProvider } from "@/app/providers/FavLocationsProvider";
-import SectionLocationMain from "./SectionLocationMain";
-import SectionLocationDetails from "./SectionLocationDetails";
-import BlockFavLocations from "./SectionFavLocations";
+import {
+  SectionFavLocations,
+  SectionLocationDetails,
+  SectionLocationMain,
+} from "@/pages/Weather/components";
 
-export default function Dashboard({ units }: { units: type.DegreeUnits }) {
+export function Dashboard({ units }: { units: type.DegreeUnits }) {
   return (
     <FavLocationsContextProvider>
       <Layout.Board>
@@ -14,7 +16,7 @@ export default function Dashboard({ units }: { units: type.DegreeUnits }) {
           <SectionLocationDetails units={units} />
         </Layout.Column>
         <Layout.Column>
-          <BlockFavLocations units={units} />
+          <SectionFavLocations units={units} />
         </Layout.Column>
       </Layout.Board>
     </FavLocationsContextProvider>

@@ -8,7 +8,7 @@ interface TemperatureProps {
   units: type.DegreeUnits;
 }
 
-export default function Temperature({
+export function Temperature({
   highT,
   lowT,
   sizeHighT,

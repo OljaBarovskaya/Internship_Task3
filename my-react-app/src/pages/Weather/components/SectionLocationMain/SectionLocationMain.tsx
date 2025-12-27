@@ -1,21 +1,19 @@
-import * as Layout from "@/layouts";
-import Location from "./Location";
-import Date from "./Date";
-import Temperature from "./Temperature";
+import { useState, useEffect } from "react";
+import {
+  Location,
+  CurrentDate,
+  Temperature,
+  WeatherDescription,
+} from "@/pages/Weather/components";
 import Star from "@/assets/img/star.svg?react";
 import * as context from "@/context";
 import * as utils from "@/utils/index";
 import * as type from "@/types";
-import { useState, useEffect } from "react";
+import * as Layout from "@/layouts";
 import { LOCATION_MAIN } from "@/constants/constants";
-import { WeatherDescription } from "./WeatherDescription";
 import { Loader } from "@/components/Loader";
 
-export default function SectionLocationMain({
-  units,
-}: {
-  units: type.DegreeUnits;
-}) {
+export function SectionLocationMain({ units }: { units: type.DegreeUnits }) {
   const { lastSuccessfulWeather, isLoading } = context.useWeather();
   const { favLocations, setFavLocations } = context.useFavLocationContext();
   const [isFavorite, setIsFavorite] = useState(false);
@@ -27,16 +25,12 @@ export default function SectionLocationMain({
     }
   }, [city, favLocations]);
 
-  if (!lastSuccessfulWeather && isLoading) {
+  if ((!lastSuccessfulWeather && isLoading) || !favLocations) {
     return (
       <Layout.BoardSection>
         <Loader />
       </Layout.BoardSection>
     );
-  }
-
-  if (!favLocations) {
-    return <div>Loading context...</div>;
   }
 
   utils.setStorage(LOCATION_MAIN, city);
@@ -46,7 +40,7 @@ export default function SectionLocationMain({
       <Location city={city} country={lastSuccessfulWeather?.country!} />
       <div className="flexHorizontal">
         <div className="flexVertical gap-y-[7rem]">
-          <Date />
+          <CurrentDate />
           <WeatherDescription
             description={lastSuccessfulWeather?.description!}
             units={units}

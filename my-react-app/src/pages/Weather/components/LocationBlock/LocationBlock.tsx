@@ -1,4 +1,4 @@
-import Temperature from "./Temperature";
+import { Temperature } from "@/pages/Weather/components";
 import * as context from "@/context";
 import Star from "@/assets/img/star.svg?react";
 import * as utils from "@/utils/index";
@@ -6,8 +6,9 @@ import * as type from "@/types";
 import { FAV_LOCATIONS } from "@/constants/constants";
 import * as Layout from "@/layouts";
 import { Loader } from "@/components/Loader";
+import * as S from "./LocationBlock.styled";
 
-export default function LocationBlock({
+export function LocationBlock({
   city,
   units,
 }: {
@@ -24,17 +25,16 @@ export default function LocationBlock({
 
   return (
     <Layout.BlockHorizontal className="w-full">
-      <div className="flexVertical gap-y-space-small">
+      <S.MainInfo>
         <p>{lastSuccessfulWeather?.country}</p>
         <h2>{city}</h2>
         <p>{lastSuccessfulWeather?.mainDescription}</p>
-      </div>
-      <img
-        className="w-29 h-29 cover"
+      </S.MainInfo>
+      <S.WeatherImg
         src={`http://openweathermap.org/img/w/${lastSuccessfulWeather?.iconCode}.png`}
         alt={lastSuccessfulWeather?.mainDescription}
-      ></img>
-      <div className="flex flex-col items-end gap-y-5">
+      ></S.WeatherImg>
+      <S.SecInfo>
         <Temperature
           highT={lastSuccessfulWeather?.tMax!}
           lowT={lastSuccessfulWeather?.tMin!}
@@ -54,7 +54,7 @@ export default function LocationBlock({
             utils.setStorage(FAV_LOCATIONS, updatedFavLocations!);
           }}
         />
-      </div>
+      </S.SecInfo>
     </Layout.BlockHorizontal>
   );
 }

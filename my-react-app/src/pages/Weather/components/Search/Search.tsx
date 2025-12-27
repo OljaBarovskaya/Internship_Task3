@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
-import * as type from "@/types";
-import Select from "./Select";
-import { ErrorMessage } from "./ErrorMessage";
 import { useEffect } from "react";
+import * as type from "@/types";
+import { Select, ErrorMessage } from "@/pages/Weather/components";
+import * as S from "./Search.styled";
 
 interface SearchProps {
   onCityChange: (newCity: string) => void;
@@ -13,7 +13,7 @@ interface SearchProps {
   setIsSuccess: (value: true | false) => void;
 }
 
-export default function Search({
+export function Search({
   onCityChange,
   units,
   onUnitsChange,
@@ -33,22 +33,20 @@ export default function Search({
   }, [isSuccess, noError]);
 
   return (
-    <div className="flex justify-end gap-x-space-large text-black items-start">
-      <form
-        className="w-full xs:w-1/2 self-end flex flex-col min-w-[250px] gap-y-space-small "
+    <S.FormArea>
+      <S.Form
         onSubmit={handleSubmit((data) => {
           onCityChange(data.city);
         })}
       >
-        <input
+        <S.InputField
           type="text"
-          className="h-22 w-full rounded-[36px] px-[5%] border border-black text-size-medium placeholder:italic"
           {...register("city", { required: "You need to enter a city" })}
           placeholder='Please, input a city here and press "Enter"'
-        ></input>
+        ></S.InputField>
         <ErrorMessage noError={noError} />
-      </form>
+      </S.Form>
       <Select units={units} onUnitsChange={onUnitsChange} />
-    </div>
+    </S.FormArea>
   );
 }

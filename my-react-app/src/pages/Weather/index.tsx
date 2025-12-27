@@ -1,10 +1,9 @@
-import Search from "./components/Search";
-import Dashboard from "./components/Dashboard";
 import { useState } from "react";
 import { WeatherProvider } from "@/app/providers/WeatherProvider";
 import * as type from "@/types";
 import * as utils from "@/utils/index";
 import * as Layout from "@/layouts";
+import { Search, Dashboard } from "./components";
 
 export default function WeatherDashboard() {
   const [city, changeCity] = useState(utils.getStartCity());

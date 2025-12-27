@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import TmpComponent from "./Temperature";
+import { Temperature } from "./Temperature";
 
 describe("My test suite", () => {
   const defaultProps = {
@@ -11,7 +11,7 @@ describe("My test suite", () => {
   };
 
   test("renders metric units correctly", () => {
-    render(<TmpComponent {...defaultProps} units="metric" />);
+    render(<Temperature {...defaultProps} units="metric" />);
 
     const highTempElement = screen.getByText("25°C");
     expect(highTempElement).toBeInTheDocument();
@@ -33,7 +33,7 @@ describe("My test suite", () => {
       units: "imperial" as const,
     };
 
-    render(<TmpComponent {...imperialProps} />);
+    render(<Temperature {...imperialProps} />);
 
     const highTempElement = screen.getByText("77°F");
     expect(highTempElement).toBeInTheDocument();
@@ -53,7 +53,7 @@ describe("My test suite", () => {
       units: "metric" as const,
     };
 
-    render(<TmpComponent {...coldProps} />);
+    render(<Temperature {...coldProps} />);
 
     expect(screen.getByText("-1°C")).toBeInTheDocument();
     expect(screen.getByText("/-10°C")).toBeInTheDocument();

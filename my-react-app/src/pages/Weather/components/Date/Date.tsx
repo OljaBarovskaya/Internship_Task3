@@ -5,7 +5,7 @@ import {
   convertToWeekday,
 } from "@/utils/formatters";
 
-export default function CurrentDate() {
+export function CurrentDate() {
   const [date, setDate] = useState(new Date());
 
   const weekday = convertToWeekday(date);

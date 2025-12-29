@@ -25,3 +25,7 @@ export const NO_DATA_OBJECT: OptimizedWeatherData = {
   sunset: "unknown",
   city: "unknown",
 };
+
+export const TEL = "+375292883985";
+export const GITHUB = "https://github.com/OljaBarovskaya";
+export const EMAIL = "volha.barouskaya@ventionteams.com";

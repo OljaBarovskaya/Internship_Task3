@@ -1,8 +1,9 @@
+import { FlexColumnSection } from "@/pages/Common/layouts";
 import LogoOpenWeather from "./Logo";
 
 export default function OpenWeatherMap() {
   return (
-    <section className="flex flex-col gap-y-space-small">
+    <FlexColumnSection>
       <h2>About OpenWeatherMap</h2>
       <p>
         OpenWeatherMap is an online service that provides global weather data
@@ -11,6 +12,6 @@ export default function OpenWeatherMap() {
         developers to large businesses, offering both free and paid plans.
       </p>
       <LogoOpenWeather />
-    </section>
+    </FlexColumnSection>
   );
 }

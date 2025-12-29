@@ -1,9 +1,10 @@
+import { FlexColumnSection } from "@/pages/Common/layouts";
 import HowToUseBlock from "./HowToUseBlock";
 import { howToUseDesc } from "./HowToUseDesc";
 
 export default function HowToUse() {
   return (
-    <section className="flex flex-col gap-y-space-small">
+    <FlexColumnSection>
       <h2>How to use the application</h2>
       <p>
         This app consists of two main blocks - Search and Dashboard itself that
@@ -14,6 +15,6 @@ export default function HowToUse() {
       {howToUseDesc.map((instructions, index) => (
         <HowToUseBlock {...instructions} key={index} />
       ))}
-    </section>
+    </FlexColumnSection>
   );
 }

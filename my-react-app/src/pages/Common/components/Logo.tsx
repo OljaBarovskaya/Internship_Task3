@@ -1,12 +1,13 @@
+import { FlexColumnSection } from "@/pages/Common/layouts";
 import Logo from "@/assets/img/OpenWeatherLogo.png";
 
 export default function LogoOpenWeather() {
   return (
-    <div className="logo-section flex flex-col gap-y-space-small">
+    <FlexColumnSection>
       <img src={Logo} alt="OpenWeatherMap Logo" className="w-[150px]" />
       <a href="https://openweathermap.org/" target="_blank">
         Website link
       </a>
-    </div>
+    </FlexColumnSection>
   );
 }

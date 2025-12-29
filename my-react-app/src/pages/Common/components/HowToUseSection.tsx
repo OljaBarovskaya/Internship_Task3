@@ -2,7 +2,7 @@ import { FlexColumnSection } from "@/pages/Common/layouts";
 import HowToUseBlock from "./HowToUseBlock";
 import { howToUseDesc } from "./HowToUseDesc";
 
-export default function HowToUse() {
+export default function HowToUseSection() {
   return (
     <FlexColumnSection>
       <h2>How to use the application</h2>

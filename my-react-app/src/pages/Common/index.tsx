@@ -1,17 +1,17 @@
 import * as Layout from "@/layouts";
-import HowToUse from "./components/HowToUse";
-import OpenWeatherMap from "./components/OpenWeatherMap";
+import OpenWeatherMapSection from "./components/OpenWeatherMapSection";
+import HowToUseSection from "./components/HowToUseSection";
 
 export default function Common() {
   return (
     <Layout.Page>
-      <h1 className="inline-block, text-[3.5rem]"> The App and Data Source</h1>
+      <Layout.Heading> The App and Data Source</Layout.Heading>
       <p>
         The weather information for this web app is being presented by
         OpenWeather.
       </p>
-      <OpenWeatherMap />
-      <HowToUse />
+      <OpenWeatherMapSection />
+      <HowToUseSection />
     </Layout.Page>
   );
 }

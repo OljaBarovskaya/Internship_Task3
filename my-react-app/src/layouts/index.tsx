@@ -7,3 +7,4 @@ export * from "./Main";
 export * from "./BoardSection";
 export * from "./BlockVertical";
 export * from "./BlockHorizontal";
+export * from "./Heading";

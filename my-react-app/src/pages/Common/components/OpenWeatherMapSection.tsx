@@ -1,7 +1,7 @@
 import { FlexColumnSection } from "@/pages/Common/layouts";
 import LogoOpenWeather from "./Logo";
 
-export default function OpenWeatherMap() {
+export default function OpenWeatherMapSection() {
   return (
     <FlexColumnSection>
       <h2>About OpenWeatherMap</h2>

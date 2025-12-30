@@ -7,6 +7,7 @@ export const LOCATION_MAIN = "locationMain";
 export const FAV_LOCATIONS = "favouriteLocations";
 export const MINUTE = 60000;
 export const UNITS = "units";
+export const CITY_INPUT_PLACEHOLDER = "Please, input a city here";
 
 export const NO_DATA_OBJECT: OptimizedWeatherData = {
   country: "unknown",

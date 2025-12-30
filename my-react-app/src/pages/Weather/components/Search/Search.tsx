@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import * as type from "@/types";
 import { Select, ErrorMessage } from "@/pages/Weather/components";
 import * as S from "./Search.styled";
+import { CITY_INPUT_PLACEHOLDER } from "@/constants/constants";
 
 interface SearchProps {
   onCityChange: (newCity: string) => void;
@@ -45,7 +46,7 @@ export function Search({
         <S.InputField
           type="text"
           {...register("city", { required: "You need to enter a city" })}
-          placeholder='Please, input a city here and press "Enter"'
+          placeholder={CITY_INPUT_PLACEHOLDER}
         ></S.InputField>
         <ErrorMessage noError={noError} />
       </S.Form>

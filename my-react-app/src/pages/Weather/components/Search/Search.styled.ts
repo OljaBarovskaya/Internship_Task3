@@ -25,6 +25,7 @@ rounded-[36px]
 px-[5%] 
 border 
 border-black 
-text-size-medium 
+text-size-large
 placeholder:italic
+2xl:text-size-medium
 `;

@@ -37,6 +37,9 @@ export function Search({
       <S.Form
         onSubmit={handleSubmit((data) => {
           onCityChange(data.city);
+          if (document.activeElement instanceof HTMLElement) {
+            document.activeElement.blur();
+          }
         })}
       >
         <S.InputField

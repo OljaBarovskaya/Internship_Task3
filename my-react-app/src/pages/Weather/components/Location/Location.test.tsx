@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Location from "./Location";
+import { Location } from "./Location";
 import "@testing-library/jest-dom/vitest";
 import { vi } from "vitest";
 

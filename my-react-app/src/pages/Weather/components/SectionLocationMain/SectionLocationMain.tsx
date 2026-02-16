@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import {
   Location,
   CurrentDate,
@@ -7,74 +7,65 @@ import {
 } from "@/pages/Weather/components";
 import Star from "@/assets/img/star.svg?react";
 import * as context from "@/context";
-import * as utils from "@/utils/index";
-import * as type from "@/types";
-import * as Layout from "@/layouts";
-import { LOCATION_MAIN } from "@/constants/constants";
-import { Loader } from "@/components/Loader";
+import { toggleFavCity } from "@/pages/Weather/utils";
+import { setStorage } from "@/utils";
+import * as Layout from "@/components/layouts";
+import { LOCATION_MAIN } from "@/constants";
+import { Loader } from "@/components/UI";
+import * as S from "./SectionLocationMain.styled";
 
-export function SectionLocationMain({ units }: { units: type.DegreeUnits }) {
+export function SectionLocationMain() {
   const { lastSuccessfulWeather, isLoading } = context.useWeather();
   const { favLocations, setFavLocations } = context.useFavLocationContext();
-  const [isFavorite, setIsFavorite] = useState(false);
   const city = lastSuccessfulWeather?.city || " ";
 
+  const isFavorite = Boolean(city && favLocations?.includes(city));
+
   useEffect(() => {
-    if (city && favLocations) {
-      setIsFavorite(favLocations.includes(city));
+    if (city) {
+      setStorage(LOCATION_MAIN, city);
     }
-  }, [city, favLocations]);
+  }, [city]);
 
   if ((!lastSuccessfulWeather && isLoading) || !favLocations) {
     return (
       <Layout.BoardSection>
-        <Loader />
+        <Loader height="useUserContext" />
       </Layout.BoardSection>
     );
   }
 
-  utils.setStorage(LOCATION_MAIN, city);
-
   return (
     <Layout.BoardSection>
-      <Location city={city} country={lastSuccessfulWeather?.country!} />
+      <Location city={city} country={lastSuccessfulWeather?.country} />
       <div className="flexHorizontal">
-        <div className="flexVertical gap-y-[7rem]">
+        <S.LeftColumn>
           <CurrentDate />
           <WeatherDescription
-            description={lastSuccessfulWeather?.description!}
-            units={units}
-            feelsLike={lastSuccessfulWeather?.feelsLike!}
+            description={lastSuccessfulWeather?.description}
+            feelsLike={lastSuccessfulWeather?.feelsLike}
           />
-        </div>
-        <img
-          className="object-contain w-28"
+        </S.LeftColumn>
+        <S.WeatherImg
           src={`http://openweathermap.org/img/w/${lastSuccessfulWeather?.iconCode}.png`}
           alt={lastSuccessfulWeather?.mainDescription}
         />
-        <div className="flexVertical items-end">
+        <S.RightColumn>
           <Temperature
-            highT={lastSuccessfulWeather?.tMax!}
-            lowT={lastSuccessfulWeather?.tMin!}
+            highT={lastSuccessfulWeather?.tMax}
+            lowT={lastSuccessfulWeather?.tMin}
             sizeHighT={4.0}
             sizeLowT={2.4}
-            units={units}
           />
           <Star
             width={30}
             height={30}
             fill={isFavorite ? "yellow" : "white"}
             onClick={() =>
-              utils.toggleFavorite(
-                isFavorite,
-                setIsFavorite,
-                favLocations,
-                setFavLocations,
-                city
-              )
+              toggleFavCity(isFavorite, favLocations, setFavLocations, city)
             }
           />
-        </div>
+        </S.RightColumn>
       </div>
     </Layout.BoardSection>
   );

@@ -1,10 +1,13 @@
-import { EMAIL } from "@/constants/constants";
+import { Link } from "@/components/UI";
+import { EMAIL } from "@/constants";
 
 export function EmailContact() {
   return (
     <p>
       <strong>Email</strong>:{" "}
-      <a href={`mailto:${EMAIL}`}>volha.barouskaya@ventionteams.com</a>
+      <Link className="" href={`mailto:${EMAIL}`}>
+        {EMAIL}
+      </Link>
     </p>
   );
 }

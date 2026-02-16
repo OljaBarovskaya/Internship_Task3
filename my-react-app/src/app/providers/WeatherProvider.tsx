@@ -1,26 +1,24 @@
-import { useRef, useEffect, useMemo } from "react";
+import { useRef, useEffect, useMemo, type SetStateAction } from "react";
 import * as type from "@/types";
-import { useWeatherQuery } from "@/services/APIService";
-import * as context from "@/context";
+import { useWeatherQuery } from "@/services/OpenWeatherAPIService";
+import { WeatherContext } from "@/context";
 import { convertToNecessaryObj } from "./utils/converters";
 
 interface WeatherProviderType {
   children: React.ReactNode;
   city: string;
   units: type.DegreeUnits;
-  setNoError?: (value: true | false) => void;
-  setIsSuccess?: (value: true | false) => void;
+  setReqStatus?: React.Dispatch<SetStateAction<type.ReqStatusType>>;
 }
 
 export function WeatherProvider({
   children,
   city,
   units,
-  setNoError,
-  setIsSuccess,
+  setReqStatus,
 }: WeatherProviderType) {
   const lastSuccessfulDataRef = useRef<type.OptimizedWeatherData | undefined>(
-    undefined
+    undefined,
   );
 
   const {
@@ -49,20 +47,21 @@ export function WeatherProvider({
     isLoading,
     error,
     isSuccess,
+    city,
+    units,
   };
 
   useEffect(() => {
     if (error) {
-      setNoError?.(false);
+      setReqStatus?.("error");
     } else if (isSuccess) {
-      setNoError?.(true);
-      setIsSuccess?.(true);
+      setReqStatus?.("success");
     }
   }, [currentWeatherData, error, isSuccess]);
 
   return (
-    <context.WeatherContext.Provider value={contextValue}>
+    <WeatherContext.Provider value={contextValue}>
       {children}
-    </context.WeatherContext.Provider>
+    </WeatherContext.Provider>
   );
 }

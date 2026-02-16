@@ -5,7 +5,7 @@ import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom/vitest";
 import WeatherDashboard from ".";
 import * as utils from "@/utils/index";
-import { LOCATION_DEFAULT, LOCATION_MAIN } from "@/constants/constants";
+import { LOCATION_DEFAULT, LOCATION_MAIN } from "@/constants";
 
 vi.mock("@/utils/helpers", () => ({
   getStorage: vi.fn(),
@@ -52,7 +52,7 @@ describe("WeatherDashboard", () => {
     render(<WeatherDashboard />);
 
     expect(
-      screen.getByText(`Provider City: ${LOCATION_DEFAULT}`)
+      screen.getByText(`Provider City: ${LOCATION_DEFAULT}`),
     ).toBeInTheDocument();
     expect(screen.getByText("Provider Units: metric")).toBeInTheDocument();
     expect(screen.getByText("Units: metric")).toBeInTheDocument();
@@ -73,11 +73,11 @@ describe("WeatherDashboard", () => {
 
     expect(screen.getByText(`Provider City: ${savedCity}`)).toBeInTheDocument();
     expect(
-      screen.getByText(`Provider Units: ${savedUnits}`)
+      screen.getByText(`Provider Units: ${savedUnits}`),
     ).toBeInTheDocument();
     expect(screen.getByText(`Units: ${savedUnits}`)).toBeInTheDocument();
     expect(
-      screen.getByText(`Dashboard Units: ${savedUnits}`)
+      screen.getByText(`Dashboard Units: ${savedUnits}`),
     ).toBeInTheDocument();
   });
 
@@ -87,7 +87,7 @@ describe("WeatherDashboard", () => {
     const user = userEvent.setup();
 
     expect(
-      screen.getByText(`Provider City: ${LOCATION_DEFAULT}`)
+      screen.getByText(`Provider City: ${LOCATION_DEFAULT}`),
     ).toBeInTheDocument();
 
     const changeCityButton = screen.getByRole("button", {

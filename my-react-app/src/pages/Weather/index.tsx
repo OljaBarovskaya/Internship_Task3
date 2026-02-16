@@ -2,34 +2,26 @@ import { useState } from "react";
 import { WeatherProvider } from "@/app/providers/WeatherProvider";
 import * as type from "@/types";
 import * as utils from "@/utils/index";
-import * as Layout from "@/layouts";
+import * as Layout from "@/components/layouts";
 import { Search, Dashboard } from "./components";
 
 export default function WeatherDashboard() {
   const [city, changeCity] = useState(utils.getStartCity());
   const [units, changeUnits] = useState<type.DegreeUnits>(
-    utils.getStartUnits()
+    utils.getStartUnits(),
   );
-  const [noError, setNoError] = useState(true);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [reqStatus, setReqStatus] = useState<type.ReqStatusType>("noCurReq");
 
   return (
     <Layout.Page className="text-light">
-      <WeatherProvider
-        city={city}
-        units={units}
-        setNoError={setNoError}
-        setIsSuccess={setIsSuccess}
-      >
+      <WeatherProvider city={city} units={units} setReqStatus={setReqStatus}>
         <Search
-          onCityChange={changeCity}
-          units={units}
-          onUnitsChange={changeUnits}
-          noError={noError}
-          isSuccess={isSuccess}
-          setIsSuccess={setIsSuccess}
+          changeCity={changeCity}
+          changeUnits={changeUnits}
+          reqStatus={reqStatus}
+          setReqStatus={setReqStatus}
         />
-        <Dashboard units={units} />
+        <Dashboard />
       </WeatherProvider>
     </Layout.Page>
   );

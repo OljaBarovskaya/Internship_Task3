@@ -6,7 +6,7 @@ export * from "./Temperature";
 export * from "./WeatherDescription";
 export * from "./Date";
 export * from "./SectionLocationMain";
-export * from "./LocationBlock";
+export * from "./FavLocationBlock";
 export * from "./DetailsBlock";
 export * from "./LocationDetailsInfo";
 export * from "./SectionLocationDetails";

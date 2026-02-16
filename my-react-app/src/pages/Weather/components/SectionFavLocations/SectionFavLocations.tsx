@@ -1,12 +1,11 @@
-import * as Layout from "@/layouts";
-import * as type from "@/types";
+import * as Layout from "@/components/layouts";
 import { FavLocationsInfo } from "@/pages/Weather/components";
 
-export function SectionFavLocations({ units }: { units: type.DegreeUnits }) {
+export function SectionFavLocations() {
   return (
-    <Layout.BoardSection className="h-full ">
+    <Layout.BoardSection className="overflow-hidden grow-10">
       <h2>Others Countries</h2>
-      <FavLocationsInfo units={units} />
+      <FavLocationsInfo />
     </Layout.BoardSection>
   );
 }

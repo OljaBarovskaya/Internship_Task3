@@ -1,19 +1,21 @@
-import * as context from "@/context";
-import * as Layout from "@/layouts";
-import * as type from "@/types";
 import { DetailsBlock } from "@/pages/Weather/components";
-import { Loader } from "@/components/Loader";
+import { Loader } from "@/components/UI";
 import * as S from "./LocationDetailsInfo.styled";
+import { IMPERIAL_UNITS_OBJ, METRIC_UNITS_OBJ } from "@/constants";
+import { useWeather } from "@/context";
 
-export function LocationDetailsInfo({ units }: { units: type.DegreeUnits }) {
-  const { lastSuccessfulWeather, isLoading } = context.useWeather();
+export function LocationDetailsInfo() {
+  const { lastSuccessfulWeather, isLoading, units } = useWeather();
 
   if (!lastSuccessfulWeather && isLoading) {
-    return (
-      <Layout.BoardSection>
-        <Loader />
-      </Layout.BoardSection>
-    );
+    return <Loader />;
+  }
+
+  let unitsObject;
+  if (units === "metric") {
+    unitsObject = METRIC_UNITS_OBJ;
+  } else {
+    unitsObject = IMPERIAL_UNITS_OBJ;
   }
 
   return (
@@ -29,9 +31,11 @@ export function LocationDetailsInfo({ units }: { units: type.DegreeUnits }) {
       <DetailsBlock
         name="Wind"
         value={
-          units === "metric"
-            ? lastSuccessfulWeather?.wind + " m/s"
-            : lastSuccessfulWeather?.wind + " m/h"
+          lastSuccessfulWeather?.wind +
+          " " +
+          unitsObject.speed +
+          " " +
+          lastSuccessfulWeather?.windDirection
         }
       />
       <DetailsBlock

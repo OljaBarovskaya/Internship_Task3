@@ -1,4 +1,5 @@
-import * as Layout from "@/layouts";
+import * as Layout from "@/components/layouts";
+import { Heading } from "@/components/UI";
 import { TelContact } from "./components/TelContact";
 import { EmailContact } from "./components/EmailContact";
 import { GithubContact } from "./components/GithubContact";
@@ -6,7 +7,7 @@ import { GithubContact } from "./components/GithubContact";
 export default function Contacts() {
   return (
     <Layout.Page>
-      <Layout.Heading>Contact Page</Layout.Heading>
+      <Heading>Contact Page</Heading>
       <p>
         The web-app is created by <strong>Olga Barovskaya</strong>
       </p>

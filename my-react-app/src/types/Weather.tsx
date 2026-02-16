@@ -58,11 +58,15 @@ export interface WeatherContextType {
   isLoading: boolean;
   error: Error | null;
   isSuccess: boolean;
+  city: string;
+  units: DegreeUnits;
 }
 
 export type DegreeUnits = "metric" | "imperial";
+export type ReqStatusType = "success" | "error" | "noCurReq";
 
 export interface OptimizedWeatherData {
+  windDirection: string;
   country: string;
   iconCode: string;
   mainDescription: string;

@@ -1,17 +1,20 @@
 import * as type from "@/types";
 import * as utils from "@/utils/index";
 import * as S from "./Select.styled";
+import { useWeather } from "@/context";
 
 interface SelectProps {
-  units: type.DegreeUnits;
-  onUnitsChange: (value: type.DegreeUnits) => void;
+  changeUnits: (value: type.DegreeUnits) => void;
 }
 
-export function Select({ units, onUnitsChange }: SelectProps) {
+export function Select({ changeUnits }: SelectProps) {
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    onUnitsChange(event.target.value as type.DegreeUnits);
+    changeUnits(event.target.value as type.DegreeUnits);
     utils.setStorage("units", event.target.value as type.DegreeUnits);
   };
+
+  const { units } = useWeather();
+
   return (
     <S.Select value={units} onChange={handleChange}>
       <option value="metric">C</option>

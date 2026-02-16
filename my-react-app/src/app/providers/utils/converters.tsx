@@ -1,9 +1,9 @@
 import * as utils from "@/utils";
 import * as type from "@/types";
-import { NO_DATA_OBJECT } from "@/constants/constants";
+import { NO_DATA_OBJECT } from "@/constants";
 
 export function convertToNecessaryObj(
-  WeatherData: type.WeatherDataType | undefined
+  WeatherData: type.WeatherDataType | undefined,
 ): type.OptimizedWeatherData {
   const necessaryData = {} as type.OptimizedWeatherData;
   if (WeatherData === undefined) {
@@ -30,6 +30,8 @@ export function convertToNecessaryObj(
     utils.convertToTime(WeatherData.sys.sunset, necessaryData.timezone) ??
     "unknown";
   necessaryData.city = WeatherData.name ?? "unknown";
+  necessaryData.windDirection =
+    utils.convertToWindDirection(WeatherData.wind.deg) ?? "unknown";
 
   return necessaryData;
 }

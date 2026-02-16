@@ -7,12 +7,13 @@ import {
 } from "@/constants";
 import * as type from "@/types";
 import { useQuery } from "@tanstack/react-query";
-import { InferenceClient } from "@huggingface/inference";
 
 async function getWeatherForecast(
   weatherData: type.OptimizedWeatherData | undefined,
   units: type.DegreeUnits,
 ) {
+  const { InferenceClient } = await import("@huggingface/inference");
+
   if (!weatherData) {
     return "noWeatherData";
   }

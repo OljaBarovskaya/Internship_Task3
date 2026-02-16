@@ -13,3 +13,7 @@ export * from "./SectionLocationDetails";
 export * from "./FavLocationsInfo";
 export * from "./SectionFavLocations";
 export * from "./Dashboard";
+export * from "./SectionWeatherForecast";
+export * from "./WeatherForecastInfo";
+export * from "./WeatherForecastBlock";
+export * from "./LogInReq";

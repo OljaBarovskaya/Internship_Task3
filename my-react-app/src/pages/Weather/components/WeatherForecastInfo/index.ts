@@ -1,0 +1,1 @@
+export { WeatherForecastInfo } from "./WeatherForecastInfo";

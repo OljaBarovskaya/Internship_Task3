@@ -4,6 +4,7 @@ import {
   SectionFavLocations,
   SectionLocationDetails,
   SectionLocationMain,
+  SectionWeatherForecast,
 } from "@/pages/Weather/components";
 
 export function Dashboard() {
@@ -15,6 +16,7 @@ export function Dashboard() {
           <SectionLocationDetails />
         </Layout.BoardColumn>
         <Layout.BoardColumn>
+          <SectionWeatherForecast />
           <SectionFavLocations />
         </Layout.BoardColumn>
       </Layout.Board>

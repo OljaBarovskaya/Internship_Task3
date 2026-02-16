@@ -10,7 +10,7 @@ export function FavLocationsInfo() {
     <S.FavLocationsInfoContainer>
       {favLocations &&
         favLocations.map((location: string, index) => (
-          <WeatherProvider key={index} city={location} units={units}>
+          <WeatherProvider key={`city+${index}`} city={location} units={units}>
             <FavLocationBlock city={location} />
           </WeatherProvider>
         ))}

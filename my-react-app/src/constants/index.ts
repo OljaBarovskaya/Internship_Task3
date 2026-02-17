@@ -8,9 +8,6 @@ export const FAV_LOCATIONS = "favouriteLocations";
 export const MINUTE = 60000;
 export const UNITS = "units";
 export const CITY_INPUT_PLACEHOLDER = "Please, input a city here";
-export const HF_TOKEN = "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";
-//"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";
-//"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";
 export const HF_MODEL = "openai/gpt-oss-120b";
 //"meta-llama/Llama-3.1-8B-Instruct";
 export const FORECAST_DATA_FORM =

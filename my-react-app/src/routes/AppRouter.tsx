@@ -26,7 +26,7 @@ export default function AppRouter() {
         isLoggedIn: isLoggedIn,
       }}
     >
-      <BrowserRouter basename="/Internship_Task3">
+      <BrowserRouter>
         <S.Header>
           <S.Nav>
             <NavLink to="/" className={getNavLinkClassName}>

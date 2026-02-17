@@ -1,4 +1,5 @@
 import * as type from "@/types";
+
 import {
   FORECAST_DATA_FORM,
   HF_MODEL,
@@ -49,8 +50,3 @@ export default async function getWeatherForecast(
     return null;
   }
 }
-
-//async function getWeatherForecast(
-// weatherData: type.OptimizedWeatherData | undefined,
-// units: type.DegreeUnits,
-//) {

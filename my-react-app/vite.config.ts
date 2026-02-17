@@ -31,8 +31,6 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src"),
     },
   },
-
-  base: "/Internship_Task3/",
   test: {
     globals: true,
     setupFiles: ["setupTests.ts"],

@@ -11,7 +11,6 @@ bg-[#FFDE21]
 !text-gray-900 
 font-semibold 
 shadow-md 
-enabled:hover:bg-[#E0BC00] 
 transition 
 duration-200
 text-size-large

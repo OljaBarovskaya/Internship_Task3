@@ -7,6 +7,5 @@ max-w-[1920px]
 h-full
 mb-[24px] 
 xs:w-[90%]
-lg:h-[calc(100vh-24px)]
-lg:overflow-hidden
+lg:min-h-[calc(100vh-24px)]
 `;

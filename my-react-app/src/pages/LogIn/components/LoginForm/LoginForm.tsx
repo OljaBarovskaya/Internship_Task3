@@ -46,7 +46,9 @@ export function LoginForm({
         <FormField disabled={isSubmitting}>
           <EmailField />
           <PasswordField />
-          <Button type="submit">{loading ? <Loader /> : "Log In"}</Button>
+          <Button className="enabled:hover:bg-[#E0BC00]" type="submit">
+            {loading ? <Loader /> : "Log In"}
+          </Button>
         </FormField>
       </Form>
     </FormProvider>

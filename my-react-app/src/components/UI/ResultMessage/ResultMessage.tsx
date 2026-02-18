@@ -10,7 +10,10 @@ interface ResultMessageProps {
 
 const messageObject = new Map([
   ["logInSuccess", "Login successful! You'll be redirected to Weather page."],
-  ["signUpSuccess", "Signup successful!"],
+  [
+    "signUpSuccess",
+    "Signup successful! You'll be logined and redirected to Weather page.",
+  ],
   ["systemError", "Sorry! Something went wrong. Please try again later."],
   ["userError", "There is not such user in the system."],
   ["userExists", "User with such email already exists."],

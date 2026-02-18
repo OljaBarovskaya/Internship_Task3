@@ -60,7 +60,10 @@ export default function AppRouter() {
               path="/log_in"
               element={<LogIn setIsLoggedIn={setIsLoggedIn} />}
             />
-            <Route path="/sign_up" element={<SignUp />} />
+            <Route
+              path="/sign_up"
+              element={<SignUp setIsLoggedIn={setIsLoggedIn} />}
+            />
           </Routes>
         </S.Main>
       </BrowserRouter>

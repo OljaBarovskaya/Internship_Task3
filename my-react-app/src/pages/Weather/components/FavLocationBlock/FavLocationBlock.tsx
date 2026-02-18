@@ -37,6 +37,8 @@ export function FavLocationBlock({ city }: { city: string }) {
           width={30}
           height={30}
           fill="yellow"
+          stroke="yellow"
+          className="cursor-pointer transition-all duration-300 ease-in-out transform active:scale-90"
           onClick={() => {
             deleteFavCity(favLocations, city, setFavLocations);
           }}

@@ -60,7 +60,9 @@ export function SectionLocationMain() {
           <Star
             width={30}
             height={30}
-            fill={isFavorite ? "yellow" : "white"}
+            fill={isFavorite ? "yellow" : "none"}
+            stroke={isFavorite ? "yellow" : "white"}
+            className="cursor-pointer transition-all duration-300 ease-in-out transform active:scale-90"
             onClick={() =>
               toggleFavCity(isFavorite, favLocations, setFavLocations, city)
             }

@@ -12,7 +12,7 @@ export function Insights({ insightsData }: { insightsData: string | null }) {
   }
 
   return (
-    <div className="flex">
+    <div className="flexVertical">
       <S.InsightsContainer $showInsights={showInsigts}>
         <S.InsightsContent>
           <ReactMarkdown>{insightsData}</ReactMarkdown>

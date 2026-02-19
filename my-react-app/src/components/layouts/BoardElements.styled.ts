@@ -31,5 +31,5 @@ rounded-r-large
 flex 
 flex-col
 gap-y-space-small
-min-h-70
+min-h-72
 `;

@@ -17,7 +17,12 @@ export default async function getWeatherForecast(
   const { weatherData, units } = req.body;
 
   if (!weatherData) {
-    return res.status(400).json({ error: "noWeatherData" });
+    return res.status(400).json({
+      error: {
+        forecast: "noWeatherData",
+        weatherInsights: "noInsightsData",
+      },
+    });
   }
 
   const token = process.env.HF_TOKEN;
@@ -31,17 +36,35 @@ export default async function getWeatherForecast(
     units === "metric" ? METRIC_UNITS_OBJ : IMPERIAL_UNITS_OBJ;
 
   const hf = new InferenceClient(token);
-  const weatherString = `Provide a short-term forecast for 6 hours: City ${weatherData?.city}, temperature ${weatherData?.tMax + unitsObject.degrees}, humidity ${weatherData?.humidity}%, pressure ${weatherData?.pressure}hPA, wind ${weatherData?.wind + unitsObject.speed + " " + weatherData?.windDirection}, description: ${weatherData?.description}, ${weatherData?.mainDescription}. The forecast must be given strictly in the following form with no extra words: ${FORECAST_DATA_FORM}.`;
 
-  const resAI = await hf.chatCompletion({
-    model: HF_MODEL,
-    messages: [
-      {
-        role: "user",
-        content: weatherString,
-      },
-    ],
+  const weather = `City ${weatherData.city}, temperature ${weatherData.tMax + unitsObject.degrees}, humidity ${weatherData.humidity}%, pressure ${weatherData.pressure}hPA, wind ${weatherData.wind + unitsObject.speed + " " + weatherData.windDirection}, description: ${weatherData.description}, ${weatherData.mainDescription}.`;
+
+  const [forecastRes, insightsRes] = await Promise.all([
+    hf.chatCompletion({
+      model: HF_MODEL,
+      messages: [
+        {
+          role: "user",
+          content: `Provide a short-term forecast for 6 hours: ${weather} The forecast must be given strictly in the following form: ${FORECAST_DATA_FORM}.`,
+        },
+      ],
+    }),
+    hf.chatCompletion({
+      model: HF_MODEL,
+      messages: [
+        {
+          role: "user",
+          content: `Provide a 3 points short practical (1-3 sentences) weather insights based on: ${weather}`,
+        },
+      ],
+    }),
+  ]);
+
+  const weatherForecastData = forecastRes.choices[0]?.message?.content || "{}";
+  const weatherInsights = insightsRes.choices[0]?.message?.content || "";
+
+  return res.status(200).json({
+    forecast: JSON.parse(weatherForecastData),
+    weatherInsights: weatherInsights,
   });
-  const weatherForecastData = resAI.choices[0]?.message?.content || "";
-  return res.status(200).json(JSON.parse(weatherForecastData));
 }

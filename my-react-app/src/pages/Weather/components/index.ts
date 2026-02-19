@@ -17,3 +17,5 @@ export * from "./SectionWeatherForecast";
 export * from "./WeatherForecastInfo";
 export * from "./WeatherForecastBlock";
 export * from "./LogInReq";
+export * from "./Forecast";
+export * from "./Insights";

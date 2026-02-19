@@ -1,16 +1,9 @@
-import { WeatherForecastBlock } from "@/pages/Weather/components";
 import * as S from "./WeatherForecastInfo.styled";
 import { useUserContext, useWeather } from "@/context";
 import { useForecastQuery } from "@/services/HuggingFaceAPIService";
-import { LogInReq } from "@/pages/Weather/components";
+import { Forecast, Insights, LogInReq } from "@/pages/Weather/components";
 import { Loader } from "@/components/UI";
 import { UNEXPECTED_ERROR } from "@/constants";
-
-export interface ForecastData {
-  hour: number;
-  temperature: number;
-  description: string;
-}
 
 export function WeatherForecastInfo() {
   const { isLoggedIn } = useUserContext();
@@ -44,18 +37,12 @@ export function WeatherForecastInfo() {
     return <Loader />;
   }
 
+  console.log(weatherForecastData.forecast);
+
   return (
     <S.WeatherForecastInfo>
-      {weatherForecastData.map((forecast: ForecastData, index: number) => {
-        return (
-          <WeatherForecastBlock
-            key={index}
-            hour={forecast?.hour}
-            highT={forecast?.temperature}
-            description={forecast?.description}
-          />
-        );
-      })}
+      <Forecast weatherForecastData={weatherForecastData.forecast} />
+      <Insights insightsData={weatherForecastData.weatherInsights} />
     </S.WeatherForecastInfo>
   );
 }

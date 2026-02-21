@@ -1,13 +1,11 @@
-import * as S from "./WeatherForecastInfo.styled";
-import { useUserContext, useWeather } from "@/context";
+import { useWeather } from "@/context";
 import { useForecastQuery } from "@/services/HuggingFaceAPIService";
-import { Forecast, Insights, LogInReq } from "@/pages/Weather/components";
+import { Forecast, Insights } from "@/pages/Weather/components";
 import { Loader } from "@/components/UI";
 import { UNEXPECTED_ERROR } from "@/constants";
+import * as S from "./WeatherForecastInfo.styled";
 
 export function WeatherForecastInfo() {
-  const { isLoggedIn } = useUserContext();
-
   const {
     lastSuccessfulWeather,
     isLoading: isWeatherLoading,
@@ -19,10 +17,6 @@ export function WeatherForecastInfo() {
     isLoading: isForecastLoading,
     error,
   } = useForecastQuery(lastSuccessfulWeather, units);
-
-  if (!isLoggedIn) {
-    return <LogInReq />;
-  }
 
   if (error || weatherForecastData === null) {
     return <p> {UNEXPECTED_ERROR}</p>;
@@ -36,8 +30,6 @@ export function WeatherForecastInfo() {
   ) {
     return <Loader />;
   }
-
-  console.log(weatherForecastData.forecast);
 
   return (
     <S.WeatherForecastInfo>

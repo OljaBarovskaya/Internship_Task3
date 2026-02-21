@@ -19,3 +19,4 @@ export * from "./WeatherForecastBlock";
 export * from "./LogInReq";
 export * from "./Forecast";
 export * from "./Insights";
+export * from "./CitiesList";

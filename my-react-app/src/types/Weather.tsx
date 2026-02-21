@@ -83,3 +83,14 @@ export interface OptimizedWeatherData {
   timezone: number | "unknown";
   city: string;
 }
+
+export interface CitiesData {
+  id: number;
+  name: string;
+  state: string;
+  country: string;
+  coord: {
+    lon: number;
+    lat: number;
+  };
+}

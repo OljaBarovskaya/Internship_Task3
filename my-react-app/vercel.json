@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/my-react-app/index.html"
+      "destination": "/index.html"
     }
   ]
 }

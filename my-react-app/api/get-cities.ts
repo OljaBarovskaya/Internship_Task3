@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { connectToDatabase } from "../lib/mongodb"; // Убедись, что путь верный
+import { connectToDatabase } from "../lib/mongodb.js";
 import * as type from "@/types";
 
 export default async function getCities(

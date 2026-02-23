@@ -1,37 +1,35 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
+import { connectToDatabase } from "../lib/mongodb"; // Убедись, что путь верный
 import * as type from "@/types";
-
-let cachedCities: type.CitiesData[] | null = null;
 
 export default async function getCities(
   req: VercelRequest,
   res: VercelResponse,
 ) {
   const { query = "" } = req.query;
-  const searchTerm = String(query).toLowerCase();
+  const searchTerm = String(query).trim();
   const limit = 50;
 
   try {
-    if (!cachedCities) {
-      console.log("Запрос к API начат...");
-      const response = await fetch(
-        "https://nannmhnaurhfszte.public.blob.vercel-storage.com/city.list.json",
-      );
+    const client = await connectToDatabase();
+    const db = client.db("WeatherApp");
+    const collection = db.collection<type.CitiesData>("Cities");
 
-      cachedCities = await response.json();
-      console.log("Файл успешно загружен и распарсен");
+    const escapedTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-      const filteredData = cachedCities!
-        .filter((city: type.CitiesData) =>
-          city.name?.toLowerCase().startsWith(searchTerm),
-        )
-        .slice(0, limit);
-      console.log(`Найдено: ${filteredData.length} объектов`);
+    const filteredData = await collection
+      .find({
+        name: { $regex: `^${escapedTerm}`, $options: "i" },
+      })
+      .limit(limit)
+      .toArray();
 
-      return res.status(200).json(filteredData);
-    }
-  } catch {
-    console.error("Failed to receive data:");
-    return res.status(500).json({ error: "Failed to receive data:" });
+    return res.status(200).json(filteredData);
+  } catch (error) {
+    console.error("MongoDB Error:", error);
+    return res.status(500).json({
+      error: "Failed to fetch from DB",
+      details: error instanceof Error ? error.message : "Unknown error",
+    });
   }
 }

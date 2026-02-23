@@ -27,14 +27,6 @@ export function Search({
 
   const [isSelected, setIsSelected] = useState(false);
 
-  useEffect(() => {
-    if (reqStatus === "success") {
-      setValue("city", "");
-      setIsSelected(false);
-      setReqStatus("noCurReq");
-    }
-  }, [reqStatus]);
-
   const searchValue = watch("city");
   const debouncedSearchTerm = useDebounce(searchValue, 500);
 

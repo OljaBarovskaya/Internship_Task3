@@ -7,7 +7,7 @@ export const FormWindow = tw.div`
  rounded-r-large 
  shadow-lg 
  w-full 
- max-w-270 
+ max-w-260 
  flexVertical 
  justify-between 
  gap-y-10 

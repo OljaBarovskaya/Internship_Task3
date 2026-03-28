@@ -4,7 +4,7 @@ import {
   LOCATION_MAIN,
   UNITS,
   UNITS_DEFAULT,
-} from "@/constants/constants";
+} from "@/constants";
 
 export function getStorage(item: string) {
   if (item === FAV_LOCATIONS) {

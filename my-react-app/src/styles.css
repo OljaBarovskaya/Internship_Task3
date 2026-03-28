@@ -2,7 +2,12 @@
 @import "@/pages/Weather/styles.css";
 
 @layer base {
+  * {
+    box-sizing: border-box;
+  }
+
   html {
+    height: 100vh;
     font-size: 7px;
     font-family: "Inter", sans-serif;
     line-height: 1.2;
@@ -39,15 +44,17 @@
   --color-light-gray: #b9b9b9;
   --color-light: #fff;
 
+  --spacing-space-extraLarge: 10rem;
   --spacing-space-large: 2.4rem;
   --spacing-space-medium: 1.6rem;
   --spacing-space-small: 0.8rem;
 
   --radius-r-large: 24px;
   --radius-r-medium: 16px;
+  --radius-r-small: 5px;
 
   --text-size-large: 2.4rem;
-  --text-size-medium: 1.6rem;
+  --text-size-medium: 1.8rem;
   --text-size-small: 1.4rem;
 
   --breakpoint-xs: 30rem;

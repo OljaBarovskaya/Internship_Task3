@@ -1,3 +1,3 @@
 export * from "./formatters";
 export * from "./storageHandlers";
-export * from "./togglers";
+export * from "./delay";

@@ -14,7 +14,7 @@ export function convertToFamiliarDateFormat(date: Date) {
 
 export function convertToTime(
   timeMs: number | "unknown",
-  timezoneMs: number | "unknown"
+  timezoneMs: number | "unknown",
 ) {
   if (timeMs === "unknown" || timezoneMs === "unknown") {
     return "unknown";
@@ -24,4 +24,14 @@ export function convertToTime(
   const time = date.toLocaleTimeString().slice(0, 5);
 
   return time;
+}
+
+export function convertToWindDirection(degrees: number) {
+  const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
+
+  const index = Math.round(degrees / 45);
+  if (index === 8) {
+    return directions[0];
+  }
+  return directions[index];
 }

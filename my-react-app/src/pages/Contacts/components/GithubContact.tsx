@@ -1,12 +1,13 @@
-import { GITHUB } from "@/constants/constants";
+import { GITHUB } from "@/constants";
+import { Link } from "@/components/UI";
 
 export function GithubContact() {
   return (
     <p>
       <strong>Github</strong>:{" "}
-      <a href={GITHUB} target="_blank">
-        Olga Barovskya
-      </a>
+      <Link href={GITHUB} target="_blank">
+        {GITHUB}
+      </Link>
     </p>
   );
 }

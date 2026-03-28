@@ -1,0 +1,1 @@
+export { FailIcon } from "./FailIcon";

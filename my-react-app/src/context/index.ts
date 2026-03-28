@@ -1,5 +1,3 @@
-export { useWeather, WeatherContext } from "./WeatherContext";
-export {
-  useFavLocationContext,
-  FavLocationsContext,
-} from "./FavLocationContext";
+export * from "./WeatherContext";
+export * from "./FavLocationContext";
+export * from "./UserContext";

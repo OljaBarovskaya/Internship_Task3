@@ -10,3 +10,9 @@ export const TitleImg = tw.img`
 w-10 
 object-contain
 `;
+
+export const Info = tw.p`
+text-size-medium 
+lg:text-size-large
+text-center
+`;

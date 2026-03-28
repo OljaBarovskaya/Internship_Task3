@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { MINUTE } from "@/constants/constants";
+import * as S from "./Date.styled";
+import { MINUTE } from "@/constants";
 import {
   convertToFamiliarDateFormat,
   convertToWeekday,
@@ -21,9 +22,9 @@ export function CurrentDate() {
   }, []);
 
   return (
-    <div className="self-start">
-      <p className="text-[3.6rem] mb-2">{weekday}</p>
-      <p className="text-size-small">{day}</p>
-    </div>
+    <S.DateContainer>
+      <S.Weekday>{weekday}</S.Weekday>
+      <S.Day>{day}</S.Day>
+    </S.DateContainer>
   );
 }

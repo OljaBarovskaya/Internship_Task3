@@ -1,11 +1,11 @@
-import * as type from "@/types";
+import { IMPERIAL_UNITS_OBJ, METRIC_UNITS_OBJ } from "@/constants";
+import { useWeather } from "@/context";
 
 interface TemperatureProps {
-  highT: number | "unknown";
-  lowT: number | "unknown";
+  highT: number | "unknown" | undefined;
+  lowT?: number | "unknown";
   sizeHighT: number | "unknown";
-  sizeLowT: number | "unknown";
-  units: type.DegreeUnits;
+  sizeLowT?: number | "unknown";
 }
 
 export function Temperature({
@@ -13,16 +13,26 @@ export function Temperature({
   lowT,
   sizeHighT,
   sizeLowT,
-  units,
 }: TemperatureProps) {
+  const { units } = useWeather();
+
+  const unitsObject =
+    units === "metric" ? METRIC_UNITS_OBJ : IMPERIAL_UNITS_OBJ;
+
+  if (highT === undefined) {
+    return <span>--</span>;
+  }
+
   return (
     <div>
       <p style={{ fontSize: `${sizeHighT}rem` }}>
-        {units === "metric" ? highT + "\u00B0C" : highT + "\u00B0F"}
+        {highT + unitsObject.degrees}
       </p>
-      <p className="text-light-gray" style={{ fontSize: `${sizeLowT}rem` }}>
-        {units === "metric" ? "/" + lowT + "\u00B0C" : "/" + lowT + "\u00B0F"}
-      </p>
+      {lowT !== undefined && sizeLowT && (
+        <p className="text-light-gray" style={{ fontSize: `${sizeLowT}rem` }}>
+          {"/" + lowT + unitsObject.degrees}
+        </p>
+      )}
     </div>
   );
 }

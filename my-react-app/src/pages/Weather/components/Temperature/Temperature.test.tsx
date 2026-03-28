@@ -11,7 +11,7 @@ describe("My test suite", () => {
   };
 
   test("renders metric units correctly", () => {
-    render(<Temperature {...defaultProps} units="metric" />);
+    render(<Temperature {...defaultProps} />);
 
     const highTempElement = screen.getByText("25°C");
     expect(highTempElement).toBeInTheDocument();

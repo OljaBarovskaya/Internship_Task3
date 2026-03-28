@@ -1,12 +1,11 @@
-import * as Layout from "@/layouts";
-import * as type from "@/types";
+import * as Layout from "@/components/layouts";
 import { LocationDetailsInfo } from "@/pages/Weather/components";
 
-export function SectionLocationDetails({ units }: { units: type.DegreeUnits }) {
+export function SectionLocationDetails() {
   return (
     <Layout.BoardSection>
       <h2>Detailed Weather</h2>
-      <LocationDetailsInfo units={units} />
+      <LocationDetailsInfo />
     </Layout.BoardSection>
   );
 }

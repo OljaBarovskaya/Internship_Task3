@@ -4,7 +4,7 @@ import Sunrise from "@/assets/img/sunrise.png";
 import Sunset from "@/assets/img/sunset.png";
 import Visibility from "@/assets/img/visibility.png";
 import Wind from "@/assets/img/wind.png";
-import * as Layout from "@/layouts";
+import * as Layout from "@/components/layouts";
 import * as S from "./DetailsBlock.styled";
 
 const weatherIconsObject = new Map([
@@ -26,12 +26,12 @@ export function DetailsBlock({
   const iconImg = weatherIconsObject.get(name);
 
   return (
-    <Layout.BlockVertical className="w-60 h-48 lg:h-55">
+    <Layout.BlockVertical className="gap-y-space-large">
       <S.Title>
         <S.TitleImg src={iconImg} alt={name} />
         <h3>{name}</h3>
       </S.Title>
-      <p className="text-size-large">{value}</p>
+      <S.Info>{value}</S.Info>
     </Layout.BlockVertical>
   );
 }

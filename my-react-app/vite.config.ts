@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import svgr from "vite-plugin-svgr";
 import tsconfigPaths from "vite-tsconfig-paths";
 import path from "path";
+import { visualizer } from "rollup-plugin-visualizer";
 
 export default defineConfig({
   plugins: [
@@ -15,6 +16,12 @@ export default defineConfig({
         plugins: [["babel-plugin-react-compiler"]],
       },
     }),
+    visualizer({
+      open: true,
+      filename: "stats.html",
+      gzipSize: true,
+      brotliSize: true,
+    }),
 
     tailwindcss(),
     svgr(),
@@ -24,11 +31,18 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src"),
     },
   },
-
-  base: "/Internship_Task3/",
   test: {
     globals: true,
     setupFiles: ["setupTests.ts"],
     environment: "jsdom",
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          huggingface: ["@huggingface/inference"],
+        },
+      },
+    },
   },
 });

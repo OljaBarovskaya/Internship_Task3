@@ -1,0 +1,1 @@
+export { FavLocationBlock } from "./FavLocationBlock";

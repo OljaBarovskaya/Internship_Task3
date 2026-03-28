@@ -1,23 +1,29 @@
-import * as type from "@/types";
+import { useWeather } from "@/context";
+import { METRIC_UNITS_OBJ, IMPERIAL_UNITS_OBJ } from "@/constants";
+import * as S from "./WeatherDescription.styled";
 
 interface WeatherDescriptionProps {
-  description: string;
-  units: type.DegreeUnits;
-  feelsLike: number | "unknown";
+  description?: string;
+  feelsLike?: number | "unknown";
 }
 
 export function WeatherDescription({
   description,
-  units,
   feelsLike,
 }: WeatherDescriptionProps) {
+  const { units } = useWeather();
+
   return (
     <div>
-      <p className="text-size-medium font-medium">{description}</p>
-      <p className="text-size-small font-normal">
-        feels like{" "}
-        {units === "metric" ? feelsLike + "\u00B0C" : feelsLike + "\u00B0F"}
-      </p>
+      {description && <S.Description>{description}</S.Description>}
+      {feelsLike && (
+        <S.Feels>
+          feels like{" "}
+          {units === "metric"
+            ? feelsLike + METRIC_UNITS_OBJ.degrees
+            : feelsLike + IMPERIAL_UNITS_OBJ.degrees}
+        </S.Feels>
+      )}
     </div>
   );
 }
